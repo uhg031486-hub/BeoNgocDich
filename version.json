@@ -1,7 +1,7 @@
 {
-  "versionCode": 3,
-  "versionName": "1.0.2",
-  "title": "Béo Ngọc Dịch v1.0.2",
-  "changelog": "- Tích hợp Quản lý từ điển & Tên nhân vật (Glossary Manager): Tự do thêm, sửa, xóa từ khóa ưu tiên (Truyện này hoặc Dùng chung toàn cục).\n- Tích hợp Tải truyện từ link Web: Tự động cào danh sách chương từ 69shu, uukanshu, biquge, v.v. rồi đóng gói thành bản thảo sẵn sàng dịch.\n- Tích hợp Thông báo tiến trình trên thanh trạng thái (Notification): Theo dõi % dịch trực quan, thông báo khi hoàn thành hoặc lỗi.\n- Hỗ trợ đẩy cả file TXT lên Server dịch nền (tự động đóng gói chuẩn EPUB).\n- Kiểm tra và tự động cập nhật app qua GitHub.",
-  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.2/app-debug.apk"
+  "versionCode": 4,
+  "versionName": "1.0.3",
+  "title": "Béo Ngọc Dịch v1.0.3",
+  "changelog": "- Tự động theo dõi tiến trình Server theo thời gian thực (Live Progress): Cập nhật số chương dịch xong liên tục trên màn hình và Notification bar.\n- Hiển thị chi tiết trạng thái từng sách trên server và cho phép tải bản đọc tạm bất kỳ lúc nào.\n- Tích hợp Quản lý từ điển & Tên nhân vật (Glossary Manager).\n- Tích hợp Tải truyện từ link Web (Crawler từ 69shu, uukanshu, v.v.).\n- Hỗ trợ đẩy cả file TXT lên Server dịch nền.",
+  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.3/app-debug.apk"
 }

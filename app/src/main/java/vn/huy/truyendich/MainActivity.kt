@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     private var activeWork: Future<*>? = null
     private var pendingOutput: TranslationOutput? = null
     private var pendingServerEpub: RemoteEpub? = null
+    private var serverMonitorExecutor: java.util.concurrent.ScheduledExecutorService? = null
 
     private val filePicker = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
         if (uri == null) return@registerForActivityResult
@@ -117,6 +118,7 @@ class MainActivity : AppCompatActivity() {
         cancelled = true
         activeWork?.cancel(true)
         pendingOutput?.file?.delete()
+        serverMonitorExecutor?.shutdownNow()
         TranslationNotificationManager.cancel(this)
         super.onDestroy()
     }
@@ -210,7 +212,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 runOnUiThread {
                     binding.uploadServerButton.isEnabled = true
-                    binding.serverEpubText.text = "Server đang dịch: 0/${job.total} chương/phần. Bấm 'Xem EPUB' để tải bản tạm khi cần đọc."
+                    startServerJobMonitoring(job.id, uploadName, settings)
                 }
             } catch (error: Exception) {
                 runOnUiThread {
@@ -221,6 +223,50 @@ class MainActivity : AppCompatActivity() {
                 tempEpubFile?.delete()
             }
         }
+    }
+
+    private fun startServerJobMonitoring(jobId: String, bookName: String, settings: TranslationSettings) {
+        serverMonitorExecutor?.shutdownNow()
+        val executor = Executors.newSingleThreadScheduledExecutor()
+        serverMonitorExecutor = executor
+
+        runOnUiThread {
+            binding.progressBar.visibility = View.VISIBLE
+            binding.progressBar.progress = 0
+            binding.serverEpubText.text = "Server đã nhận tệp. Đang theo dõi tiến trình dịch theo thời gian thực..."
+        }
+
+        executor.scheduleWithFixedDelay({
+            try {
+                val jobInfo = ServerEpubRepository(this, settings).getJob(jobId)
+                if (jobInfo != null) {
+                    runOnUiThread {
+                        val pct = if (jobInfo.total > 0) (jobInfo.completed * 100) / jobInfo.total else 0
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.progressBar.progress = pct
+
+                        if (jobInfo.status == "complete") {
+                            binding.serverEpubText.text = "✓ Server đã dịch xong toàn bộ ${jobInfo.total} chương! Bấm 'Xem EPUB' để tải về."
+                            TranslationNotificationManager.showCompleted(this, "[Server] $bookName", jobInfo.total)
+                            executor.shutdown()
+                        } else if (jobInfo.status == "failed") {
+                            binding.serverEpubText.text = "✗ Server báo lỗi: ${jobInfo.message}"
+                            TranslationNotificationManager.showError(this, "[Server] $bookName", jobInfo.message)
+                            executor.shutdown()
+                        } else {
+                            binding.serverEpubText.text = "Server đang dịch: ${jobInfo.completed}/${jobInfo.total} chương/phần ($pct%) — Đang chạy nền...\nBấm 'Xem EPUB' để tải bản tạm khi cần đọc."
+                            TranslationNotificationManager.showProgress(
+                                this,
+                                "[Server] $bookName",
+                                jobInfo.completed,
+                                jobInfo.total,
+                                "Server đã dịch: ${jobInfo.completed}/${jobInfo.total} chương ($pct%)"
+                            )
+                        }
+                    }
+                }
+            } catch (_: Exception) {}
+        }, 2, 5, java.util.concurrent.TimeUnit.SECONDS)
     }
 
     private fun showServerEpubs() {
@@ -239,10 +285,17 @@ class MainActivity : AppCompatActivity() {
                     }
                     binding.serverEpubText.text = "Có ${books.size} EPUB trên server. Chọn một file để tải."
                     AlertDialog.Builder(this)
-                        .setTitle("EPUB trên server")
-                        .setItems(books.map { "${it.name} (${it.completed}/${it.total} chương)" }.toTypedArray()) { _, index ->
-                            pendingServerEpub = books[index]
-                            serverEpubCreator.launch(books[index].name.removeSuffix(".epub") + ".vi.epub")
+                        .setTitle("EPUB trên server (${books.size} tệp)")
+                        .setItems(books.map {
+                            val tag = if (it.completed >= it.total) "✓ Xong" else "⏳ Đang dịch: ${it.completed}/${it.total}"
+                            "${it.name}\n($tag)"
+                        }.toTypedArray()) { _, index ->
+                            val selectedBook = books[index]
+                            pendingServerEpub = selectedBook
+                            if (selectedBook.completed < selectedBook.total) {
+                                startServerJobMonitoring(selectedBook.id, selectedBook.name, settings)
+                            }
+                            serverEpubCreator.launch(selectedBook.name.removeSuffix(".epub") + ".vi.epub")
                         }.show()
                 }
             } catch (error: Exception) {

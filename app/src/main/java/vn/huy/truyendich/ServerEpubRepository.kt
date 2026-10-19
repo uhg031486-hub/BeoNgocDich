@@ -7,13 +7,42 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-data class RemoteEpub(val id: String, val name: String, val completed: Int, val total: Int)
+data class RemoteEpub(
+    val id: String,
+    val name: String,
+    val completed: Int,
+    val total: Int,
+    val status: String = "running",
+    val message: String = ""
+)
 
 class ServerEpubRepository(private val context: Context, private val settings: TranslationSettings) {
     fun list(): List<RemoteEpub> {
         val raw = request("/v1/epub/jobs") ?: return emptyList()
         val jobs = JSONObject(raw).getJSONArray("jobs").let { array -> List(array.length()) { array.getJSONObject(it) } }
-        return jobs.map { RemoteEpub(it.getString("id"), it.optString("name", "truyen.epub"), it.optInt("completed"), it.optInt("total")) }
+        return jobs.map {
+            RemoteEpub(
+                it.getString("id"),
+                it.optString("name", "truyen.epub"),
+                it.optInt("completed"),
+                it.optInt("total"),
+                it.optString("status", "running"),
+                it.optString("message", "")
+            )
+        }
+    }
+
+    fun getJob(id: String): RemoteEpub? {
+        val raw = request("/v1/epub/jobs/$id") ?: return null
+        val row = JSONObject(raw)
+        return RemoteEpub(
+            row.getString("id"),
+            row.optString("name", "truyen.epub"),
+            row.optInt("completed", 0),
+            row.optInt("total", 0),
+            row.optString("status", "running"),
+            row.optString("message", "")
+        )
     }
 
     fun download(id: String, output: java.io.OutputStream) {
