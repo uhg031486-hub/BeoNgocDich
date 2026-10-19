@@ -2,6 +2,6 @@
   "versionCode": 2,
   "versionName": "1.0.1",
   "title": "Béo Ngọc Dịch v1.0.1",
-  "changelog": "- Sửa lỗi 9Router từ chối dịch file TXT: Chia nhỏ văn bản 3.000 - 4.000 ký tự cắt theo dòng xuống dòng, không đứt câu.\n- Phân luồng song song cho file TXT lên đến 50 luồng, tự động lưu checkpoint khôi phục khi gặp sự cố.\n- Lưu nối tiếp kết quả vào file .vi.txt ngay khi dịch xong từng đoạn và cho phép tạm dừng.\n- Tối ưu RouterClient với reasoning_effort minimal và tính toán max_tokens an toàn (chống lỗi HTTP 400/413).\n- Cảnh báo định dạng EPUB khi bấm đẩy file TXT lên server dịch nền.\n- Tích hợp tính năng tự động kiểm tra và cập nhật ứng dụng trực tiếp qua GitHub.",
+  "changelog": "- Sửa lỗi 9Router từ chối dịch file TXT: Chia nhỏ văn bản 3.000 - 4.000 ký tự cắt theo dòng xuống dòng, không đứt câu.\n- Phân luồng song song cho file TXT lên đến 50 luồng, tự động lưu checkpoint khôi phục khi gặp sự cố.\n- Lưu nối tiếp kết quả vào file .vi.txt ngay khi dịch xong từng đoạn và cho phép tạm dừng.\n- Tối ưu RouterClient với reasoning_effort minimal và tính toán max_tokens an toàn (chống lỗi HTTP 400/413).\n- Hỗ trợ đẩy cả file TXT lên Server dịch nền (tự động phân đoạn và đóng gói chuẩn EPUB gửi lên server).\n- Tích hợp tính năng tự động kiểm tra và cập nhật ứng dụng trực tiếp qua GitHub.",
   "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.1/app-debug.apk"
 }
