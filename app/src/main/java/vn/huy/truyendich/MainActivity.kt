@@ -88,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         setAdapters()
         populate(repository.load())
         setupActions()
+        AppUpdateManager.checkForUpdate(this)
     }
 
     override fun onDestroy() {
