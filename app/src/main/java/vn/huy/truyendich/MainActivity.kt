@@ -1,15 +1,30 @@
 package vn.huy.truyendich
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
-import androidx.appcompat.app.AlertDialog
+import android.widget.Button
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.ListView
+import android.widget.ProgressBar
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import vn.huy.truyendich.databinding.ActivityMainBinding
 import java.io.File
@@ -89,12 +104,20 @@ class MainActivity : AppCompatActivity() {
         populate(repository.load())
         setupActions()
         AppUpdateManager.checkForUpdate(this)
+
+        TranslationNotificationManager.init(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
+            }
+        }
     }
 
     override fun onDestroy() {
         cancelled = true
         activeWork?.cancel(true)
         pendingOutput?.file?.delete()
+        TranslationNotificationManager.cancel(this)
         super.onDestroy()
     }
 
@@ -131,6 +154,8 @@ class MainActivity : AppCompatActivity() {
         binding.selectFileButton.setOnClickListener {
             filePicker.launch(arrayOf("application/epub+zip", "application/zip", "text/plain", "text/*", "application/octet-stream"))
         }
+        binding.crawlWebButton.setOnClickListener { showCrawlWebDialog() }
+        binding.glossaryButton.setOnClickListener { showGlossaryDialog() }
         binding.advancedButton.setOnClickListener {
             binding.advancedPanel.isVisible = !binding.advancedPanel.isVisible
             binding.advancedButton.text = if (binding.advancedPanel.isVisible) "Ẩn cài đặt nâng cao" else "Cài đặt nâng cao"
@@ -254,6 +279,11 @@ class MainActivity : AppCompatActivity() {
                 runOnUiThread {
                     setBusy(false)
                     pendingOutput = output
+                    if (output.isComplete) {
+                        TranslationNotificationManager.showCompleted(this@MainActivity, selectedName, output.totalChapters)
+                    } else if (output.paused) {
+                        TranslationNotificationManager.cancel(this@MainActivity)
+                    }
                     binding.statusText.text = if (output.paused) {
                         "Đã tạm dừng. Đã dịch ${output.completedChapters}/${output.totalChapters} chương trong phạm vi chọn; đang mở chỗ lưu EPUB tạm."
                     } else if (output.isComplete) {
@@ -266,16 +296,232 @@ class MainActivity : AppCompatActivity() {
             } catch (_: CancellationException) {
                 runOnUiThread {
                     setBusy(false)
+                    TranslationNotificationManager.cancel(this@MainActivity)
                     binding.statusText.text = "Đã hủy tác vụ. Bản dịch đã đồng bộ trước đó vẫn được giữ trên server."
                 }
             } catch (error: Exception) {
                 runOnUiThread {
                     setBusy(false)
+                    TranslationNotificationManager.showError(this@MainActivity, selectedName, error.message ?: "lỗi không xác định")
                     binding.statusText.text = "Dịch thất bại: ${error.message ?: "lỗi không xác định"}"
                     toast("Không thể hoàn tất dịch. Xem trạng thái để biết chi tiết.")
                 }
             }
         }
+    }
+
+    private fun showCrawlWebDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_crawl_web, null)
+        val urlInput = dialogView.findViewById<EditText>(R.id.webUrlInput)
+        val limitInput = dialogView.findViewById<EditText>(R.id.chapterLimitInput)
+        val progressBar = dialogView.findViewById<ProgressBar>(R.id.crawlProgressBar)
+        val statusText = dialogView.findViewById<TextView>(R.id.crawlStatusText)
+        val startBtn = dialogView.findViewById<Button>(R.id.startCrawlButton)
+        val cancelBtn = dialogView.findViewById<Button>(R.id.cancelCrawlButton)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setCancelable(false)
+            .create()
+
+        var crawlCancelled = false
+
+        startBtn.setOnClickListener {
+            val url = urlInput.text.toString().trim()
+            if (!url.startsWith("http://") && !url.startsWith("https://")) {
+                urlInput.error = "Vui lòng nhập link hợp lệ (http:// hoặc https://)"
+                return@setOnClickListener
+            }
+            val limit = limitInput.text.toString().toIntOrNull() ?: 30
+
+            startBtn.isEnabled = false
+            urlInput.isEnabled = false
+            limitInput.isEnabled = false
+            cancelBtn.text = "Hủy tải"
+            progressBar.visibility = View.VISIBLE
+            statusText.visibility = View.VISIBLE
+            statusText.text = "Đang kết nối trang nguồn..."
+
+            Executors.newSingleThreadExecutor().execute {
+                try {
+                    val file = WebNovelCrawler.crawl(
+                        this,
+                        url,
+                        limit,
+                        { crawlCancelled },
+                        { cur, total, chapTitle ->
+                            runOnUiThread {
+                                progressBar.max = total
+                                progressBar.progress = cur
+                                statusText.text = "[$cur/$total] $chapTitle"
+                            }
+                        }
+                    )
+                    runOnUiThread {
+                        selectedUri = Uri.fromFile(file)
+                        selectedName = file.name
+                        binding.fileNameText.text = "${file.name} (Đã tải xong từ Web!)"
+                        binding.translateButton.text = "Bắt đầu dịch trực tiếp (TXT)"
+                        binding.statusText.text = "Đã tải xong ${file.name}. Bạn có thể bấm dịch ngay hoặc đẩy lên server!"
+                        toast("Đã tải xong truyện về máy!")
+                        dialog.dismiss()
+                    }
+                } catch (e: Exception) {
+                    runOnUiThread {
+                        startBtn.isEnabled = true
+                        urlInput.isEnabled = true
+                        limitInput.isEnabled = true
+                        cancelBtn.text = "Đóng"
+                        statusText.text = "Lỗi: ${e.message}"
+                        toast("Tải truyện thất bại: ${e.message}")
+                    }
+                }
+            }
+        }
+
+        cancelBtn.setOnClickListener {
+            crawlCancelled = true
+            dialog.dismiss()
+        }
+
+        dialog.show()
+    }
+
+    private fun showGlossaryDialog() {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_glossary, null)
+        val scopeRadioGroup = dialogView.findViewById<RadioGroup>(R.id.scopeRadioGroup)
+        val searchInput = dialogView.findViewById<EditText>(R.id.searchGlossaryInput)
+        val listView = dialogView.findViewById<ListView>(R.id.glossaryListView)
+        val countText = dialogView.findViewById<TextView>(R.id.glossaryCountText)
+        val addBtn = dialogView.findViewById<Button>(R.id.addTermButton)
+        val closeBtn = dialogView.findViewById<Button>(R.id.closeGlossaryButton)
+
+        val memoryStore = StoryMemoryStore(this)
+        val currentBookKey = if (selectedName.isNotBlank() && selectedName != "Chưa chọn tệp.") {
+            selectedName.removeSuffix(".txt").removeSuffix(".epub").take(48)
+        } else {
+            "current_book"
+        }
+
+        var activeScopeKey = currentBookKey
+        var memory = memoryStore.load(activeScopeKey)
+
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        fun refreshList(query: String = "") {
+            val allNames = memory.getNamesMap()
+            val filtered = if (query.isBlank()) {
+                allNames.toList()
+            } else {
+                allNames.filter {
+                    it.key.contains(query, ignoreCase = true) || it.value.contains(query, ignoreCase = true)
+                }.toList()
+            }
+            countText.text = "Tổng số: ${filtered.size} từ"
+            val displayList = filtered.map { "${it.first}  ➔  ${it.second}" }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, displayList)
+            listView.adapter = adapter
+
+            listView.setOnItemClickListener { _, _, position, _ ->
+                val (source, target) = filtered[position]
+                showEditTermDialog(source, target) { newTarget, shouldDelete ->
+                    if (shouldDelete) {
+                        memory.removeName(source)
+                    } else if (newTarget != null) {
+                        memory.setName(source, newTarget)
+                    }
+                    memoryStore.save(activeScopeKey, memory)
+                    refreshList(searchInput.text.toString())
+                }
+            }
+        }
+
+        scopeRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            activeScopeKey = if (checkedId == R.id.scopeGlobalRadio) "global" else currentBookKey
+            memory = memoryStore.load(activeScopeKey)
+            refreshList(searchInput.text.toString())
+        }
+
+        searchInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                refreshList(s?.toString() ?: "")
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        addBtn.setOnClickListener {
+            showAddTermDialog { src, tgt ->
+                if (src.isNotBlank() && tgt.isNotBlank()) {
+                    memory.setName(src, tgt)
+                    memoryStore.save(activeScopeKey, memory)
+                    refreshList(searchInput.text.toString())
+                    toast("Đã thêm: $src ➔ $tgt")
+                }
+            }
+        }
+
+        closeBtn.setOnClickListener { dialog.dismiss() }
+
+        refreshList()
+        dialog.show()
+    }
+
+    private fun showAddTermDialog(onAdd: (String, String) -> Unit) {
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(48, 24, 48, 24)
+        }
+        val sourceInput = EditText(this).apply {
+            hint = "Từ gốc (Tiếng Trung/Anh, ví dụ: 萧炎)"
+            background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bg_input)
+            setPadding(24, 20, 24, 20)
+        }
+        val targetInput = EditText(this).apply {
+            hint = "Từ dịch (Tiếng Việt, ví dụ: Tiêu Viêm)"
+            background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bg_input)
+            setPadding(24, 20, 24, 20)
+            val params = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            params.topMargin = 20
+            layoutParams = params
+        }
+        layout.addView(sourceInput)
+        layout.addView(targetInput)
+
+        AlertDialog.Builder(this)
+            .setTitle("Thêm nhân vật / thuật ngữ mới")
+            .setView(layout)
+            .setPositiveButton("Thêm") { _, _ ->
+                onAdd(sourceInput.text.toString().trim(), targetInput.text.toString().trim())
+            }
+            .setNegativeButton("Hủy", null)
+            .show()
+    }
+
+    private fun showEditTermDialog(source: String, currentTarget: String, onComplete: (String?, Boolean) -> Unit) {
+        val input = EditText(this).apply {
+            setText(currentTarget)
+            background = ContextCompat.getDrawable(this@MainActivity, R.drawable.bg_input)
+            setPadding(24, 20, 24, 20)
+        }
+        val container = LinearLayout(this).apply {
+            setPadding(48, 24, 48, 24)
+            addView(input)
+        }
+
+        AlertDialog.Builder(this)
+            .setTitle("Sửa từ dịch cho: $source")
+            .setView(container)
+            .setPositiveButton("Lưu") { _, _ ->
+                onComplete(input.text.toString().trim(), false)
+            }
+            .setNeutralButton("Xóa từ này") { _, _ ->
+                onComplete(null, true)
+            }
+            .setNegativeButton("Hủy", null)
+            .show()
     }
 
     private fun settingsFromForm(): TranslationSettings? {
@@ -327,11 +573,14 @@ class MainActivity : AppCompatActivity() {
     private fun publishProgress(done: Int, total: Int, status: String) = runOnUiThread {
         binding.progressBar.progress = if (total == 0) 0 else (done * 100 / total)
         binding.statusText.text = status
+        TranslationNotificationManager.showProgress(this, selectedName, done, total, status)
     }
 
     private fun setBusy(busy: Boolean) {
         binding.translateButton.isEnabled = !busy
         binding.selectFileButton.isEnabled = !busy
+        binding.crawlWebButton.isEnabled = !busy
+        binding.glossaryButton.isEnabled = !busy
         binding.cancelButton.visibility = if (busy) View.VISIBLE else View.GONE
         binding.pauseExportButton.visibility = if (busy) View.VISIBLE else View.GONE
         binding.pauseExportButton.isEnabled = busy && !pauseRequested

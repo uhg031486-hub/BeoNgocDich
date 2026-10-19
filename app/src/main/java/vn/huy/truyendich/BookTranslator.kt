@@ -55,7 +55,7 @@ class BookTranslator(private val context: Context) {
         val bookName = normalizedName.substringBeforeLast('.', normalizedName)
         val serverBook = VbookInterop.serverBook(settings, localBookId, bookName)
         val memoryStore = StoryMemoryStore(context)
-        val memory = memoryStore.load(localBookId)
+        val memory = memoryStore.loadMergedWithGlobal(localBookId)
         val sync = ServerSync(context, settings)
         sync.flush()
         sync.syncMemory(serverBook, memory)

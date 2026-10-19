@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cream"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Từ điển &amp; Tên nhân vật"
+        android:textColor="@color/ink"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/glossarySubtitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Ghim từ dịch chuẩn để AI không dịch sai tên nhân vật, môn phái, xưng hô."
+        android:textColor="@color/muted"
+        android:textSize="12sp" />
+
+    <RadioGroup
+        android:id="@+id/scopeRadioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/scopeCurrentBookRadio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Truyện hiện tại"
+            android:textColor="@color/ink"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/scopeGlobalRadio"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Dùng chung (Global)"
+            android:textColor="@color/ink"
+            android:textSize="13sp" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/searchGlossaryInput"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_input"
+        android:hint="Tìm kiếm từ khóa..."
+        android:inputType="text"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:textColor="@color/ink"
+        android:textColorHint="@color/muted"
+        android:textSize="13sp" />
+
+    <ListView
+        android:id="@+id/glossaryListView"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_card"
+        android:divider="#EFE6DA"
+        android:dividerHeight="1dp" />
+
+    <TextView
+        android:id="@+id/glossaryCountText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Tổng số: 0 từ"
+        android:textColor="@color/muted"
+        android:textSize="12sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addTermButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/sage"
+            android:text="+ Thêm từ mới"
+            android:textAllCaps="false"
+            android:textColor="@color/paper" />
+
+        <Button
+            android:id="@+id/closeGlossaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/muted"
+            android:text="Đóng"
+            android:textAllCaps="false"
+            android:textColor="@color/paper" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/cream"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tải truyện từ link Web"
+        android:textColor="@color/ink"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Dán link mục lục hoặc chương đầu (69shu, uukanshu, biquge, v.v.). App sẽ tự cào và gộp thành bản thảo để dịch."
+        android:textColor="@color/muted"
+        android:textSize="12sp" />
+
+    <EditText
+        android:id="@+id/webUrlInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_input"
+        android:hint="Dán link truyện (https://...)"
+        android:inputType="textUri"
+        android:padding="12dp"
+        android:textColor="@color/ink"
+        android:textColorHint="@color/muted"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số chương cần tải:"
+            android:textColor="@color/ink"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/chapterLimitInput"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_input"
+            android:gravity="center"
+            android:hint="30"
+            android:inputType="number"
+            android:padding="8dp"
+            android:text="30"
+            android:textColor="@color/ink"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/crawlProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:max="100"
+        android:progressTint="@color/coral"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/crawlStatusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text=""
+        android:textColor="@color/sage"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/startCrawlButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/coral"
+            android:text="Bắt đầu tải"
+            android:textAllCaps="false"
+            android:textColor="@color/paper" />
+
+        <Button
+            android:id="@+id/cancelCrawlButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/muted"
+            android:text="Đóng"
+            android:textAllCaps="false"
+            android:textColor="@color/paper" />
+    </LinearLayout>
+</LinearLayout>

@@ -118,6 +118,34 @@ class StoryMemory private constructor(
     }))
 
     @Synchronized
+    fun getNamesMap(): Map<String, String> = LinkedHashMap(names)
+
+    @Synchronized
+    fun setName(source: String, target: String) {
+        val s = normal(source)
+        val t = normal(target)
+        if (s.isNotBlank() && t.isNotBlank()) {
+            names[s] = t
+            dirty = true
+        }
+    }
+
+    @Synchronized
+    fun removeName(source: String) {
+        if (names.remove(normal(source)) != null) {
+            dirty = true
+        }
+    }
+
+    @Synchronized
+    fun clearNames() {
+        if (names.isNotEmpty()) {
+            names.clear()
+            dirty = true
+        }
+    }
+
+    @Synchronized
     fun persistPayload(): JSONObject = JSONObject()
         .put("entries", namesPayload().getJSONArray("entries"))
         .put("relations", relationsPayload().getJSONArray("relations"))
@@ -148,6 +176,24 @@ class StoryMemoryStore(private val context: Context) {
         pending.writeText(memory.persistPayload().toString(), Charsets.UTF_8)
         if (target.exists()) target.delete()
         pending.renameTo(target)
+    }
+
+    fun listAllStoredBookIds(): List<String> {
+        val files = context.filesDir.listFiles { file ->
+            file.name.startsWith("story-memory-") && file.name.endsWith(".json")
+        } ?: return emptyList()
+        return files.map { it.name.removePrefix("story-memory-").removeSuffix(".json") }
+    }
+
+    fun loadMergedWithGlobal(bookId: String): StoryMemory {
+        val bookMemory = load(bookId)
+        val globalMemory = load("global")
+        globalMemory.getNamesMap().forEach { (k, v) ->
+            if (!bookMemory.getNamesMap().containsKey(k)) {
+                bookMemory.setName(k, v)
+            }
+        }
+        return bookMemory
     }
 
     private fun fileFor(bookId: String): File = File(context.filesDir, "story-memory-${bookId.take(48)}.json")
