@@ -25,18 +25,19 @@ class ServerEpubRepository(private val context: Context, private val settings: T
     }
 
     fun upload(name: String, model: String, input: java.io.InputStream, length: Long): RemoteEpub {
-        require(name.endsWith(".epub", true)) {
-            "Server hiện tại chỉ hỗ trợ dịch nền định dạng EPUB. Với file TXT, vui lòng bấm 'Bắt đầu dịch trực tiếp' trên app."
+        require(name.endsWith(".epub", true) || name.endsWith(".txt", true)) {
+            "Chỉ hỗ trợ tệp định dạng EPUB hoặc TXT."
         }
-        require(length in 1..80L * 1024 * 1024) { "EPUB must be at most 80 MB." }
+        require(length in 1..80L * 1024 * 1024) { "Tệp phải có dung lượng tối đa 80 MB." }
         val connection = open("/v1/epub/upload?name=${URLEncoder.encode(name, "UTF-8")}", "POST")
             ?: error("Không kết nối được server.")
         try {
-            connection.setRequestProperty("Content-Type", "application/epub+zip")
+            val contentType = if (name.endsWith(".txt", true)) "text/plain; charset=utf-8" else "application/epub+zip"
+            connection.setRequestProperty("Content-Type", contentType)
             connection.setRequestProperty("X-Translation-Model", model)
             connection.doOutput = true; connection.setFixedLengthStreamingMode(length)
             connection.outputStream.use { output -> input.copyTo(output) }
-            if (connection.responseCode !in 200..299) error("Server từ chối EPUB.")
+            if (connection.responseCode !in 200..299) error("Server từ chối tệp (mã lỗi: ${connection.responseCode}).")
             val row = JSONObject(connection.inputStream.bufferedReader(Charsets.UTF_8).use { it.readText() })
             return RemoteEpub(row.getString("id"), row.optString("name", name), row.optInt("completed"), row.optInt("total"))
         } finally { connection.disconnect() }

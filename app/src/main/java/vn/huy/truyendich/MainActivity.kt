@@ -152,33 +152,48 @@ class MainActivity : AppCompatActivity() {
 
     private fun uploadEpubToServer() {
         val uri = selectedUri ?: run { toast("Hãy chọn tệp trước."); return }
-        if (selectedName.endsWith(".txt", true)) {
-            AlertDialog.Builder(this)
-                .setTitle("Thông báo")
-                .setMessage("Server hiện tại chỉ hỗ trợ dịch nền định dạng EPUB. Với file TXT, vui lòng bấm 'Bắt đầu dịch trực tiếp' trên app.")
-                .setPositiveButton("Đã hiểu", null)
-                .show()
-            binding.serverEpubText.text = "Server hiện tại chỉ hỗ trợ dịch nền định dạng EPUB. Với file TXT, vui lòng bấm 'Bắt đầu dịch trực tiếp' trên app."
+        val isTxt = selectedName.endsWith(".txt", true)
+        val isEpub = selectedName.endsWith(".epub", true)
+        if (!isTxt && !isEpub) {
+            toast("Dịch nền trên server hỗ trợ file EPUB hoặc TXT.")
             return
         }
-        if (!selectedName.endsWith(".epub", true)) { toast("Dịch nền trên server hiện chỉ nhận EPUB."); return }
         val settings = settingsFromForm() ?: return
-        val size = contentResolver.openAssetFileDescriptor(uri, "r")?.length ?: -1L
-        if (size <= 0L) { toast("Không xác định được kích thước EPUB."); return }
         repository.save(settings)
         binding.uploadServerButton.isEnabled = false
-        binding.serverEpubText.text = "Đang đẩy EPUB lên server..."
+        binding.serverEpubText.text = if (isTxt) "Đang đóng gói TXT thành EPUB để gửi lên server..." else "Đang đẩy EPUB lên server..."
         Executors.newSingleThreadExecutor().execute {
+            var tempEpubFile: java.io.File? = null
             try {
-                val job = contentResolver.openInputStream(uri)?.use { input ->
-                    ServerEpubRepository(this, settings).upload(selectedName, settings.model, input, size)
-                } ?: error("Không mở được EPUB.")
+                val (uploadName, uploadInput, uploadSize) = if (isTxt) {
+                    val baseName = selectedName.removeSuffix(".txt").removeSuffix(".TXT")
+                    val temp = java.io.File(cacheDir, "${baseName}_${System.currentTimeMillis()}.epub")
+                    tempEpubFile = temp
+                    contentResolver.openInputStream(uri)?.use { inStream ->
+                        TxtToEpub.convert(inStream, baseName, temp)
+                    } ?: error("Không thể đọc tệp TXT.")
+                    Triple("$baseName.epub", java.io.FileInputStream(temp), temp.length())
+                } else {
+                    val size = contentResolver.openAssetFileDescriptor(uri, "r")?.length ?: -1L
+                    if (size <= 0L) error("Không xác định được kích thước EPUB.")
+                    val inStream = contentResolver.openInputStream(uri) ?: error("Không mở được EPUB.")
+                    Triple(selectedName, inStream, size)
+                }
+
+                val job = uploadInput.use { input ->
+                    ServerEpubRepository(this, settings).upload(uploadName, settings.model, input, uploadSize)
+                }
                 runOnUiThread {
                     binding.uploadServerButton.isEnabled = true
-                    binding.serverEpubText.text = "Server đang dịch: 0/${job.total} chương. Bấm 'Xem EPUB' để tải bản tạm khi cần đọc."
+                    binding.serverEpubText.text = "Server đang dịch: 0/${job.total} chương/phần. Bấm 'Xem EPUB' để tải bản tạm khi cần đọc."
                 }
             } catch (error: Exception) {
-                runOnUiThread { binding.uploadServerButton.isEnabled = true; binding.serverEpubText.text = "Không đẩy được EPUB: ${error.message}" }
+                runOnUiThread {
+                    binding.uploadServerButton.isEnabled = true
+                    binding.serverEpubText.text = "Không đẩy được tệp lên server: ${error.message}"
+                }
+            } finally {
+                tempEpubFile?.delete()
             }
         }
     }
