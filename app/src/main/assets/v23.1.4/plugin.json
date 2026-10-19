@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "name": "Ngọc Béo Translate V23.1.4",
+    "author": "Antigravity & Ngọc Béo",
+    "version": 30,
+    "source": "https://vbookapp.gitbook.io/huong-dan-su-dung/nguon-mo-rong/danh-sach-nguon",
+    "description": "Nền ZIP V23 (internal25). QT gốc V23; giữ bộ nhận diện chương V23, chặn mục lục theo cấu trúc dòng. Các nơi khác QT, kể cả nguồn trống/không rõ và lựa chọn converted. Flash3.8 minimal; đọc3.000/hàng loạt7.000; giữ bộ nhớ tên/quan hệ, cache, đồng bộ, PRIVATE và hai đường server.",
+    "type": "translate",
+    "locale": "vi_VN"
+  },
+  "script": {
+    "translate": "translate.js",
+    "language": "language.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_length": 12000,
+    "max_line": 4000,
+    "required_api_key": true,
+    "support_url": "https://vbookapp.gitbook.io/huong-dan-su-dung/nguon-mo-rong/danh-sach-nguon",
+    "endpoint_url": {
+      "title": "Endpoint 9Router (có thể đổi)",
+      "mode": "input",
+      "format": "text",
+      "default": "https://r4pqkqr.abc-tunnel.us/v1"
+    },
+    "api_key": {
+      "title": "9Router API key",
+      "mode": "input",
+      "format": "text",
+      "default": ""
+    },
+    "reading_mode": {
+      "title": "Chế độ phân bổ Model (Đọc & Tải ngoại tuyến)",
+      "subtitle": "Chọn cách hoạt động của AI khi đọc truyện hoặc tải chương về máy",
+      "mode": "select",
+      "format": "single",
+      "default": "all_flash",
+      "values": [
+        "smart_speed_quality=Chương đầu/chương tiếp dùng các model đã chọn",
+        "all_flash=Mọi chương dùng model chương đầu",
+        "all_hq=Mọi chương dùng model các chương tiếp"
+      ]
+    },
+    "smart_chapter_switch": {
+      "title": "Chế độ chuyển model thông minh",
+      "subtitle": "Bật: dùng model chương đầu khi bắt đầu đọc, sau đó chuyển sang model các chương tiếp.",
+      "mode": "toggle",
+      "default": true
+    },
+    "initial_chapter_model": {
+      "title": "Model chương đầu khi mở truyện",
+      "subtitle": "Mặc định Gemini Flash 3.8 minimal. Nếu Ling/Nemotron/Lightning không trả bản dịch hợp lệ, tự thử Gemini minimal; không dùng QT trong chương.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash",
+      "values": [
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
+        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+      ]
+    },
+    "next_chapter_model": {
+      "title": "Model các chương tiếp theo",
+      "subtitle": "Mặc định Flash 3.8 minimal cho các chương tiếp.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash",
+      "values": [
+        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
+        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+      ]
+    },
+    "offline_model": {
+      "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
+      "subtitle": "Mặc định Flash 3.8 minimal; dịch tuần tự, tối đa 7.000 ký tự mỗi lần.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash",
+      "values": [
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
+        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+      ]
+    },
+    "initial_chapter_chars": {
+      "title": "Ký tự mỗi yêu cầu ở chương đầu",
+      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương.",
+      "mode": "input",
+      "format": "number",
+      "default": 3000
+    },
+    "next_chapter_chars": {
+      "title": "Ký tự mỗi yêu cầu ở các chương tiếp",
+      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương.",
+      "mode": "input",
+      "format": "number",
+      "default": 3000
+    },
+    "model": {
+      "title": "Model cố định (khi tắt chuyển model thông minh)",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash",
+      "values": [
+        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
+        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+      ]
+    },
+    "api_page_chars": {
+      "title": "Giới hạn ký tự (khi tắt chuyển model thông minh)",
+      "mode": "input",
+      "format": "number",
+      "default": 3000,
+      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương."
+    },
+    "reasoning_effort": {
+      "title": "Mức suy luận (Reasoning)",
+      "subtitle": "Tự dùng minimal. Riêng Lightning luôn tắt suy luận.",
+      "mode": "select",
+      "format": "single",
+      "default": "minimal",
+      "values": [
+        "minimal"
+      ]
+    },
+    "temperature": {
+      "title": "Temperature",
+      "mode": "input",
+      "format": "number",
+      "default": 0.2
+    },
+    "cache_pages": {
+      "title": "Nhớ bản dịch trang trong phiên đọc",
+      "mode": "toggle",
+      "default": true
+    },
+    "persistent_cache": {
+      "title": "Lưu bản dịch lâu dài, không gọi lại API",
+      "mode": "toggle",
+      "default": true
+    },
+    "preserve_names": {
+      "title": "Giữ nguyên tên Latin/Nhật/Hàn và mã hiệu",
+      "mode": "toggle",
+      "default": true
+    },
+    "genre": {
+      "title": "Thể loại và phong cách truyện",
+      "subtitle": "Chọn một thể loại để AI giữ đúng văn phong",
+      "default": "tiên hiệp",
+      "values": [
+        "tiên hiệp",
+        "huyền huyễn/fantasy",
+        "võ hiệp",
+        "đô thị/hiện đại",
+        "ngôn tình",
+        "cổ trang/lịch sử",
+        "cung đấu",
+        "quân sự",
+        "kinh dị/linh dị",
+        "trinh thám",
+        "khoa học viễn tưởng",
+        "game/võng du",
+        "anime/manga",
+        "đồng nhân/fanfic",
+        "đam mỹ/bách hợp"
+      ],
+      "mode": "select",
+      "format": "single"
+    },
+    "custom_glossary": {
+      "title": "Từ điển khóa tên riêng (mỗi dòng: gốc = tên muốn giữ)",
+      "mode": "input",
+      "format": "text",
+      "default": ""
+    },
+    "style_notes": {
+      "title": "Ghi chú văn phong riêng của truyện (tuỳ chọn)",
+      "mode": "input",
+      "format": "text",
+      "default": ""
+    },
+    "server_tailscale_url": {
+      "title": "Server qua Tailscale",
+      "mode": "input",
+      "default": "http://smart-tts.tail4cee0d.ts.net"
+    },
+    "server_tunnel_url": {
+      "title": "Tunnel server dự phòng (không cần Tailscale)",
+      "mode": "input",
+      "default": "https://smart-tts.tail4cee0d.ts.net"
+    },
+    "translation_server_key": {
+      "title": "Khóa server (bản public tự điền)",
+      "mode": "input",
+      "default": ""
+    },
+    "sync_story_memory": {
+      "title": "Đồng bộ bảng tên và quan hệ với server",
+      "mode": "toggle",
+      "default": true
+    },
+    "archive_translations": {
+      "title": "Lưu bản gốc và bản dịch lên server",
+      "mode": "toggle",
+      "default": true
+    },
+    "translation_task": {
+      "title": "Kích thước lượt dịch",
+      "subtitle": "VBook không báo cho extension đang đọc hay dịch hàng loạt. Chọn Hàng loạt trước khi chạy job; chọn lại Đọc thường khi đọc. Dịch tuần tự một luồng.",
+      "mode": "select",
+      "format": "single",
+      "default": "reading",
+      "values": [
+        "reading=Đọc thường — tối đa 3.000 ký tự",
+        "batch=Dịch hàng loạt — tối đa 7.000 ký tự"
+      ]
+    }
+  }
+}

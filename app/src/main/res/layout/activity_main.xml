@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cream"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="serif"
+            android:text="BÉO NGỌC DỊCH"
+            android:textColor="@color/coral"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.12" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="serif"
+            android:text="Đọc truyện theo\ncách của bạn."
+            android:textColor="@color/ink"
+            android:textSize="29sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+                android:text="Dịch EPUB/TXT sang tiếng Việt bằng 9Router. Mọi ngôn ngữ, kể cả tiếng Việt convert, đều được đưa qua bước dịch-biên tập. EPUB là định dạng mặc định."
+            android:textColor="@color/muted"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01  CHỌN BẢN THẢO"
+                android:textColor="@color/sage"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/selectFileButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/sage"
+                android:text="Chọn EPUB hoặc TXT"
+                android:textAllCaps="false"
+                android:textColor="@color/paper" />
+
+            <TextView
+                android:id="@+id/fileNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Chưa chọn tệp."
+                android:textColor="@color/muted"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/serverEpubButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/coral"
+                android:text="Xem EPUB đã dịch trên server"
+                android:textAllCaps="false"
+                android:textColor="@color/paper" />
+
+            <Button
+                android:id="@+id/uploadServerButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/sage"
+                android:text="Đẩy EPUB lên server để dịch nền"
+                android:textAllCaps="false"
+                android:textColor="@color/paper" />
+
+            <TextView
+                android:id="@+id/serverEpubText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Kho EPUB server sẵn sàng: tải bản tạm để đọc trong khi server tiếp tục dịch."
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="02  DỊCH"
+                android:textColor="@color/sage"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Model dịch"
+                android:textColor="@color/ink"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/modelSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="DỊCH HÀNG LOẠT CẢ SÁCH — mỗi chương được dịch riêng, sau đó cập nhật tên và quan hệ lên server trước khi sang lô kế tiếp."
+                android:textColor="@color/sage"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Mỗi lượt API tối đa 6.000 ký tự để giảm số request mà vẫn tránh bị cắt đầu ra. Một chương dài được ghép lại tự động sau khi dịch."
+                android:textColor="@color/muted"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Phạm vi chương EPUB"
+                android:textColor="@color/ink"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/chapterStartInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input"
+                    android:hint="Từ chương (1)"
+                    android:inputType="number"
+                    android:textColor="@color/ink"
+                    android:textColorHint="@color/muted" />
+
+                <EditText
+                    android:id="@+id/chapterEndInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_input"
+                    android:hint="Đến chương (trống = hết)"
+                    android:inputType="number"
+                    android:textColor="@color/ink"
+                    android:textColorHint="@color/muted" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Đánh số theo thứ tự mục lục EPUB, tính cả chương đầu và chương cuối. TXT luôn dịch toàn bộ tệp."
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Số luồng 9Router"
+                android:textColor="@color/ink"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/concurrencyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_input"
+                android:inputType="number"
+                android:text="10"
+                android:textColor="@color/ink" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Mặc định 10 luồng. Có thể chọn từ 1 đến 50 luồng; chỉ nên tăng khi key 9Router có quota cao."
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Thể loại"
+                android:textColor="@color/ink"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/genreSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/styleNotesInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top"
+                android:hint="Ghi chú phong cách (không bắt buộc)"
+                android:inputType="textMultiLine|textCapSentences"
+                android:maxLines="4"
+                android:textColor="@color/ink"
+                android:textColorHint="@color/muted" />
+
+            <EditText
+                android:id="@+id/glossaryInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:gravity="top"
+                android:hint="Từ điển khóa tên: gốc = tên muốn giữ"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:textColor="@color/ink"
+                android:textColorHint="@color/muted" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="03  KẾT NỐI"
+                android:textColor="@color/sage"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/apiKeyInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:autofillHints="password"
+                android:background="@drawable/bg_input"
+                android:hint="9Router API key (bắt buộc)"
+                android:inputType="textPassword"
+                android:textColor="@color/ink"
+                android:textColorHint="@color/muted"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/routerEndpointInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_input"
+                android:hint="Endpoint 9Router"
+                android:inputType="textUri"
+                android:textColor="@color/ink" />
+
+            <CheckBox
+                android:id="@+id/syncEnabledCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:text="Tự đồng bộ bản gốc và bản dịch lên server"
+                android:textColor="@color/ink" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tự thử Tailscale trước, sau đó Funnel. Nếu server yêu cầu xác thực, nhập khóa server trong phần Cài đặt nâng cao."
+                android:textColor="@color/muted"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/advancedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:backgroundTint="@color/cream"
+                android:text="Cài đặt nâng cao"
+                android:textAllCaps="false"
+                android:textColor="@color/sage" />
+
+            <LinearLayout
+                android:id="@+id/advancedPanel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/tailscaleUrlInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="URL Tailscale"
+                    android:inputType="textUri"
+                    android:textColor="@color/ink" />
+
+                <EditText
+                    android:id="@+id/funnelUrlInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="URL Funnel"
+                    android:inputType="textUri"
+                    android:textColor="@color/ink" />
+
+                <EditText
+                    android:id="@+id/serverKeyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Khóa server (chỉ khi server yêu cầu)"
+                    android:visibility="gone"
+                    android:inputType="textPassword"
+                    android:textColor="@color/ink" />
+
+                <EditText
+                    android:id="@+id/vbookBookIdInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Mã truyện VBook (để dùng chung cache, tùy chọn)"
+                    android:inputType="text"
+                    android:textColor="@color/ink" />
+
+                <EditText
+                    android:id="@+id/vbookSourceInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Nguồn truyện VBook (để dùng chung cache, tùy chọn)"
+                    android:inputType="text"
+                    android:textColor="@color/ink" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Nhập đồng thời Mã truyện và Nguồn đúng như VBook để ghi cache V23 dùng chung. Nội dung chương và thiết lập dịch cũng phải trùng khớp."
+                    android:textColor="@color/muted"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/translateButton"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/coral"
+            android:text="Dịch hàng loạt và tạo EPUB"
+            android:textAllCaps="false"
+            android:textColor="@color/paper"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/cream"
+            android:text="Hủy tác vụ"
+            android:textAllCaps="false"
+            android:textColor="@color/coral"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/pauseExportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:backgroundTint="@color/sage"
+            android:text="Tạm dừng và xuất EPUB tạm"
+            android:textAllCaps="false"
+            android:textColor="@color/paper"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:max="100"
+            android:progressTint="@color/coral"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/statusText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="12dp"
+            android:text="Sẵn sàng. Các khóa được lưu mã hóa trong Android Keystore."
+            android:textColor="@color/muted"
+            android:textSize="13sp" />
+    </LinearLayout>
+</ScrollView>
