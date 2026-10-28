@@ -14,7 +14,8 @@ class TranslationException(message: String) : Exception(message)
 
 class RouterClient(
     private val settings: TranslationSettings,
-    private val storyMemory: StoryMemory? = null
+    private val storyMemory: StoryMemory? = null,
+    private val isPolishMode: Boolean = false
 ) {
     fun translateSegments(segments: List<String>): List<String> {
         require(segments.isNotEmpty())
@@ -110,6 +111,29 @@ class RouterClient(
 
     private fun systemPrompt(repair: Boolean): String {
         val genreInstruction = genreInstruction(settings.genre)
+        if (isPolishMode) {
+            return buildString {
+                append("Bạn là một đại sư biên tập văn học và trau chuốt tiểu thuyết cao cấp bằng tiếng Việt. ")
+                append("Văn bản đầu vào là các chương tiểu thuyết tiếng Việt (đã qua dịch thô, dịch máy, từ nhiều model khác nhau hoặc còn sạn convert). ")
+                append("Nhiệm vụ tối cao của bạn là CHUỐT LẠI VĂN PHONG toàn bộ các đoạn văn bản:\n")
+                append("1. Gọt giũa câu từ cho mượt mà, uyển chuyển, giàu cảm xúc, chuẩn ngữ pháp tiếng Việt, đọc cuốn hút như tiểu thuyết văn học xuất bản chuyên nghiệp.\n")
+                append("2. Khắc phục triệt để câu cú lủng củng, sượng sùng, từ ngữ ngô nghê; loại bỏ tận gốc mọi dấu vết của bản convert hay dịch máy thô ráp.\n")
+                append("3. Chuẩn hóa và thống nhất đại từ xưng hô theo đúng vai vế, quan hệ và tính cách nhân vật xuyên suốt ngữ cảnh (huynh/muội, chàng/nàng, ta/ngươi, bố/con, sư phụ/đồ nhi...).\n")
+                append("4. Tuyệt đối giữ nguyên vẹn nội dung, tình tiết, sự kiện, thứ tự thời gian, số liệu và tên riêng nhân vật. Không được tóm tắt, không lược bỏ và không tự ý thêm thắt tình tiết mới.\n")
+                append("5. Chỉ xuất kết quả dưới dạng JSON đúng định dạng được yêu cầu, tuyệt đối không thêm lời dẫn, không giải thích hay bình luận ngoài lề.\n")
+                append(genreInstruction)
+                if (settings.styleNotes.isNotBlank()) {
+                    append("\nGhi chú biên tập riêng: ").append(settings.styleNotes.trim())
+                }
+                if (settings.glossary.isNotBlank()) {
+                    append("\nBẢNG TÊN KHÓA (giữ đúng tên đã chỉ định):\n").append(settings.glossary.trim())
+                }
+                storyMemory?.referenceForPrompt()?.takeIf { it != "{}" }?.let {
+                    append("\nQUAN HỆ ĐÃ BIẾT (tham khảo): ").append(it)
+                }
+                if (repair) append("\nĐây là lần sửa kết quả lỗi. Kiểm tra đủ mọi phần tử trước khi trả kết quả.")
+            }
+        }
         val sharedStyle = buildString {
             append("Quy tắc biên tập chung: dịch theo nghĩa và ngữ cảnh, không bám từng chữ; câu tiếng Việt phải đúng ngữ pháp và tự nhiên theo thể loại. Theo dõi chủ thể của từng câu, thì/thể, số ít/số nhiều, quan hệ nhân vật và đại từ xuyên suốt. Giữ nguyên số liệu, tên chương, đoạn xuống dòng, dấu câu, ngoặc kép và ký hiệu. Không bịa, không tóm tắt, không giải thích, không thêm tiêu đề. Khi câu gốc mơ hồ, chọn cách hiểu phù hợp với ngữ cảnh đã có, không tự tạo thông tin mới.")
             if (settings.styleNotes.isNotBlank()) {
@@ -144,11 +168,19 @@ class RouterClient(
     """.trimIndent()
 
     private fun userPrompt(original: JSONObject): String = buildString {
-        append("Đích: tiếng Việt. Chế độ: xử lý bắt buộc mọi đoạn (dịch mọi ngoại ngữ, biên tập lại cả đoạn tiếng Việt).\n")
-        append("Thể loại: ${settings.genre}\n")
-        append("VĂN BẢN CẦN XỬ LÝ dưới dạng JSON: ")
-        append(original.toString())
-        append("\nChỉ trả về JSON hợp lệ đúng một đối tượng có khóa segments là mảng chuỗi. Mảng đầu ra phải có đúng số phần tử và cùng thứ tự với mảng đầu vào; mỗi phần tử là bản dịch tiếng Việt tương ứng, giữ nguyên xuống dòng và dấu câu. Không thêm khóa nào khác.")
+        if (isPolishMode) {
+            append("Nhiệm vụ: CHUỐT LẠI VĂN PHONG VÀ BIÊN TẬP MƯỢT TIẾNG VIỆT BẰNG GEMINI FLASH 3.8.\n")
+            append("Thể loại: ${settings.genre}\n")
+            append("CÁC ĐOẠN CẦN CHUỐT LẠI dưới dạng JSON: ")
+            append(original.toString())
+            append("\nChỉ trả về JSON hợp lệ đúng một đối tượng có khóa segments là mảng chuỗi. Mảng đầu ra phải có đúng số phần tử và cùng thứ tự với mảng đầu vào; mỗi phần tử là đoạn văn bản đã được chuốt mượt, tự nhiên, thuần Việt, giữ nguyên xuống dòng và dấu câu. Không thêm khóa nào khác.")
+        } else {
+            append("Đích: tiếng Việt. Chế độ: xử lý bắt buộc mọi đoạn (dịch mọi ngoại ngữ, biên tập lại cả đoạn tiếng Việt).\n")
+            append("Thể loại: ${settings.genre}\n")
+            append("VĂN BẢN CẦN XỬ LÝ dưới dạng JSON: ")
+            append(original.toString())
+            append("\nChỉ trả về JSON hợp lệ đúng một đối tượng có khóa segments là mảng chuỗi. Mảng đầu ra phải có đúng số phần tử và cùng thứ tự với mảng đầu vào; mỗi phần tử là bản dịch tiếng Việt tương ứng, giữ nguyên xuống dòng và dấu câu. Không thêm khóa nào khác.")
+        }
     }
 
     private fun request(body: JSONObject): String {

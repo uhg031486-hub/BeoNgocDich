@@ -11,8 +11,8 @@ android {
         applicationId = "vn.huy.truyendich"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "1.0.3"
+        versionCode = 6
+        versionName = "1.0.5"
     }
 
     buildFeatures {
@@ -33,4 +33,5 @@ kotlin {
 dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.appcompat:appcompat:1.7.0")
+    implementation("androidx.cardview:cardview:1.0.0")
 }

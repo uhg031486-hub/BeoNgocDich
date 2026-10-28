@@ -6,4 +6,14 @@
     <color name="sage">#405D4B</color>
     <color name="gold">#D5A33D</color>
     <color name="muted">#706A61</color>
+    <color name="border_light">#E5D9C9</color>
+    <color name="badge_complete_bg">#E8F5E9</color>
+    <color name="badge_complete_text">#2E7D32</color>
+    <color name="badge_running_bg">#FFF8E1</color>
+    <color name="badge_running_text">#E65100</color>
+    <color name="badge_failed_bg">#FFEBEE</color>
+    <color name="badge_failed_text">#C62828</color>
+    <color name="badge_auto_text">#5E35B1</color>
+    <color name="badge_upload_text">#00897B</color>
+    <color name="badge_genre_text">#5D4037</color>
 </resources>
