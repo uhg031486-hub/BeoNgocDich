@@ -577,10 +577,11 @@ class MainActivity : AppCompatActivity() {
         })
 
         fun fetchFreshServerBooks() {
-            statsText.text = "Đang kiểm tra truyện mới từ server..."
+            statsText.text = "Đang kiểm tra truyện và làm mới bìa..."
             refreshBtn.isEnabled = false
             Executors.newSingleThreadExecutor().execute {
                 try {
+                    repo.clearCoverCache()
                     val fresh = repo.list(saveCache = true)
                     runOnUiThread {
                         refreshBtn.isEnabled = true
@@ -589,6 +590,7 @@ class MainActivity : AppCompatActivity() {
                             allBooks.clear()
                             allBooks.addAll(fresh)
                             applyFilter()
+                            adapter.notifyDataSetChanged()
                             cacheBadge.text = "✓ Đã đồng bộ"
                             cacheBadge.setBackgroundResource(R.drawable.bg_badge_complete)
                             cacheBadge.setTextColor(getColor(R.color.badge_complete_text))

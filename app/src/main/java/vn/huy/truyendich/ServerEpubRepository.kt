@@ -168,20 +168,39 @@ class ServerEpubRepository(private val context: Context, private val settings: T
         } finally { connection.disconnect() }
     }
 
-    fun loadCoverBitmap(jobId: String): Bitmap? {
-        // 1. Kiểm tra RAM cache
-        coverCache.get(jobId)?.let { return it }
+    fun clearCoverCache(jobId: String? = null) {
+        try {
+            if (jobId != null) {
+                coverCache.remove(jobId)
+                File(coversDir, "${jobId}_v2.jpg").delete()
+                File(coversDir, "$jobId.jpg").delete()
+            } else {
+                coverCache.evictAll()
+                coversDir.listFiles()?.forEach { it.delete() }
+            }
+        } catch (_: Exception) {}
+    }
 
-        // 2. Kiểm tra Disk Cache (Bộ nhớ máy)
-        val diskFile = File(coversDir, "$jobId.jpg")
-        if (diskFile.exists() && diskFile.length() > 0) {
-            try {
-                val bitmap = BitmapFactory.decodeFile(diskFile.absolutePath)
-                if (bitmap != null) {
-                    coverCache.put(jobId, bitmap)
-                    return bitmap
-                }
-            } catch (_: Exception) {}
+    fun loadCoverBitmap(jobId: String, forceReload: Boolean = false): Bitmap? {
+        val diskFile = File(coversDir, "${jobId}_v2.jpg")
+
+        if (!forceReload) {
+            // 1. Kiểm tra RAM cache
+            coverCache.get(jobId)?.let { return it }
+
+            // 2. Kiểm tra Disk Cache (Bộ nhớ máy)
+            if (diskFile.exists() && diskFile.length() > 0) {
+                try {
+                    val bitmap = BitmapFactory.decodeFile(diskFile.absolutePath)
+                    if (bitmap != null) {
+                        coverCache.put(jobId, bitmap)
+                        return bitmap
+                    }
+                } catch (_: Exception) {}
+            }
+        } else {
+            coverCache.remove(jobId)
+            diskFile.delete()
         }
 
         // 3. Tải từ Server mạng nếu chưa có trong đệm

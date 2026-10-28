@@ -1,7 +1,7 @@
 {
-  "versionCode": 6,
-  "versionName": "1.0.5",
-  "title": "Béo Ngọc Dịch v1.0.5",
-  "changelog": "- Tính năng mới: Chuốt lại văn phong bằng Gemini Flash 3.8 & Xuất EPUB trực tiếp trong danh sách truyện server và tệp máy.\n- Gọt giũa câu từ mượt mà, thuần Việt, khắc phục triệt để câu cú lủng củng và xóa sạch sạn convert.\n- Chuẩn hóa và thống nhất đại từ xưng hô nhân vật theo đúng vai vế, quan hệ xuyên suốt truyện.\n- Thêm nút thao tác nhanh (Tải gốc & Chuốt FL3.8) ngay trên từng thẻ truyện trong kho server.\n- Nâng cấp giao diện trực quan, tối ưu tốc độ và tự động kiểm tra cập nhật mới qua GitHub.",
-  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.5/app-debug.apk"
+  "versionCode": 7,
+  "versionName": "1.0.6",
+  "title": "Béo Ngọc Dịch v1.0.6",
+  "changelog": "- Cập nhật 100% kho bìa minh họa nghệ thuật AI vẽ độc quyền (800x1200 HD) cho toàn bộ các truyện trên máy chủ.\n- Nâng cấp cơ chế đồng bộ và tự động làm mới bộ nhớ đệm bìa (v2 cache bypass) giúp lập tức hiển thị bìa mới.\n- Thêm nút làm mới bìa & đồng bộ kho sách thông minh.\n- Tích hợp tính năng Chuốt văn phong FL3.8 & Xuất EPUB chuẩn mục lục.",
+  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.6/app-debug.apk"
 }
