@@ -1,0 +1,183 @@
+{
+  "metadata": {
+    "name": "Ngọc Béo Translate V23.1.9",
+    "author": "Antigravity & Ngọc Béo",
+    "version": 35,
+    "source": "https://timo-ngocbeo.pages.dev/plugin.json",
+    "description": "V23.1.9: Tối ưu đọc online không gián đoạn, chia nhỏ 1.800 ký tự chống timeout 504. Tự động chuyển fallback khi AI bận. Mặc định Gemini Flash 3.8 Low / Gemini 3.5 Flash Lite siêu tốc và Luna 6 văn phong đỉnh cao. Bộ nhớ quan hệ và tên riêng mượt mà.",
+    "type": "translate",
+    "locale": "vi_VN"
+  },
+  "script": {
+    "translate": "translate.js",
+    "language": "language.js",
+    "model": "model.js"
+  },
+  "config": {
+    "support_auto_detect": true,
+    "max_length": 12000,
+    "max_line": 4000,
+    "required_api_key": true,
+    "support_url": "https://timo-ngocbeo.pages.dev",
+    "endpoint_url": {
+      "title": "Endpoint 9Router (có thể đổi)",
+      "mode": "input",
+      "format": "text",
+      "default": "https://r4pqkqr.abc-tunnel.us/v1"
+    },
+    "api_key": {
+      "title": "9Router API key",
+      "mode": "input",
+      "format": "text",
+      "default": ""
+    },
+    "reading_mode": {
+      "title": "Chế độ phân bổ Model (Đọc & Tải ngoại tuyến)",
+      "subtitle": "Chọn cách hoạt động của AI khi đọc truyện hoặc tải chương về máy",
+      "mode": "select",
+      "format": "single",
+      "default": "all_flash",
+      "values": [
+        "all_flash=Dùng Model Flash siêu tốc cho mọi chương (Khuyên dùng)",
+        "smart_speed_quality=Chương đầu dùng Flash, các chương sau dùng Model tiếp theo",
+        "all_hq=Mọi chương dùng Model chất lượng cao"
+      ]
+    },
+    "smart_chapter_switch": {
+      "title": "Chế độ chuyển model thông minh",
+      "subtitle": "Bật: dùng model chương đầu khi bắt đầu đọc, sau đó chuyển sang model các chương tiếp.",
+      "mode": "toggle",
+      "default": true
+    },
+    "initial_chapter_model": {
+      "title": "Model chương đầu khi mở truyện",
+      "subtitle": "Mặc định Gemini Flash 3.8 Low (4-6s/phần). Tự động fallback nếu AI quá tải.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash-low",
+      "values": [
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (4-6s, siêu nhanh & ổn định)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Tốc độ cao)",
+        "LauThapCam_Low=Lẩu Thập Cẩm Tốc Độ (Nhiều AI dự phòng)",
+        "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà cao cấp)",
+        "openrouter/nvidia/nemotron-3.5-lightning:free=Nemotron Lightning (Dự phòng)"
+      ]
+    },
+    "next_chapter_model": {
+      "title": "Model các chương tiếp theo",
+      "subtitle": "Mặc định Gemini Flash 3.8 Low cho các chương tiếp.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash-low",
+      "values": [
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (4-6s, siêu nhanh & ổn định)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà cao cấp)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Tốc độ cao)",
+        "LauThapCam_Low=Lẩu Thập Cẩm Tốc Độ (Nhiều AI dự phòng)",
+        "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
+        "openrouter/nvidia/nemotron-3.5-lightning:free=Nemotron Lightning (Dự phòng)"
+      ]
+    },
+    "offline_model": {
+      "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
+      "subtitle": "Dịch ngoại tuyến ổn định, tự động chuyển luồng nếu gặp lỗi.",
+      "mode": "select",
+      "format": "single",
+      "default": "ag/gemini-3.8-flash-low",
+      "values": [
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Nhanh & ổn định)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Tốc độ cao)",
+        "LauThapCam_Low=Lẩu Thập Cẩm Tốc Độ (Nhiều AI dự phòng)",
+        "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà cao cấp)"
+      ]
+    },
+    "initial_chapter_chars": {
+      "title": "Ký tự mỗi yêu cầu ở chương đầu",
+      "subtitle": "Mặc định 1.800 ký tự/lượt để phản hồi siêu tốc dưới 8 giây, chống timeout.",
+      "mode": "input",
+      "format": "number",
+      "default": 1800
+    },
+    "next_chapter_chars": {
+      "title": "Ký tự mỗi yêu cầu ở các chương tiếp",
+      "subtitle": "Mặc định 1.800 ký tự/lượt để chuyển trang mượt mà.",
+      "mode": "input",
+      "format": "number",
+      "default": 1800
+    },
+    "session_timeout_minutes": {
+      "title": "Thời gian tính phiên đọc mới (phút)",
+      "subtitle": "Khoảng nghỉ giữa 2 lần đọc để tính lại chương đầu.",
+      "mode": "input",
+      "format": "number",
+      "default": 10
+    },
+    "input_mode": {
+      "title": "Chế độ xử lý đầu vào",
+      "subtitle": "Tự động nhận diện văn bản gốc hoặc convert.",
+      "mode": "select",
+      "format": "single",
+      "default": "auto",
+      "values": [
+        "auto=Tự động nhận diện",
+        "original=Nguyên bản tiếng Trung",
+        "converted=Convert tiếng Việt"
+      ]
+    },
+    "genre": {
+      "title": "Thể loại tiểu thuyết",
+      "subtitle": "Định hướng văn phong phù hợp với thể loại truyện",
+      "mode": "select",
+      "format": "single",
+      "default": "tiên hiệp",
+      "values": [
+        "tiên hiệp=Tiên hiệp / Tu chân",
+        "huyền huyễn=Huyền huyễn / Dị giới",
+        "đô thị=Đô thị / Hiện đại",
+        "khoa học viễn tưởng=Khoa học viễn tưởng / Mạt thế",
+        "võ hiệp=Võ hiệp cổ điển",
+        "lịch sử=Lịch sử / Quân sự",
+        "game=Võng du / Đồng nhân",
+        "kinh dị=Kinh dị / Linh dị",
+        "ngôn tình=Ngôn tình / Nữ tần"
+      ]
+    },
+    "custom_glossary": {
+      "title": "Bảng thuật ngữ tùy chỉnh ($Nguồn=Đích)",
+      "subtitle": "Mỗi dòng một cặp: $Tiêu Viêm=Tiêu Viêm hoặc Tiêu Viêm->Tiêu Viêm",
+      "mode": "input",
+      "format": "multiline",
+      "default": ""
+    },
+    "style_notes": {
+      "title": "Ghi chú văn phong riêng",
+      "subtitle": "Yêu cầu hành văn đặc biệt gửi cho AI",
+      "mode": "input",
+      "format": "multiline",
+      "default": ""
+    },
+    "preserve_names": {
+      "title": "Bảo vệ tên riêng nhân vật",
+      "subtitle": "Khóa tên riêng tránh AI dịch nhầm nghĩa",
+      "mode": "toggle",
+      "default": true
+    },
+    "cache_pages": {
+      "title": "Bộ nhớ tạm trang (RAM)",
+      "subtitle": "Lưu các trang vừa dịch trong phiên để mở lại tức thì",
+      "mode": "toggle",
+      "default": true
+    },
+    "persistent_cache": {
+      "title": "Lưu bản dịch vào máy vĩnh viễn",
+      "subtitle": "Lưu bản dịch trên máy để đọc lại không tốn kết nối mạng",
+      "mode": "toggle",
+      "default": true
+    }
+  }
+}
