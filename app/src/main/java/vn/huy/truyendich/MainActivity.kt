@@ -199,16 +199,6 @@ class MainActivity : AppCompatActivity() {
             AppUpdateManager.checkForUpdate(this, showToastIfLatest = true)
         }
         binding.translateButton.setOnClickListener { startTranslation() }
-        binding.polishLocalButton.setOnClickListener {
-            val uri = selectedUri
-            if (uri == null) {
-                toast("Hãy chọn tệp EPUB trước khi chuốt văn phong.")
-                return@setOnClickListener
-            }
-            val settings = settingsFromForm() ?: return@setOnClickListener
-            repository.save(settings)
-            startPolishLocalBook(uri, selectedName, settings)
-        }
         binding.serverEpubButton.setOnClickListener { showServerEpubs() }
         binding.uploadServerButton.setOnClickListener { uploadEpubToServer() }
         binding.cancelButton.setOnClickListener {
@@ -407,6 +397,7 @@ class MainActivity : AppCompatActivity() {
         closeBtn.setOnClickListener { dialog.dismiss() }
 
         val imageExecutor = Executors.newFixedThreadPool(4)
+        var refreshServerCallback: (() -> Unit)? = null
 
         val adapter = object : BaseAdapter() {
             override fun getCount(): Int = filteredBooks.size
@@ -463,15 +454,9 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 val btnQuickExport = view.findViewById<Button>(R.id.btnQuickExport)
-                val btnQuickPolish = view.findViewById<Button>(R.id.btnQuickPolish)
-
-                btnQuickExport.text = if (book.isComplete) "📥 Tải gốc" else "⚡ Xuất (${book.completed}c)"
+                btnQuickExport.text = if (book.isComplete) "📥 Tải EPUB" else "⚡ Xuất EPUB (${book.completed}c)"
                 btnQuickExport.setOnClickListener {
                     onExportRawClicked(book, repo, settings, dialog)
-                }
-
-                btnQuickPolish.setOnClickListener {
-                    onPolishClicked(book, repo, settings, dialog)
                 }
 
                 coverImg.setImageResource(R.drawable.ic_book_placeholder)
@@ -613,6 +598,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        refreshServerCallback = { fetchFreshServerBooks() }
+
         refreshBtn.setOnClickListener {
             fetchFreshServerBooks()
         }
@@ -651,268 +638,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun onPolishClicked(
-        book: RemoteEpub,
-        repo: ServerEpubRepository,
-        settings: TranslationSettings,
-        parentDialog: AlertDialog? = null
-    ) {
-        val setupView = layoutInflater.inflate(R.layout.dialog_polish_setup, null)
-        val titleTxt = setupView.findViewById<TextView>(R.id.polishBookTitle)
-        val availTxt = setupView.findViewById<TextView>(R.id.polishAvailableChapters)
-        val startEdit = setupView.findViewById<EditText>(R.id.polishChapterStart)
-        val endEdit = setupView.findViewById<EditText>(R.id.polishChapterEnd)
-        val concurrencyEdit = setupView.findViewById<EditText>(R.id.polishConcurrency)
-        val btnCancel = setupView.findViewById<Button>(R.id.btnCancelPolish)
-        val btnStart = setupView.findViewById<Button>(R.id.btnStartPolish)
-
-        titleTxt.text = "Truyện: ${book.displayTitle}"
-        availTxt.text = "Có sẵn: ${book.completed}/${book.total} chương (${book.progressPercent}%)"
-        startEdit.setText("1")
-        val defaultEnd = if (book.completed > 0) book.completed else book.total
-        if (defaultEnd > 0) {
-            endEdit.setText(defaultEnd.toString())
-        }
-        concurrencyEdit.setText("8")
-
-        val setupDialog = AlertDialog.Builder(this)
-            .setView(setupView)
-            .create()
-
-        btnCancel.setOnClickListener { setupDialog.dismiss() }
-
-        btnStart.setOnClickListener {
-            val startChap = startEdit.text.toString().toIntOrNull() ?: 1
-            val endChap = endEdit.text.toString().toIntOrNull() ?: defaultEnd
-            val concurrency = (concurrencyEdit.text.toString().toIntOrNull() ?: 8).coerceIn(1, 15)
-
-            setupDialog.dismiss()
-            parentDialog?.dismiss()
-
-            startPolishServerBook(book, repo, settings, startChap, endChap, concurrency)
-        }
-
-        setupDialog.show()
-    }
-
-    private fun startPolishServerBook(
-        book: RemoteEpub,
-        repo: ServerEpubRepository,
-        baseSettings: TranslationSettings,
-        startChap: Int,
-        endChap: Int,
-        concurrency: Int
-    ) {
-        if (activeWork != null && !activeWork!!.isDone) {
-            toast("Đang có tác vụ dịch hoặc chuốt văn phong đang chạy!")
-            return
-        }
-
-        setBusy(true)
-        binding.statusText.text = "Đang chuẩn bị tệp EPUB từ server để chuốt văn phong Flash 3.8..."
-        cancelled = false
-        pauseRequested = false
-
-        activeWork = Executors.newSingleThreadExecutor().submit {
-            try {
-                val targetBook = if (!book.isComplete) {
-                    runOnUiThread { binding.statusText.text = "Đang đồng bộ các chương mới nhất từ server..." }
-                    repo.export(book.id) ?: book
-                } else book
-
-                val tempFile = File(cacheDir, "server_for_polish_${book.id}.epub")
-                if (tempFile.exists()) tempFile.delete()
-
-                runOnUiThread { binding.statusText.text = "Đang tải EPUB (${targetBook.completed} chương) từ server vào máy..." }
-                java.io.FileOutputStream(tempFile).use { out ->
-                    repo.download(targetBook.id, out)
-                }
-
-                if (!tempFile.exists() || tempFile.length() == 0L) {
-                    throw TranslationException("Không tải được tệp EPUB từ server.")
-                }
-
-                val polishSettings = baseSettings.copy(
-                    model = "ag/gemini-3.8-flash",
-                    concurrency = concurrency,
-                    chapterStart = startChap,
-                    chapterEnd = endChap,
-                    genre = book.genre
-                )
-
-                runOnUiThread {
-                    binding.statusText.text = "Bắt đầu chuốt văn phong bằng Gemini Flash 3.8 ($concurrency luồng)..."
-                    TranslationNotificationManager.showProgress(
-                        this@MainActivity,
-                        "[Chuốt FL3.8] " + book.displayTitle,
-                        0,
-                        (endChap - startChap + 1).coerceAtLeast(1)
-                    )
-                }
-
-                val cleanTitle = book.displayTitle.replace(Regex("[\\\\/:*?\"<>|]"), "_")
-                val output = BookTranslator(this).translate(
-                    Uri.fromFile(tempFile),
-                    "$cleanTitle.epub",
-                    polishSettings,
-                    { cancelled || Thread.currentThread().isInterrupted },
-                    { pauseRequested },
-                    { cur, total, msg ->
-                        publishProgress(cur, total, "[Chuốt FL3.8] $msg")
-                    },
-                    isPolishMode = true
-                )
-
-                runOnUiThread {
-                    setBusy(false)
-                    pendingOutput = output
-                    if (output.isComplete) {
-                        TranslationNotificationManager.showCompleted(
-                            this@MainActivity,
-                            "[Chuốt FL3.8] " + book.displayTitle,
-                            output.totalChapters
-                        )
-                    }
-                    binding.statusText.text = if (output.paused) {
-                        "Đã tạm dừng chuốt văn phong. Đã hoàn thành ${output.completedChapters}/${output.totalChapters} chương."
-                    } else if (output.isComplete) {
-                        "Chuốt văn phong FL3.8 hoàn tất! Chọn nơi lưu ${output.suggestedName}."
-                    } else {
-                        "Đã lưu ${output.completedChapters}/${output.totalChapters} chương đã chuốt. Bạn có thể lưu bản tạm."
-                    }
-                    outputCreator.launch(output.suggestedName)
-                }
-            } catch (e: CancellationException) {
-                runOnUiThread {
-                    setBusy(false)
-                    TranslationNotificationManager.cancel(this@MainActivity)
-                    binding.statusText.text = "Đã hủy tác vụ chuốt văn phong."
-                }
-            } catch (e: Exception) {
-                runOnUiThread {
-                    setBusy(false)
-                    TranslationNotificationManager.showError(
-                        this@MainActivity,
-                        "[Chuốt FL3.8] " + book.displayTitle,
-                        e.message ?: "Lỗi"
-                    )
-                    binding.statusText.text = "Lỗi chuốt văn phong: ${e.message}"
-                    toast("Lỗi chuốt văn phong: ${e.message}")
-                }
-            }
-        }
-    }
-
-    private fun startPolishLocalBook(
-        uri: Uri,
-        name: String,
-        baseSettings: TranslationSettings
-    ) {
-        if (activeWork != null && !activeWork!!.isDone) {
-            toast("Đang có tác vụ dịch hoặc chuốt văn phong đang chạy!")
-            return
-        }
-
-        val setupView = layoutInflater.inflate(R.layout.dialog_polish_setup, null)
-        val titleTxt = setupView.findViewById<TextView>(R.id.polishBookTitle)
-        val availTxt = setupView.findViewById<TextView>(R.id.polishAvailableChapters)
-        val startEdit = setupView.findViewById<EditText>(R.id.polishChapterStart)
-        val endEdit = setupView.findViewById<EditText>(R.id.polishChapterEnd)
-        val concurrencyEdit = setupView.findViewById<EditText>(R.id.polishConcurrency)
-        val btnCancel = setupView.findViewById<Button>(R.id.btnCancelPolish)
-        val btnStart = setupView.findViewById<Button>(R.id.btnStartPolish)
-
-        val cleanTitle = name.removeSuffix(".epub").removeSuffix(".txt")
-        titleTxt.text = "Tệp: $cleanTitle"
-        availTxt.text = "Tệp trên thiết bị: $name"
-        startEdit.setText("1")
-        if (baseSettings.chapterEnd > 0) {
-            endEdit.setText(baseSettings.chapterEnd.toString())
-        }
-        concurrencyEdit.setText(baseSettings.concurrency.coerceIn(1, 15).toString())
-
-        val setupDialog = AlertDialog.Builder(this)
-            .setView(setupView)
-            .create()
-
-        btnCancel.setOnClickListener { setupDialog.dismiss() }
-
-        btnStart.setOnClickListener {
-            val startChap = startEdit.text.toString().toIntOrNull() ?: 1
-            val endChap = endEdit.text.toString().toIntOrNull() ?: 0
-            val concurrency = (concurrencyEdit.text.toString().toIntOrNull() ?: 8).coerceIn(1, 15)
-
-            setupDialog.dismiss()
-
-            setBusy(true)
-            binding.statusText.text = "Bắt đầu chuốt văn phong bằng Gemini Flash 3.8 ($concurrency luồng)..."
-            cancelled = false
-            pauseRequested = false
-
-            val polishSettings = baseSettings.copy(
-                model = "ag/gemini-3.8-flash",
-                concurrency = concurrency,
-                chapterStart = startChap,
-                chapterEnd = endChap
-            )
-
-            activeWork = Executors.newSingleThreadExecutor().submit {
-                try {
-                    val output = BookTranslator(this).translate(
-                        uri,
-                        name,
-                        polishSettings,
-                        { cancelled || Thread.currentThread().isInterrupted },
-                        { pauseRequested },
-                        { cur, total, msg ->
-                            publishProgress(cur, total, "[Chuốt FL3.8] $msg")
-                        },
-                        isPolishMode = true
-                    )
-
-                    runOnUiThread {
-                        setBusy(false)
-                        pendingOutput = output
-                        if (output.isComplete) {
-                            TranslationNotificationManager.showCompleted(
-                                this@MainActivity,
-                                "[Chuốt FL3.8] $cleanTitle",
-                                output.totalChapters
-                            )
-                        }
-                        binding.statusText.text = if (output.paused) {
-                            "Đã tạm dừng chuốt văn phong. Đã hoàn thành ${output.completedChapters}/${output.totalChapters} chương."
-                        } else if (output.isComplete) {
-                            "Chuốt văn phong FL3.8 hoàn tất! Chọn nơi lưu ${output.suggestedName}."
-                        } else {
-                            "Đã lưu ${output.completedChapters}/${output.totalChapters} chương đã chuốt. Bạn có thể lưu bản tạm."
-                        }
-                        outputCreator.launch(output.suggestedName)
-                    }
-                } catch (e: CancellationException) {
-                    runOnUiThread {
-                        setBusy(false)
-                        TranslationNotificationManager.cancel(this@MainActivity)
-                        binding.statusText.text = "Đã hủy tác vụ chuốt văn phong."
-                    }
-                } catch (e: Exception) {
-                    runOnUiThread {
-                        setBusy(false)
-                        TranslationNotificationManager.showError(
-                            this@MainActivity,
-                            "[Chuốt FL3.8] $cleanTitle",
-                            e.message ?: "Lỗi"
-                        )
-                        binding.statusText.text = "Lỗi chuốt văn phong: ${e.message}"
-                        toast("Lỗi chuốt văn phong: ${e.message}")
-                    }
-                }
-            }
-        }
-
-        setupDialog.show()
-    }
-
     private fun onServerBookSelected(
         book: RemoteEpub,
         repo: ServerEpubRepository,
@@ -930,7 +655,6 @@ class MainActivity : AppCompatActivity() {
         val progressBar = actionView.findViewById<ProgressBar>(R.id.dialogBookProgress)
         val progressTxt = actionView.findViewById<TextView>(R.id.dialogBookProgressText)
 
-        val btnPolish = actionView.findViewById<View>(R.id.btnActionPolish)
         val btnExportRaw = actionView.findViewById<View>(R.id.btnActionExportRaw)
         val txtExportRawTitle = actionView.findViewById<TextView>(R.id.txtExportRawTitle)
         val btnTrack = actionView.findViewById<Button>(R.id.btnActionTrack)
@@ -938,7 +662,7 @@ class MainActivity : AppCompatActivity() {
 
         titleTxt.text = book.displayTitle
         authorTxt.text = if (book.author.isNotBlank()) "Tác giả: ${book.author}" else "Tác giả: Đang cập nhật"
-        modelTxt.text = if (book.model.isNotBlank()) "Mô hình dịch gốc: ${book.model}" else "Mô hình: Đang cập nhật"
+        modelTxt.text = if (book.model.isNotBlank()) "Mô hình dịch: ${book.model}" else "Mô hình: Đang cập nhật"
 
         if (book.isAutoTranslated) {
             originBadge.text = "🤖 Tự động"
@@ -958,14 +682,14 @@ class MainActivity : AppCompatActivity() {
             statusBadge.setBackgroundResource(R.drawable.bg_badge_complete)
             statusBadge.setTextColor(getColor(R.color.badge_complete_text))
             progressTxt.text = "${book.completed} / ${book.total} chương (100%)"
-            txtExportRawTitle.text = "📥 Tải bản EPUB gốc (${book.completed} chương)"
+            txtExportRawTitle.text = "📥 Tải bản EPUB (${book.completed} chương)"
             btnTrack.visibility = View.GONE
         } else {
             statusBadge.text = "⏳ Đang dịch"
             statusBadge.setBackgroundResource(R.drawable.bg_badge_running)
             statusBadge.setTextColor(getColor(R.color.badge_running_text))
             progressTxt.text = "${book.completed} / ${book.total} chương (${book.progressPercent}%)"
-            txtExportRawTitle.text = "⚡ Xuất EPUB gốc (${book.completed} chương)"
+            txtExportRawTitle.text = "⚡ Xuất EPUB (${book.completed} chương)"
             btnTrack.visibility = View.VISIBLE
         }
 
@@ -986,11 +710,6 @@ class MainActivity : AppCompatActivity() {
         btnExportRaw.setOnClickListener {
             actionDialog.dismiss()
             onExportRawClicked(book, repo, settings, parentDialog)
-        }
-
-        btnPolish.setOnClickListener {
-            actionDialog.dismiss()
-            onPolishClicked(book, repo, settings, parentDialog)
         }
 
         btnTrack.setOnClickListener {

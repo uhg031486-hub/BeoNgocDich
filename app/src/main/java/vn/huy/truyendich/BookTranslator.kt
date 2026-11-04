@@ -47,12 +47,11 @@ class BookTranslator(private val context: Context) {
         settings: TranslationSettings,
         cancelled: () -> Boolean,
         pauseRequested: () -> Boolean,
-        progress: (Int, Int, String) -> Unit,
-        isPolishMode: Boolean = false
+        progress: (Int, Int, String) -> Unit
     ): TranslationOutput {
         val input = copyInput(inputUri, inputName)
         val normalizedName = inputName.ifBlank { "truyen.epub" }
-        val localBookId = sha256(input) + (if (isPolishMode) "_polish_fl38" else "")
+        val localBookId = sha256(input)
         val bookName = normalizedName.substringBeforeLast('.', normalizedName)
         val serverBook = VbookInterop.serverBook(settings, localBookId, bookName)
         val memoryStore = StoryMemoryStore(context)
@@ -65,9 +64,9 @@ class BookTranslator(private val context: Context) {
         val executor = Executors.newFixedThreadPool(settings.concurrency.coerceIn(1, 50))
         try {
             return if (normalizedName.endsWith(".epub", true) || isZip(input)) {
-                translateEpub(input, normalizedName, localBookId, serverBook, settings, memory, memoryStore, sync, executor, cancelled, pauseRequested, progress, isPolishMode)
+                translateEpub(input, normalizedName, localBookId, serverBook, settings, memory, memoryStore, sync, executor, cancelled, pauseRequested, progress)
             } else {
-                translateText(input, normalizedName, localBookId, serverBook, settings, memory, memoryStore, sync, executor, cancelled, pauseRequested, progress, isPolishMode)
+                translateText(input, normalizedName, localBookId, serverBook, settings, memory, memoryStore, sync, executor, cancelled, pauseRequested, progress)
             }
         } finally {
             executor.shutdownNow()
@@ -87,8 +86,7 @@ class BookTranslator(private val context: Context) {
         executor: ExecutorService,
         cancelled: () -> Boolean,
         pauseRequested: () -> Boolean,
-        progress: (Int, Int, String) -> Unit,
-        isPolishMode: Boolean = false
+        progress: (Int, Int, String) -> Unit
     ): TranslationOutput {
         ensureActive(cancelled)
         val source = input.readText(Charsets.UTF_8).removePrefix("\uFEFF")
@@ -123,7 +121,7 @@ class BookTranslator(private val context: Context) {
 
         saveCurrentOutput()
 
-        val actionTitle = if (isPolishMode) "chuốt văn phong FL3.8" else "dịch"
+        val actionTitle = "dịch"
 
         if (done > 0) {
             progress(done, totalChunks, "Khôi phục checkpoint: đã có $done/$totalChunks đoạn, chỉ $actionTitle phần còn lại.")
@@ -148,7 +146,7 @@ class BookTranslator(private val context: Context) {
                 completion.submit(Callable {
                     try {
                         ensureActive(cancelled)
-                        val client = RouterClient(settings, memory, isPolishMode = isPolishMode)
+                        val client = RouterClient(settings, memory)
                         val rawTranslated = client.translateText(chunkText)
                         val translated = normalizeChunkEnding(chunkText, rawTranslated)
                         TextChunkAttempt(chunkIndex, translated)
@@ -175,7 +173,7 @@ class BookTranslator(private val context: Context) {
                 val chunkSource = chunks[completed.index]
                 runCatching {
                     updateMemory(
-                        RouterClient(settings, memory, isPolishMode = isPolishMode),
+                        RouterClient(settings, memory),
                         chunkSource,
                         localBookId,
                         serverBook,
@@ -216,11 +214,7 @@ class BookTranslator(private val context: Context) {
         saveCurrentOutput()
 
         val complete = done == totalChunks
-        val name = if (isPolishMode) {
-            if (complete && !paused) "${serverBook.bookName}.FL3.8_Muot.txt" else "${serverBook.bookName}.FL3.8_partial.txt"
-        } else {
-            if (complete && !paused) "${serverBook.bookName}.vi.txt" else "${serverBook.bookName}.partial.vi.txt"
-        }
+        val name = if (complete && !paused) "${serverBook.bookName}.vi.txt" else "${serverBook.bookName}.partial.vi.txt"
         progress(
             done,
             totalChunks,
@@ -241,8 +235,7 @@ class BookTranslator(private val context: Context) {
         executor: ExecutorService,
         cancelled: () -> Boolean,
         pauseRequested: () -> Boolean,
-        progress: (Int, Int, String) -> Unit,
-        isPolishMode: Boolean = false
+        progress: (Int, Int, String) -> Unit
     ): TranslationOutput {
         val output = File.createTempFile("translated-", ".epub", context.cacheDir)
         ZipFile(input).use { zip ->
@@ -274,7 +267,7 @@ class BookTranslator(private val context: Context) {
             val batches = pending.chunked(workers)
             var paused = false
 
-            val actionTitle = if (isPolishMode) "chuốt văn phong FL3.8" else "dịch"
+            val actionTitle = "dịch"
             if (done > 0) {
                 progress(done, requestedPaths.size, "Khôi phục checkpoint: đã có $done/${requestedPaths.size} chương, chỉ $actionTitle phần còn lại.")
             }
@@ -295,7 +288,7 @@ class BookTranslator(private val context: Context) {
                     completion.submit(Callable {
                         try {
                             ensureActive(cancelled)
-                            val chapterClient = RouterClient(settings, memory, isPolishMode = isPolishMode)
+                            val chapterClient = RouterClient(settings, memory)
                             val translated = ChapterTranslator(chapterClient, settings.charsPerRequest, executor, cancelled, false)
                                 .translateXhtml(chapterBytes.getValue(path))
                             ChapterAttempt(path, translated)
@@ -321,7 +314,7 @@ class BookTranslator(private val context: Context) {
 
                     runCatching {
                         updateMemory(
-                            RouterClient(settings, memory, isPolishMode = isPolishMode),
+                            RouterClient(settings, memory),
                             translated.sourceText,
                             localBookId,
                             serverBook,
@@ -368,11 +361,7 @@ class BookTranslator(private val context: Context) {
             }
             val complete = translations.size == requestedPaths.size
             val rangeSuffix = if (requestedPaths.size == chapterPaths.size) "" else ".chap-$firstChapter-$lastChapter"
-            val name = if (isPolishMode) {
-                if (complete && !paused) "${serverBook.bookName}$rangeSuffix.FL3.8_Muot.epub" else "${serverBook.bookName}$rangeSuffix.FL3.8_partial.epub"
-            } else {
-                if (complete && !paused) "${serverBook.bookName}$rangeSuffix.vi.epub" else "${serverBook.bookName}$rangeSuffix.partial.vi.epub"
-            }
+            val name = if (complete && !paused) "${serverBook.bookName}$rangeSuffix.vi.epub" else "${serverBook.bookName}$rangeSuffix.partial.vi.epub"
             progress(
                 translations.size,
                 requestedPaths.size,

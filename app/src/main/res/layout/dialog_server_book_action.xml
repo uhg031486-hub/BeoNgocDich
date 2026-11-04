@@ -137,56 +137,7 @@
             android:layout_marginBottom="16dp"
             android:background="@color/border_light" />
 
-        <!-- ACTION 1: Chuốt lại văn phong FL3.8 & Xuất EPUB (Nổi bật nhất) -->
-        <LinearLayout
-            android:id="@+id/btnActionPolish"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_card"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical"
-            android:padding="14dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="✨ Chuốt văn phong FL3.8 &amp; Xuất EPUB"
-                    android:textColor="@color/coral"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_badge_complete"
-                    android:paddingStart="6dp"
-                    android:paddingTop="2dp"
-                    android:paddingEnd="6dp"
-                    android:paddingBottom="2dp"
-                    android:text="Khuyên dùng ⚡"
-                    android:textColor="@color/badge_complete_text"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Dùng Gemini Flash 3.8 gọt giũa câu từ mượt mà, lưu loát, thuần Việt, xóa sạch sạn convert và chuẩn hóa xưng hô nhân vật."
-                android:textColor="@color/muted"
-                android:textSize="12sp" />
-        </LinearLayout>
-
-        <!-- ACTION 2: Xuất / Tải EPUB gốc -->
+        <!-- ACTION: Xuất / Tải EPUB về máy -->
         <LinearLayout
             android:id="@+id/btnActionExportRaw"
             android:layout_width="match_parent"
@@ -202,9 +153,9 @@
                 android:id="@+id/txtExportRawTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="📥 Tải bản EPUB gốc"
-                android:textColor="@color/ink"
-                android:textSize="15sp"
+                android:text="📥 Tải bản EPUB về máy"
+                android:textColor="@color/coral"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -212,7 +163,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Tải trực tiếp bản EPUB hiện có trên server (không qua bước chuốt lại văn phong)."
+                android:text="Tải trực tiếp bản EPUB dịch chuẩn văn phong hài bựa từ server về thiết bị để đọc."
                 android:textColor="@color/muted"
                 android:textSize="12sp" />
         </LinearLayout>

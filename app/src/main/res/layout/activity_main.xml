@@ -455,17 +455,6 @@
             android:textSize="17sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/polishLocalButton"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/sage"
-            android:text="✨ Chuốt lại văn phong FL3.8 (EPUB)"
-            android:textAllCaps="false"
-            android:textColor="@color/paper"
-            android:textSize="15sp"
-            android:textStyle="bold" />
 
         <Button
             android:id="@+id/cancelButton"

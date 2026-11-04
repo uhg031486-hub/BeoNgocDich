@@ -93,6 +93,7 @@
                 android:text="Huyền Huyễn"
                 android:textColor="@color/badge_genre_text"
                 android:textSize="10sp" />
+
         </LinearLayout>
 
         <!-- Author and Model -->
@@ -153,36 +154,18 @@
 
             <Button
                 android:id="@+id/btnQuickExport"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
                 android:backgroundTint="@color/border_light"
                 android:focusable="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:paddingStart="8dp"
                 android:paddingEnd="8dp"
-                android:text="📥 Tải gốc"
+                android:text="📥 Tải EPUB"
                 android:textAllCaps="false"
                 android:textColor="@color/ink"
-                android:textSize="11sp" />
-
-            <Button
-                android:id="@+id/btnQuickPolish"
-                android:layout_width="0dp"
-                android:layout_height="32dp"
-                android:layout_marginStart="6dp"
-                android:layout_weight="1.4"
-                android:backgroundTint="@color/coral"
-                android:focusable="false"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="✨ Chuốt FL3.8"
-                android:textAllCaps="false"
-                android:textColor="@color/paper"
-                android:textSize="11sp"
+                android:textSize="12sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>

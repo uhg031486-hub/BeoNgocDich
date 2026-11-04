@@ -1,7 +1,7 @@
 {
-  "versionCode": 7,
-  "versionName": "1.0.6",
-  "title": "Béo Ngọc Dịch v1.0.6",
-  "changelog": "- Cập nhật 100% kho bìa minh họa nghệ thuật AI vẽ độc quyền (800x1200 HD) cho toàn bộ các truyện trên máy chủ.\n- Nâng cấp cơ chế đồng bộ và tự động làm mới bộ nhớ đệm bìa (v2 cache bypass) giúp lập tức hiển thị bìa mới.\n- Thêm nút làm mới bìa & đồng bộ kho sách thông minh.\n- Tích hợp tính năng Chuốt văn phong FL3.8 & Xuất EPUB chuẩn mục lục.",
-  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.6/app-debug.apk"
+  "versionCode": 8,
+  "versionName": "1.0.7",
+  "title": "Béo Ngọc Dịch v1.0.7",
+  "changelog": "- Đồng bộ 100% phong cách dịch thuật Hài hước, Bựa, Lầy lội, Cà khịa, Bắt trend mạng giải trí đỉnh cao.\n- Chuẩn hóa giữ nguyên 100% tên riêng tiếng Anh/Latin và âm Hán-Việt chuẩn.\n- Tối giản giao diện: Loại bỏ chế độ chuốt lại (Polish Mode) trùng lặp, tối ưu hóa thao tác tải và đọc trực tiếp EPUB.\n- Tích hợp mô hình dịch GLM 4.5 Flash và chuỗi cứu hộ tự động.",
+  "apkUrl": "https://github.com/uhg031486-hub/BeoNgocDich/releases/download/v1.0.7/app-debug.apk"
 }
