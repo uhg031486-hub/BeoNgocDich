@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Ngọc Béo Translate V23.1.9",
     "author": "Antigravity & Ngọc Béo",
-    "version": 42,
+    "version": 43,
     "source": "https://timo-ngocbeo.pages.dev/plugin.json",
-    "description": "V23.1.9 (v42): Mặc định Gemini 3.5 Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên. Hệ thống tự động dự phòng sang Gemini Flash 3.8 Low / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
+    "description": "V23.1.9 (v43): Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s), ổn định tuyệt đối. Hệ thống tự động dự phòng đa tầng sang Gemini Flash 3.8 Low / Gemini 3.5 Flash Lite / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
     "type": "translate",
     "locale": "vi_VN"
   },
@@ -51,52 +51,52 @@
     },
     "initial_chapter_model": {
       "title": "Model chương đầu khi mở truyện",
-      "subtitle": "Mặc định Gemini 3.5 Flash Lite siêu tốc. Tự động dự phòng bằng Flash 3.8 Low / GPT-6 Luna / GLM nếu lỗi.",
+      "subtitle": "Mặc định Gemini Flash 3.8 Chuẩn (3-5s). Tự động dự phòng Flash 3.8 Low / Flash Lite / Luna 6.",
       "mode": "select",
       "format": "single",
-      "default": "gemini/gemini-3.5-flash-lite",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Mặc định - Khuyên dùng)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
         "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
         "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
         "Kimi/kimi=Kimi (Moonshot AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "openrouter/nvidia/nemotron-3.5-lightning:free=Nemotron Lightning (Dự phòng)"
       ]
     },
     "next_chapter_model": {
       "title": "Model các chương tiếp theo",
-      "subtitle": "Mặc định Gemini 3.5 Flash Lite cho các chương tiếp theo. Tự động dự phòng Flash 3.8 Low / Luna 6.",
+      "subtitle": "Mặc định Gemini Flash 3.8 Chuẩn cho các chương tiếp theo. Tự động dự phòng đa tầng.",
       "mode": "select",
       "format": "single",
-      "default": "gemini/gemini-3.5-flash-lite",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Mặc định - Khuyên dùng)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
         "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
         "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
         "Kimi/kimi=Kimi (Moonshot AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "openrouter/nvidia/nemotron-3.5-lightning:free=Nemotron Lightning (Dự phòng)"
       ]
     },
     "offline_model": {
       "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
-      "subtitle": "Mặc định Gemini 3.5 Flash Lite dịch tải về máy, tự động chuyển luồng nếu lỗi.",
+      "subtitle": "Mặc định Gemini Flash 3.8 Chuẩn dịch tải về máy, tự động chuyển luồng nếu lỗi.",
       "mode": "select",
       "format": "single",
-      "default": "gemini/gemini-3.5-flash-lite",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Mặc định - Khuyên dùng)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
         "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
         "LauThapCam_High=Lẩu Thập Cẩm Cao Cấp (Tự đổi AI thông minh)",
         "Kimi/kimi=Kimi (Moonshot AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "openrouter/nvidia/nemotron-3.5-lightning:free=Nemotron Lightning (Dự phòng)"
       ]
     },

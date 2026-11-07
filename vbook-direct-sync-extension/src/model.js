@@ -1,15 +1,21 @@
 function execute() {
     return Response.success([
         {
-            id: "gemini/gemini-3.5-flash-lite",
-            name: "Gemini 3.5 Flash Lite (Mặc định - Khuyên dùng)",
-            description: "Bản Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên, tự động dự phòng Flash 3.8 Low / Luna",
+            id: "ag/gemini-3.8-flash",
+            name: "Gemini 3.8 Flash (Mặc định - Khuyên dùng)",
+            description: "Bản Flash tiêu chuẩn siêu tốc 3-4s, ổn định cao, không timeout 504",
             isNetworkRequired: true
         },
         {
             id: "ag/gemini-3.8-flash-low",
             name: "Gemini 3.8 Flash Low (Dự phòng)",
             description: "Bản Flash 3.8 Low dự phòng hoạt động ổn định trên 9Router",
+            isNetworkRequired: true
+        },
+        {
+            id: "gemini/gemini-3.5-flash-lite",
+            name: "Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+            description: "Bản Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên",
             isNetworkRequired: true
         },
         {
@@ -34,12 +40,6 @@ function execute() {
             id: "Kimi/kimi",
             name: "Kimi (Moonshot AI)",
             description: "Văn phong mượt mà sâu sắc",
-            isNetworkRequired: true
-        },
-        {
-            id: "ag/gemini-3.8-flash",
-            name: "Gemini 3.8 Flash (Upstream chậm)",
-            description: "Bản Flash tiêu chuẩn (có thể bị nghẽn upstream)",
             isNetworkRequired: true
         }
     ]);

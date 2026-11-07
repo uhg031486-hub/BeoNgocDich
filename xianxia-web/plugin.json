@@ -8,10 +8,10 @@
       "name": "Ngọc Béo Translate V23.1.9",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 42,
+      "version": 43,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "Bộ mở rộng dịch thuật AI thông minh Timo Ngọc Béo V23.1.9 (v42). Mặc định Gemini 3.5 Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên. Hệ thống tự động dự phòng sang Gemini Flash 3.8 Low / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
+      "description": "Bộ mở rộng dịch thuật AI thông minh Timo Ngọc Béo V23.1.9 (v43). Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s), ổn định tuyệt đối. Hệ thống tự động dự phòng đa tầng sang Gemini Flash 3.8 Low / Gemini 3.5 Flash Lite / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
       "type": "translate",
       "locale": "vi_VN"
     },
