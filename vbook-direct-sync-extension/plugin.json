@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Ngọc Béo Translate V23.1.4",
     "author": "Antigravity & Ngọc Béo",
-    "version": 33,
+    "version": 35,
     "source": "https://vbookapp.gitbook.io/huong-dan-su-dung/nguon-mo-rong/danh-sach-nguon",
-    "description": "V23.1.4 + action dịch/sync các chương đã tải đúng cache của VBook. Flash3.8 minimal; giữ bộ nhớ tên/quan hệ, cache, đồng bộ và hai đường server.",
+    "description": "V23.1.4 (v35): Cập nhật mặc định Gemini Flash 3.8 Low hoạt động ổn định trên 9Router. Tự động cứu hộ tức thì bằng GPT-6 Luna / GLM / Kimi.",
     "type": "translate",
     "locale": "vi_VN"
   },
@@ -54,12 +54,14 @@
       "subtitle": "Mặc định Gemini Flash 3.8 minimal. Nếu Ling/Nemotron/Lightning không trả bản dịch hợp lệ, tự thử Gemini minimal; không dùng QT trong chương.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash",
+      "default": "ag/gemini-3.8-flash-low",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
         "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
         "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
       ]
     },
@@ -68,12 +70,14 @@
       "subtitle": "Mặc định Flash 3.8 minimal cho các chương tiếp.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash",
+      "default": "ag/gemini-3.8-flash-low",
       "values": [
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
         "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
         "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
       ]
     },
@@ -82,12 +86,14 @@
       "subtitle": "Mặc định Flash 3.8 minimal; dịch tuần tự, tối đa 7.000 ký tự mỗi lần.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash",
+      "default": "ag/gemini-3.8-flash-low",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
         "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
         "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
       ]
     },
@@ -109,12 +115,14 @@
       "title": "Model cố định (khi tắt chuyển model thông minh)",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash",
+      "default": "ag/gemini-3.8-flash-low",
       "values": [
+        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
+        "cx/gpt-6-luna=Luna 6 (minimal)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
         "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
         "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
         "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
       ]
     },

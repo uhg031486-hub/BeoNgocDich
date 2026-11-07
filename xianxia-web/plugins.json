@@ -1,14 +1,36 @@
 {
   "metadata": {
     "author": "Ngọc Béo & Antigravity",
-    "description": "Kho truyện dịch VIP Timo Ngọc Béo & Bộ mở rộng dịch AI cao cấp"
+    "description": "Kho truyện dịch VIP Timo Ngọc Béo & Bộ mở rộng dịch AI cao cấp & Nguồn truyện chuẩn hóa"
   },
   "data": [
+    {
+      "name": "Ngọc Béo Translate V23.1.9",
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 42,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "Bộ mở rộng dịch thuật AI thông minh Timo Ngọc Béo V23.1.9 (v42). Mặc định Gemini 3.5 Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên. Hệ thống tự động dự phòng sang Gemini Flash 3.8 Low / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
+      "type": "translate",
+      "locale": "vi_VN"
+    },
+    {
+      "name": "ixdzs.tw",
+      "author": "Ngọc Béo Fix",
+      "path": "https://timo-ngocbeo.pages.dev/ixdzs.zip",
+      "version": 12,
+      "source": "https://ixdzs.tw",
+      "icon": "https://timo-ngocbeo.pages.dev/ixdzs-icon.png",
+      "description": "Nguồn truyện ixdzs.tw bản chuẩn: Sửa triệt để lỗi clone nhân bản chương (%), sửa lỗi thứ tự đảo ngược 2500+, đảm bảo thứ tự chương 1..N chuẩn 100%, lọc sạch thanh tiến độ rác.",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
+    },
     {
       "name": "Timo Ngọc Béo (Kho Dịch VIP)",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/timo-khodich.zip",
-      "version": 6,
+      "version": 8,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
       "description": "Kho truyện dịch thuần Việt Timo Ngọc Béo (Trỏ trực tiếp vào máy chủ dịch riêng SSD VPS 1, 357+ bộ truyện dịch hoàn thiện 100% Thuần Việt)",
@@ -16,15 +38,15 @@
       "locale": "vi_VN"
     },
     {
-      "name": "Ngọc Béo Translate V23.1.9",
+      "name": "Timo Ngọc Béo",
       "author": "Ngọc Béo & Antigravity",
-      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 35,
-      "source": "https://timo-ngocbeo.pages.dev",
-      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "Bộ mở rộng dịch thuật AI thông minh Timo Ngọc Béo V23.1.9. Đọc online mượt mà không ngắt quãng, chia nhỏ 1.800 ký tự chống timeout 504. Tự động chuyển AI dự phòng khi tải cao.",
-      "type": "translate",
-      "locale": "vi_VN"
+      "path": "https://timo-ngocbeo.pages.dev/timo-ngocbeo.zip",
+      "version": 11,
+      "source": "https://www.timotxt.com",
+      "icon": "https://timo-ngocbeo.pages.dev/timotxt-icon.png",
+      "description": "Kho truyện chữ gốc Trung Quốc Timo Ngọc Béo (~1.8 triệu đầu truyện Fanqie/Qidian mirror không mã hóa font PUA, tốc độ cao, danh mục đầy đủ)",
+      "type": "chinese_novel",
+      "locale": "zh_CN"
     }
   ]
 }
