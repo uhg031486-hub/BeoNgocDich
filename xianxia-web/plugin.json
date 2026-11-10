@@ -1,17 +1,18 @@
 {
   "metadata": {
     "author": "Ngọc Béo & Antigravity",
-    "description": "Kho truyện dịch VIP Timo Ngọc Béo & Bộ mở rộng dịch AI cao cấp & Nguồn truyện chuẩn hóa"
+    "description": "V23.1.9 (v44): Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s). Khi dính kiểm duyệt hoặc lỗi, tự động chuyển ngay sang chuỗi cứu hộ độc lập: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi (đã loại bỏ toàn bộ Gemini khỏi fallback để tránh lặp lại kiểm duyệt). Đã thêm Kilo Code Free vào danh mục chọn.",
+    "version": 44
   },
   "data": [
     {
       "name": "Ngọc Béo Translate V23.1.9",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 43,
+      "version": 44,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "Bộ mở rộng dịch thuật AI thông minh Timo Ngọc Béo V23.1.9 (v43). Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s), ổn định tuyệt đối. Hệ thống tự động dự phòng đa tầng sang Gemini Flash 3.8 Low / Gemini 3.5 Flash Lite / GPT-6 Luna / GLM / Kimi khi gặp lỗi hoặc kiểm duyệt. Văn phong Hài Hước, Bựa, Lầy Lội, Cà Khịa bắt trend mạng.",
+      "description": "V23.1.9 (v44): Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s). Khi dính kiểm duyệt hoặc lỗi, tự động chuyển ngay sang chuỗi cứu hộ độc lập: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi (đã loại bỏ toàn bộ Gemini khỏi fallback để tránh lặp lại kiểm duyệt). Đã thêm Kilo Code Free vào danh mục chọn.",
       "type": "translate",
       "locale": "vi_VN"
     },
@@ -30,7 +31,7 @@
       "name": "Timo Ngọc Béo (Kho Dịch VIP)",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/timo-khodich.zip",
-      "version": 6,
+      "version": 10,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
       "description": "Kho truyện dịch thuần Việt Timo Ngọc Béo (Trỏ trực tiếp vào máy chủ dịch riêng SSD VPS 1, 357+ bộ truyện dịch hoàn thiện 100% Thuần Việt)",

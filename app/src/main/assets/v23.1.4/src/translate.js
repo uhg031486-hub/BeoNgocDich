@@ -930,12 +930,10 @@ function translateApiChunk(chunk, qtDraft, inputMode, model, reasoning, temperat
     var result = translateApiChunkOnce(chunk, qtDraft, inputMode, actualModel, modelReasoning(actualModel), temperature, from, to, key, genre, customGlossary, styleNotes, preserveNames);
     if (result) return result;
 
-    var fallbackChain = [
-        "ag/gemini-3.8-flash-low",
-        "gemini/gemini-3.5-flash-lite",
+        var fallbackChain = [
         "cx/gpt-6-luna",
+        "Kilo_Code_Free",
         "glm/glm-4.5-flash",
-        "LauThapCam_High",
         "Kimi/kimi"
     ];
 
@@ -1115,7 +1113,7 @@ function modelReasoning(model) {
     if (m.indexOf("gemini-3.8") >= 0 || m.indexOf("flash") >= 0) return "minimal";
     if (m === LIGHTNING_MODEL || m.indexOf("lightning") >= 0) return "none";
     if (v231MuseModel(model)) return "default";
-    if (m.indexOf("luna") >= 0 || m.indexOf("lautb") >= 0 || m.indexOf("high") >= 0 || m.indexOf("kimi") >= 0 || m.indexOf("glm") >= 0) return "default";
+    if (m.indexOf("luna") >= 0 || m.indexOf("kilo") >= 0 || m.indexOf("lautb") >= 0 || m.indexOf("high") >= 0 || m.indexOf("kimi") >= 0 || m.indexOf("glm") >= 0) return "default";
     return "minimal";
 }
 
