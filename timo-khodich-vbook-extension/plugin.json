@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "name": "Timo Ngọc Béo (Kho Dịch VIP)",
+    "author": "Ngọc Béo & Antigravity",
+    "version": 12,
+    "source": "https://timo-ngocbeo.pages.dev",
+    "regexp": "(https?://)?(distributor-warranty-statutes-hidden\\.trycloudflare\\.com|timo-ngocbeo\\.pages\\.dev)(/.*)?",
+    "description": "Kho truyện dịch thuần Việt Timo Ngọc Béo (Trỏ trực tiếp vào máy chủ dịch riêng SSD VPS, hơn 1400+ bộ truyện hoàn thiện 100% Thuần Việt)",
+    "locale": "vi_VN",
+    "language": "javascript",
+    "type": "novel"
+  },
+  "script": {
+    "home": "home.js",
+    "genre": "genre.js",
+    "detail": "detail.js",
+    "toc": "toc.js",
+    "chap": "chap.js",
+    "search": "search.js"
+  }
+}
