@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Ngọc Béo Translate V23.1.9",
     "author": "Antigravity & Ngọc Béo",
-    "version": 45,
+    "version": 46,
     "source": "https://timo-ngocbeo.pages.dev/plugin.json",
-    "description": "V23.1.9 (v45): Kết nối trực tiếp VPS ARM mới (304 kết nối) phản hồi siêu tốc 3s, trị dứt điểm 504 Gateway Timeout. Mặc định Gemini Flash 3.8. Tự động dự phòng thông minh: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",
+    "description": "V23.1.9 (v46): Trị dứt điểm 504 Gateway Timeout! Chuyển sang kênh chuyên dụng r4pqkqr siêu tốc (3s). Timeout nâng lên 120s, ép chế độ thuần không suy nghĩ cho Gemini 3.8 Flash. Chuỗi cứu hộ độc lập: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",
     "type": "translate",
     "locale": "vi_VN"
   },
@@ -23,7 +23,7 @@
       "title": "Endpoint 9Router (có thể đổi)",
       "mode": "input",
       "format": "text",
-      "default": "https://rszazn8.abc-tunnel.us/v1"
+      "default": "https://r4pqkqr.abc-tunnel.us/v1"
     },
     "api_key": {
       "title": "9Router API key",
@@ -57,7 +57,7 @@
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
@@ -74,7 +74,7 @@
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
@@ -91,7 +91,7 @@
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",

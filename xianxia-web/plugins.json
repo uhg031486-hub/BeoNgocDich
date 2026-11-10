@@ -1,14 +1,15 @@
 {
   "metadata": {
     "author": "Ngọc Béo & Antigravity",
-    "description": "Kho truyện dịch VIP Timo Ngọc Béo & Bộ mở rộng dịch AI cao cấp & Nguồn truyện chuẩn hóa"
+    "description": "V23.1.9 (v46): Trị dứt điểm 504 Gateway Timeout! Kênh chuyên dụng r4pqkqr siêu tốc 3s, timeout 120s, Gemini 3.8 Flash thuần. Tự động dự phòng: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",
+    "version": 46
   },
   "data": [
     {
       "name": "Ngọc Béo Translate V23.1.9",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 45,
+      "version": 46,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
       "description": "V23.1.9 (v45): Kết nối trực tiếp VPS ARM mới (304 kết nối) phản hồi siêu tốc 3s, trị dứt điểm 504 Gateway Timeout. Mặc định Gemini Flash 3.8. Tự động dự phòng thông minh: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",

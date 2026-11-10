@@ -37,7 +37,7 @@ var V231_CONTEXT=null;
  * Ngọc Béo Translate V23.1.9: Tối ưu đọc online không gián đoạn, chia nhỏ 1.800 ký tự chống timeout 504.
  * Tự động chuyển fallback khi AI bận. Mặc định Gemini Flash 3.8 siêu tốc không suy nghĩ, timeout 120s.
  */
-var DEFAULT_ENDPOINT = "https://rszazn8.abc-tunnel.us/v1";
+var DEFAULT_ENDPOINT = "https://r4pqkqr.abc-tunnel.us/v1";
 var DEFAULT_MODEL = "ag/gemini-3.8-flash";
 var DEFAULT_REASONING = "none";
 var DEFAULT_TEMPERATURE = 0.2;
@@ -127,6 +127,9 @@ function getApiKey() {
 
 function endpointUrl() {
     var raw = firstNonEmpty([valueOf("endpoint_url", ""), valueOf("endpoint", ""), valueOf("base_url", ""), valueOf("baseUrl", ""), DEFAULT_ENDPOINT]);
+    if (raw && (raw.indexOf("rszazn8.abc-tunnel.us") >= 0 || raw.indexOf("spanking-sara") >= 0)) {
+        raw = "https://r4pqkqr.abc-tunnel.us/v1";
+    }
     raw = raw.replace(/\/+$/, "");
     if (!raw) return DEFAULT_ENDPOINT + "/chat/completions";
     if (/(chat\/completions|completions|responses)$/i.test(raw)) return raw;
@@ -1345,7 +1348,7 @@ function v231PrepareMemory(book,text,memory,model){
     ]};
     v231ModelOptions(body,actualModel);
     try{
-        var response=fetch(endpointUrl(),{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key,'User-Agent':'Mozilla/5.0 vBook/1.0'},body:JSON.stringify(body),timeout:20000});
+        var response=fetch(endpointUrl(),{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key,'User-Agent':'Mozilla/5.0 vBook/1.0'},body:JSON.stringify(body),timeout: 120000});
         if(!response||!response.ok)return memory;var payload=parseResponse(response);
         if(!payload||payload._providerError)return memory;
         if(payload.choices&&payload.choices[0]&&/^(length|content_filter)$/.test(payload.choices[0].finish_reason||''))return memory;

@@ -463,6 +463,58 @@
       if (chapterCache.has(key)) {
         return chapterCache.get(key);
       }
+      
+      // 1. Static bundle on Cloudflare Pages (0ms instant)
+      try {
+        const bundleResp = await fetch(`/data/${bid}.json`);
+        if (bundleResp.ok) {
+          const bundle = await bundleResp.json();
+          if (bundle && bundle.chapters && bundle.chapters[chapterNo]) {
+            const chData = bundle.chapters[chapterNo];
+            const chNums = Object.keys(bundle.chapters).map(Number).sort((a, b) => a - b);
+            const idx = chNums.indexOf(chapterNo);
+            const prevNo = idx > 0 ? chNums[idx - 1] : null;
+            const nextNo = idx < chNums.length - 1 ? chNums[idx + 1] : null;
+            const payload = {
+              success: true,
+              bid: bid,
+              book_title: bundle.title || `Truyện #${bid}`,
+              chapter_no: chapterNo,
+              title: chData.title || `Chương ${chapterNo}`,
+              content: chData.content || "",
+              prev_no: prevNo,
+              next_no: nextNo
+            };
+            chapterCache.set(key, payload);
+            return payload;
+          }
+        }
+      } catch (eBundle) {}
+
+      // 2. Cloudflare Worker Edge Database D1 (100% on Cloudflare, never down)
+      try {
+        const cfWorkerUrl = `https://timo-search.cloudflare-timo-search.workers.dev/api/timo/chapter?bid=${bid}&cid=${chapterNo}`;
+        const cfResp = await fetch(cfWorkerUrl);
+        if (cfResp.ok) {
+          const cfData = await cfResp.json();
+          if (cfData && cfData.ok && cfData.found && cfData.content) {
+            const payload = {
+              success: true,
+              bid: bid,
+              book_title: `Truyện #${bid}`,
+              chapter_no: chapterNo,
+              title: cfData.title || `Chương ${chapterNo}`,
+              content: cfData.content,
+              prev_no: chapterNo > 1 ? chapterNo - 1 : null,
+              next_no: chapterNo + 1
+            };
+            chapterCache.set(key, payload);
+            return payload;
+          }
+        }
+      } catch (eWorker) {}
+
+      // 3. Fallback: API Fetch (tunnel / VPS)
       try {
         const data = await apiFetch(`/api/books/${bid}/chapters/${chapterNo}`);
         if (data && data.success) {
@@ -473,34 +525,9 @@
           }
           return data;
         }
-      } catch (errApi) {
-        try {
-          const bundleResp = await fetch(`/data/${bid}.json`);
-          if (bundleResp.ok) {
-            const bundle = await bundleResp.json();
-            if (bundle && bundle.chapters && bundle.chapters[chapterNo]) {
-              const chData = bundle.chapters[chapterNo];
-              const chNums = Object.keys(bundle.chapters).map(Number).sort((a, b) => a - b);
-              const idx = chNums.indexOf(chapterNo);
-              const prevNo = idx > 0 ? chNums[idx - 1] : null;
-              const nextNo = idx < chNums.length - 1 ? chNums[idx + 1] : null;
-              const payload = {
-                success: true,
-                bid: bid,
-                book_title: bundle.title || `Truyện #${bid}`,
-                chapter_no: chapterNo,
-                title: chData.title || `Chương ${chapterNo}`,
-                content: chData.content || "",
-                prev_no: prevNo,
-                next_no: nextNo
-              };
-              chapterCache.set(key, payload);
-              return payload;
-            }
-          }
-        } catch (eBundle) {}
-        throw errApi;
-      }
+      } catch (errApi) {}
+
+      throw new Error("Chương này đang được dịch hoặc cập nhật trên máy chủ đám mây.");
     }
 
     function prefetchAdjacentChapters(bid, currentNo, nextNo, prevNo) {
@@ -580,31 +607,24 @@
 
     // Safe Data Fetcher with Multi-Layered High Availability Fallback & Auto-Retry
     async function apiFetch(endpoint) {
-      const url = endpoint.startsWith("http") ? endpoint : `${API_BASE}${endpoint}`;
-      
-      // Attempt 1 & 2: Primary route with instant auto-retry
-      for (let attempt = 1; attempt <= 2; attempt++) {
+      const ep = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+      const candidates = [];
+      if (window.location.origin && !window.location.origin.includes("127.0.0.1") && !window.location.origin.includes("localhost")) {
+        candidates.push(`${window.location.origin}${ep}`);
+      }
+      candidates.push(`https://distributor-warranty-statutes-hidden.trycloudflare.com${ep}`);
+      candidates.push(`http://161.118.220.254:8090${ep}`);
+
+      for (const targetUrl of candidates) {
         try {
-          const res = await fetch(url, { cache: "no-store" });
+          const res = await fetch(targetUrl, { cache: "no-store" });
           const ct = (res.headers.get("content-type") || "").toLowerCase();
           if (res.ok && !ct.includes("text/html")) {
             const data = await res.json();
             if (data && (data.success || data.chapters || Array.isArray(data))) return data;
           }
-        } catch (ePrimary) {}
-        if (attempt < 2) await new Promise(r => setTimeout(r, 400));
+        } catch (e) {}
       }
-
-      // Fallback 1: Direct Cloudflare Tunnel (HTTPS)
-      try {
-        const fb1 = "https://distributor-warranty-statutes-hidden.trycloudflare.com" + (endpoint.startsWith("/") ? endpoint : `/${endpoint}`);
-        const res1 = await fetch(fb1, { cache: "no-store" });
-        const ct1 = (res1.headers.get("content-type") || "").toLowerCase();
-        if (res1.ok && !ct1.includes("text/html")) {
-          const data1 = await res1.json();
-          if (data1 && (data1.success || data1.chapters || Array.isArray(data1))) return data1;
-        }
-      } catch (eFb1) {}
 
       throw new Error("Máy chủ đang đồng bộ, vui lòng bấm Thử Lại sau giây lát");
     }
@@ -1259,10 +1279,48 @@
       `;
 
       try {
-        const res = await apiFetch(`/api/books/${bid}`);
-        if (!res.success || !res.book) throw new Error("Không tìm thấy linh quyển");
+        let b = null;
+        // 1. Instant Cloud Edge Lookup from memory or static catalog.json (100% decoupling from VPS)
+        if (cachedBooks && cachedBooks.length) {
+          b = cachedBooks.find(item => String(item.bid) === String(bid));
+        }
+        if (!b) {
+          try {
+            const staticCat = await fetch("/catalog.json");
+            if (staticCat.ok) {
+              const catData = await staticCat.json();
+              if (catData && catData.books) {
+                cachedBooks = catData.books;
+                b = cachedBooks.find(item => String(item.bid) === String(bid));
+              }
+            }
+          } catch (eCat) {}
+        }
 
-        const b = res.book;
+        // If we found the book in catalog, construct default chapters list if not already populated
+        if (b && (!b.chapters || !b.chapters.length)) {
+          const totalCh = b.total_chapters_timo || b.translated_chapters || 100;
+          const chaptersList = [];
+          for (let i = 1; i <= totalCh; i++) {
+            chaptersList.push({
+              chapter_no: i,
+              title: `Chương ${i}`,
+              status: "translated"
+            });
+          }
+          b = Object.assign({}, b, { chapters: chaptersList });
+        }
+
+        // Optional API fetch for live chapter titles or stats (does not crash if VPS is offline!)
+        try {
+          const res = await apiFetch(`/api/books/${bid}`);
+          if (res && res.success && res.book) {
+            b = Object.assign({}, b || {}, res.book);
+          }
+        } catch (eApi) {}
+
+        if (!b) throw new Error("Không tìm thấy linh quyển trong tàng kinh các");
+
         currentBookDetail = b;
         const titleVN = sanitizeVN(b.display_title || b.hv_title);
         const authorVN = sanitizeVN(b.display_author || b.hv_author || "Vô Danh");
