@@ -51,14 +51,13 @@
     },
     "initial_chapter_model": {
       "title": "Model chương đầu khi mở truyện",
-      "subtitle": "Mặc định Gemini Flash 3.8 Chuẩn (3-5s). Tự động dự phòng Flash 3.8 Low / Flash Lite / Luna 6.",
+      "subtitle": "Mặc định Gemini Flash 3.8 Chuẩn (3-5s). Tự động dự phòng Flash Lite / Luna 6.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
@@ -75,8 +74,7 @@
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
@@ -93,8 +91,7 @@
       "default": "ag/gemini-3.8-flash",
       "values": [
         "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định - Khuyên dùng)",
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Dự phòng)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
+                "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
         "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ kiểm duyệt)",
         "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí - Chống kiểm duyệt)",
         "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",

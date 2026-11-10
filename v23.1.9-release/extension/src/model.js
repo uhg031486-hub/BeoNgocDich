@@ -31,12 +31,6 @@ function execute() {
             isNetworkRequired: true
         },
         {
-            id: "ag/gemini-3.8-flash-low",
-            name: "Gemini 3.8 Flash Low (Dự phòng)",
-            description: "Bản Flash 3.8 Low dự phòng hoạt động ổn định trên 9Router",
-            isNetworkRequired: true
-        },
-        {
             id: "gemini/gemini-3.5-flash-lite",
             name: "Gemini 3.5 Flash Lite (Dự phòng tốc độ cao)",
             description: "Bản Flash Lite siêu tốc, bền bỉ, tiết kiệm tài nguyên",
