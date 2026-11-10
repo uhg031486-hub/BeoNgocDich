@@ -11,3 +11,7 @@ local.properties
 .kotlin
 app/build/
 *.apk
+.wrangler/
+xianxia-web/.wrangler/
+xianxia-web/data/
+

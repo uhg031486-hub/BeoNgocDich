@@ -1,0 +1,2654 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Timo Ngọc Béo • Tàng Kinh Các Tiên Hiệp Hoàng Gia</title>
+  <meta name="description" content="Thư Khố Tiên Hiệp Timo Ngọc Béo - 339+ Bộ Linh Quyển Đầy Đủ, Bản Dịch AI Tu Chân Thuần Việt Hoàn Mỹ Nhất">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4AF37'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Playfair Display, Lora, Be Vietnam Pro, Plus Jakarta Sans (Full Vietnamese Subset) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            royal: ['Playfair Display', 'Lora', 'Georgia', 'serif'],
+            serif: ['Lora', 'Georgia', 'serif'],
+            sans: ['Be Vietnam Pro', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            gold: {
+              300: '#FDE68A',
+              400: '#FCD34D',
+              500: '#D4AF37',
+              600: '#B8860B',
+              700: '#92400E',
+            },
+            crimson: {
+              500: '#E11D48',
+              600: '#BE123C',
+              700: '#9F1239',
+              800: '#8C2D19',
+              900: '#4C0519',
+            },
+            jade: {
+              400: '#34D399',
+              500: '#10B981',
+              600: '#059669',
+              700: '#047857',
+              900: '#064E3B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* CSS Root Themes */
+    :root {
+      --bg-base: #0B0F17;
+      --bg-card: #121824;
+      --bg-card-hover: #1A2234;
+      --border-base: rgba(212, 175, 55, 0.15);
+      --border-highlight: rgba(212, 175, 55, 0.35);
+      --text-main: #F1F5F9;
+      --text-sub: #94A3B8;
+      --accent-gold: #D4AF37;
+      --accent-crimson: #E11D48;
+      --header-bg: rgba(11, 15, 23, 0.85);
+      --drawer-bg: #0F141F;
+    }
+
+    body.theme-parchment {
+      --bg-base: #F7F4EB;
+      --bg-card: #EFEAD9;
+      --bg-card-hover: #E7E0CC;
+      --border-base: #DDD3BF;
+      --border-highlight: #C9BA9C;
+      --text-main: #24201A;
+      --text-sub: #5C5549;
+      --accent-gold: #B45309;
+      --accent-crimson: #8C2D19;
+      --header-bg: rgba(247, 244, 235, 0.92);
+      --drawer-bg: #F4EFE0;
+    }
+
+    body.theme-emerald {
+      --bg-base: #EDF3EB;
+      --bg-card: #DFE9DC;
+      --bg-card-hover: #D2E0CE;
+      --border-base: #C2D4BE;
+      --border-highlight: #9CB897;
+      --text-main: #18261E;
+      --text-sub: #465E50;
+      --accent-gold: #2D6A4F;
+      --accent-crimson: #1B4332;
+      --header-bg: rgba(237, 243, 235, 0.92);
+      --drawer-bg: #E6EFE4;
+    }
+
+    body.theme-sepia {
+      --bg-base: #F4ECE1;
+      --bg-card: #EADECF;
+      --bg-card-hover: #DFD0BE;
+      --border-base: #D2C0AB;
+      --border-highlight: #BFA991;
+      --text-main: #2F241C;
+      --text-sub: #635244;
+      --accent-gold: #854D0E;
+      --accent-crimson: #7C2D12;
+      --header-bg: rgba(244, 236, 225, 0.92);
+      --drawer-bg: #EDE3D4;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.25);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(212, 175, 55, 0.5);
+    }
+
+    /* 3D Book Perspective & Shadows */
+    .book-card-3d {
+      perspective: 1000px;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .book-card-3d:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    .book-card-inner {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+      transition: all 0.35s ease;
+    }
+    .book-card-3d:hover .book-card-inner {
+      box-shadow: 0 20px 35px -5px rgba(212, 175, 55, 0.2), 0 10px 15px -3px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Ambient Glow on Hero & Cards */
+    .ambient-gold-glow {
+      box-shadow: 0 0 50px -10px rgba(212, 175, 55, 0.25);
+    }
+    .gold-foil-border {
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .gold-foil-border:hover {
+      border-color: rgba(212, 175, 55, 0.55);
+    }
+
+    /* Dropcap Styling for Readers */
+    .chapter-dropcap::first-letter {
+      float: left;
+      font-family: 'Playfair Display', 'Lora', Georgia, serif;
+      font-size: 3.5em;
+      line-height: 0.8;
+      font-weight: 700;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-bottom: 2px;
+      color: var(--accent-gold);
+    }
+
+    /* Shimmer effect for loaders */
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+    .shimmer-mask {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-mask::after {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0) 100%);
+      animation: shimmer 1.5s infinite;
+      content: '';
+    }
+
+    /* Active Filter Pill */
+    .filter-pill-active {
+      background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%) !important;
+      color: #0B0F17 !important;
+      font-weight: 700 !important;
+      box-shadow: 0 2px 10px rgba(212, 175, 55, 0.35) !important;
+      border-color: #D4AF37 !important;
+    }
+    body.theme-parchment .filter-pill-active {
+      background: linear-gradient(135deg, #8C2D19 0%, #B84224 100%) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 2px 10px rgba(140, 45, 25, 0.35) !important;
+      border-color: #8C2D19 !important;
+    }
+
+    /* Smooth Backdrop Glass */
+    .glass-acrylic {
+      background: var(--header-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-base);
+    }
+  </style>
+</head>
+<body id="app-body" class="bg-[var(--bg-base)] text-[var(--text-main)] min-h-screen font-sans antialiased selection:bg-amber-500 selection:text-black transition-colors duration-300 relative">
+
+  <!-- ========================================================================= -->
+  <!-- TOP GLOBAL NAVIGATION: MASTER HEADER                                      -->
+  <!-- ========================================================================= -->
+  <header id="global-header" class="sticky top-0 z-40 glass-acrylic transition-transform duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-4">
+      
+      <!-- Brand Logo & Imperial Seal -->
+      <a href="#/" class="flex items-center gap-3.5 group cursor-pointer select-none">
+        <div class="relative w-11 h-11 rounded-2xl flex items-center justify-center shadow-lg transition-transform group-hover:scale-105 overflow-hidden" style="background: linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%); border: 1px solid rgba(212, 175, 55, 0.3);">
+          <div class="absolute inset-0 bg-gradient-to-tr from-amber-500/20 to-transparent"></div>
+          <svg class="w-6 h-6 text-amber-400 relative z-10 transition-transform group-hover:rotate-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-royal text-xl font-bold tracking-wider bg-gradient-to-r from-amber-200 via-amber-400 to-amber-100 bg-clip-text text-transparent">
+              TIMO NGỌC BÉO
+            </span>
+            <span class="hidden sm:inline-flex px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest bg-amber-500/10 text-amber-400 border border-amber-500/30">
+              V.3.0
+            </span>
+          </div>
+          <div class="text-[11px] opacity-60 font-sans tracking-wide">
+            Tàng Kinh Các Tiên Hiệp • <span id="header-books-count">339</span> Bộ Linh Quyển Đầy Đủ
+          </div>
+        </div>
+      </a>
+
+      <!-- Quick Search Bar (with Command Palette Ctrl+K shortcut) -->
+      <div class="hidden md:flex flex-1 max-w-md items-center gap-2.5 px-4 py-2 rounded-2xl border transition-all focus-within:ring-2 focus-within:ring-amber-500/40 cursor-pointer" style="background: var(--bg-card); border-color: var(--border-base);" onclick="openSearchModal()">
+        <svg class="w-4 h-4 opacity-50" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <span class="text-xs opacity-50 flex-1">Tìm kiếm linh thư, tác giả, thần thông...</span>
+        <kbd class="px-2 py-0.5 text-[10px] font-mono rounded bg-white/5 border border-white/10 opacity-70">Ctrl K</kbd>
+      </div>
+
+      <!-- Right Actions: Tủ Sách, Tu Vi, Theme -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        
+        <!-- Search Trigger Icon for Mobile -->
+        <button onclick="openSearchModal()" class="md:hidden p-2 rounded-xl hover:bg-white/5 cursor-pointer opacity-80 hover:opacity-100" title="Tìm kiếm">
+          <svg class="w-5 h-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+
+        <!-- Tủ Sách / Bookmarks Drawer Trigger -->
+        <button onclick="openLibraryDrawer()" class="relative flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-semibold cursor-pointer transition-all hover:border-amber-500/40 hover:bg-white/5" style="border-color: var(--border-base);">
+          <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+          <span class="hidden sm:inline">Tủ Sách</span>
+          <span id="nav-fav-count" class="w-4 h-4 rounded-full bg-amber-500 text-black text-[9px] font-bold flex items-center justify-center">0</span>
+        </button>
+
+        <!-- Cultivation Realm Badge (Interactive) -->
+        <div onclick="showCultivationModal()" class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs cursor-pointer transition-all hover:scale-105" style="background: var(--bg-card); border-color: var(--border-highlight); box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
+          <span class="opacity-60 text-[11px]">Tu Vi:</span>
+          <span id="user-realm-name" class="font-bold text-amber-400">Nguyên Anh Kỳ</span>
+        </div>
+
+        <!-- Global Theme Quick Switcher -->
+        <div class="relative">
+          <button onclick="toggleThemeMenu()" id="btn-theme-menu" class="p-2 rounded-xl border hover:bg-white/5 cursor-pointer opacity-80 hover:opacity-100 transition-colors" style="border-color: var(--border-base);" title="Đổi giao diện">
+            <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          </button>
+          
+          <!-- Theme dropdown menu -->
+          <div id="theme-dropdown" class="hidden absolute right-0 mt-2 w-44 rounded-2xl border shadow-2xl p-1.5 z-50 transition-all opacity-0 pointer-events-none" style="background: var(--bg-card); border-color: var(--border-base);">
+            <button onclick="setGlobalTheme('dark')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs hover:bg-white/10 cursor-pointer transition-colors text-left">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#0B0F17] border border-amber-500"></span>
+              <span>Huyền Mặc (Tối)</span>
+            </button>
+            <button onclick="setGlobalTheme('parchment')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs hover:bg-white/10 cursor-pointer transition-colors text-left">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#F7F4EB] border border-stone-400"></span>
+              <span>Giấy Cổ (Sáng)</span>
+            </button>
+            <button onclick="setGlobalTheme('emerald')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs hover:bg-white/10 cursor-pointer transition-colors text-left">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#EDF3EB] border border-emerald-500"></span>
+              <span>Thanh Trà (Xanh)</span>
+            </button>
+            <button onclick="setGlobalTheme('sepia')" class="w-full flex items-center gap-2.5 px-3 py-2 rounded-xl text-xs hover:bg-white/10 cursor-pointer transition-colors text-left">
+              <span class="w-3.5 h-3.5 rounded-full bg-[#F4ECE1] border border-amber-700"></span>
+              <span>Bình Minh (Sepia)</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN ROUTER CONTAINER                                                     -->
+  <!-- ========================================================================= -->
+  <main id="main-content" class="min-h-[85vh]">
+    <!-- Views rendered dynamically by Router JS -->
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 1: COMMAND PALETTE / SPOTLIGHT SEARCH (Ctrl + K)                    -->
+  <!-- ========================================================================= -->
+  <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-24 px-4 bg-black/75 backdrop-blur-md hidden opacity-0 transition-opacity duration-200">
+    <div class="relative w-full max-w-2xl rounded-3xl border shadow-2xl overflow-hidden flex flex-col max-h-[80vh] transition-transform duration-200 scale-95" style="background: var(--bg-card); border-color: var(--border-highlight);" id="search-modal-box">
+      <!-- Search Input Header -->
+      <div class="p-4 border-b flex items-center gap-3" style="border-color: var(--border-base);">
+        <svg class="w-5 h-5 text-amber-400 shrink-0" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="modal-search-input" type="text" placeholder="Gõ tên truyện, tên tác giả hoặc thể loại (ESC để đóng)..." class="w-full bg-transparent outline-none text-base placeholder:opacity-40 font-medium">
+        <button onclick="closeSearchModal()" class="p-1 rounded-lg hover:bg-white/10 opacity-60 hover:opacity-100 cursor-pointer">
+          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Quick Category Tags -->
+      <div class="px-4 py-2 border-b flex items-center gap-2 overflow-x-auto text-xs opacity-75" style="border-color: var(--border-base);">
+        <span class="opacity-50 text-[11px] shrink-0">Gợi ý:</span>
+        <button onclick="applySearchTag('Tiên Hiệp')" class="px-2 py-1 rounded-lg bg-white/5 hover:bg-amber-500/20 hover:text-amber-300 transition-colors">⚔️ Tiên Hiệp</button>
+        <button onclick="applySearchTag('Huyền Huyễn')" class="px-2 py-1 rounded-lg bg-white/5 hover:bg-amber-500/20 hover:text-amber-300 transition-colors">🐉 Huyền Huyễn</button>
+        <button onclick="applySearchTag('Đô Thị')" class="px-2 py-1 rounded-lg bg-white/5 hover:bg-amber-500/20 hover:text-amber-300 transition-colors">🏙️ Đô Thị</button>
+        <button onclick="applySearchTag('Khoa Huyễn')" class="px-2 py-1 rounded-lg bg-white/5 hover:bg-amber-500/20 hover:text-amber-300 transition-colors">🚀 Khoa Huyễn</button>
+        <button onclick="applySearchTag('Xuyên Không')" class="px-2 py-1 rounded-lg bg-white/5 hover:bg-amber-500/20 hover:text-amber-300 transition-colors">⏳ Xuyên Không</button>
+      </div>
+
+      <!-- Results list -->
+      <div id="modal-search-results" class="flex-1 overflow-y-auto p-3 space-y-2">
+        <div class="py-12 text-center text-sm opacity-50">Nhập từ khóa để bắt đầu tra cứu thư tịch...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- DRAWER: TỦ SÁCH CÁ NHÂN (LỊCH SỬ ĐỌC & YÊU THÍCH)                          -->
+  <!-- ========================================================================= -->
+  <div id="library-drawer" class="fixed inset-0 z-50 transition-opacity duration-300 hidden opacity-0 pointer-events-none">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-xs cursor-pointer" onclick="closeLibraryDrawer()"></div>
+    <div id="library-panel" class="absolute top-0 right-0 bottom-0 w-96 max-w-[90vw] shadow-2xl transition-transform duration-300 translate-x-full flex flex-col z-10 border-l" style="background: var(--drawer-bg); border-color: var(--border-base);">
+      <!-- Header -->
+      <div class="p-4 border-b flex items-center justify-between" style="border-color: var(--border-base);">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+          <h3 class="font-royal font-bold text-base tracking-wide text-amber-300">Tủ Sách Tu Chân</h3>
+        </div>
+        <button onclick="closeLibraryDrawer()" class="p-1.5 rounded-lg hover:bg-white/10 cursor-pointer opacity-70 hover:opacity-100">
+          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Tabs: Đang đọc / Yêu thích -->
+      <div class="flex border-b text-xs font-semibold" style="border-color: var(--border-base);">
+        <button onclick="setLibraryTab('history')" id="lib-tab-history" class="flex-1 py-3 text-center border-b-2 border-amber-500 text-amber-400 cursor-pointer">
+          Đang Đọc Dở (<span id="lib-history-count">0</span>)
+        </button>
+        <button onclick="setLibraryTab('favorites')" id="lib-tab-favorites" class="flex-1 py-3 text-center border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer">
+          Yêu Thích (<span id="lib-fav-count">0</span>)
+        </button>
+      </div>
+
+      <!-- Content container -->
+      <div id="library-drawer-content" class="flex-1 overflow-y-auto p-4 space-y-3">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- DRAWER: MỤC LỤC CHƯƠNG TRƯỢT (QUICK CHAPTER SELECTOR)                     -->
+  <!-- ========================================================================= -->
+  <div id="chapter-drawer" class="fixed inset-0 z-50 transition-opacity duration-300 hidden opacity-0 pointer-events-none">
+    <div class="absolute inset-0 bg-black/65 backdrop-blur-xs cursor-pointer" onclick="closeChapterDrawer()"></div>
+    <div id="drawer-panel" class="absolute top-0 left-0 bottom-0 w-88 max-w-[85vw] shadow-2xl transition-transform duration-300 -translate-x-full flex flex-col z-10 border-r" style="background: var(--drawer-bg); border-color: var(--border-base);">
+      <div class="p-4 border-b flex items-center justify-between" style="border-color: var(--border-base);">
+        <div>
+          <h3 class="font-royal font-bold text-base text-amber-300" id="drawer-book-title">Mục Lục Toàn Thư</h3>
+          <div class="text-[11px] opacity-60" id="drawer-book-subtitle">Đang nạp linh quyển...</div>
+        </div>
+        <button onclick="closeChapterDrawer()" class="p-1.5 rounded-lg hover:bg-white/10 cursor-pointer opacity-70 hover:opacity-100">
+          <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="p-3 border-b flex items-center gap-2" style="border-color: var(--border-base);">
+        <input id="drawer-search-input" oninput="filterDrawerChapters(this.value)" type="text" placeholder="Tìm số chương hoặc từ khóa..." class="w-full px-3.5 py-2 rounded-xl border text-xs outline-none focus:ring-2 focus:ring-amber-500/40" style="background: var(--bg-card); border-color: var(--border-base);">
+      </div>
+
+      <div id="drawer-chapters-list" class="flex-1 overflow-y-auto p-2 space-y-1">
+        <!-- Chapters list rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: CẢNH GIỚI TU VI INFO                                               -->
+  <!-- ========================================================================= -->
+  <div id="cultivation-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md hidden opacity-0 transition-opacity duration-200">
+    <div class="relative w-full max-w-md rounded-3xl border shadow-2xl p-6 text-center space-y-4" style="background: var(--bg-card); border-color: var(--border-highlight);">
+      <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-amber-500/10 border-2 border-amber-400 text-amber-300 shadow-xl">
+        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+      </div>
+      <div>
+        <h3 class="font-royal text-xl font-bold text-amber-300">Cảnh Giới Tu Vi</h3>
+        <p class="text-xs opacity-70 mt-1">Đọc càng nhiều hồi linh văn, tu vi tích lũy càng tăng tiến!</p>
+      </div>
+
+      <div class="p-4 rounded-2xl border text-left space-y-2.5" style="border-color: var(--border-base); background: rgba(0,0,0,0.2);">
+        <div class="flex justify-between text-xs font-semibold">
+          <span>Cảnh giới hiện tại:</span>
+          <span id="modal-realm-text" class="text-amber-400 font-bold">Nguyên Anh Kỳ</span>
+        </div>
+        <div class="w-full bg-white/10 rounded-full h-2.5 overflow-hidden">
+          <div id="modal-realm-progress" class="bg-gradient-to-r from-amber-500 to-yellow-300 h-2.5 rounded-full transition-all" style="width: 65%;"></div>
+        </div>
+        <div class="flex justify-between text-[11px] opacity-60">
+          <span>Đã lĩnh hội: <strong id="modal-read-count" class="text-white">0</strong> chương</span>
+          <span id="modal-next-realm">Cần thêm 10 chương</span>
+        </div>
+      </div>
+
+      <div class="text-xs opacity-60 text-left space-y-1">
+        <div>• <strong>Phàm Nhân:</strong> 0 - 5 chương</div>
+        <div>• <strong>Luyện Khí:</strong> 6 - 20 chương</div>
+        <div>• <strong>Trúc Cơ:</strong> 21 - 50 chương</div>
+        <div>• <strong>Kim Đan:</strong> 51 - 100 chương</div>
+        <div>• <strong>Nguyên Anh:</strong> 101 - 300 chương</div>
+        <div>• <strong>Hóa Thần:</strong> 301 - 1.000 chương</div>
+        <div>• <strong>Độ Kiếp Tiên Tôn:</strong> > 1.000 chương</div>
+      </div>
+
+      <button onclick="closeCultivationModal()" class="w-full py-2.5 rounded-xl font-semibold text-xs bg-amber-500 hover:bg-amber-400 text-black cursor-pointer transition-transform active:scale-95">
+        Đã Lĩnh Hội
+      </button>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- ========================================================================= -->
+  <!-- CORE JAVASCRIPT LOGIC                                                     -->
+  <!-- ========================================================================= -->
+  <script>
+    // API Configuration with automatic Cloudflare Pages function proxy fallback
+    const API_BASE = (window.location.hostname && !window.location.hostname.includes("127.0.0.1") && !window.location.hostname.includes("localhost") && window.location.protocol.startsWith("http")) ? "" : "http://161.118.220.254:8090";
+    const COVER_BASE = (window.location.hostname && !window.location.hostname.includes("127.0.0.1") && !window.location.hostname.includes("localhost") && window.location.protocol.startsWith("http")) ? "" : API_BASE;
+
+    // High-Speed Client-Side Chapter Cache & Instant Prefetch Engine
+    const chapterCache = new Map(); // `${bid}_${chNo}` -> chapterData
+    const prefetchQueue = new Set();
+
+    async function fetchChapterWithCache(bid, chapterNo) {
+      const key = `${bid}_${chapterNo}`;
+      if (chapterCache.has(key)) {
+        return chapterCache.get(key);
+      }
+      try {
+        const data = await apiFetch(`/api/books/${bid}/chapters/${chapterNo}`);
+        if (data && data.success) {
+          chapterCache.set(key, data);
+          if (chapterCache.size > 150) {
+            const oldestKey = chapterCache.keys().next().value;
+            chapterCache.delete(oldestKey);
+          }
+          return data;
+        }
+      } catch (errApi) {
+        try {
+          const bundleResp = await fetch(`/data/${bid}.json`);
+          if (bundleResp.ok) {
+            const bundle = await bundleResp.json();
+            if (bundle && bundle.chapters && bundle.chapters[chapterNo]) {
+              const chData = bundle.chapters[chapterNo];
+              const chNums = Object.keys(bundle.chapters).map(Number).sort((a, b) => a - b);
+              const idx = chNums.indexOf(chapterNo);
+              const prevNo = idx > 0 ? chNums[idx - 1] : null;
+              const nextNo = idx < chNums.length - 1 ? chNums[idx + 1] : null;
+              const payload = {
+                success: true,
+                bid: bid,
+                book_title: bundle.title || `Truyện #${bid}`,
+                chapter_no: chapterNo,
+                title: chData.title || `Chương ${chapterNo}`,
+                content: chData.content || "",
+                prev_no: prevNo,
+                next_no: nextNo
+              };
+              chapterCache.set(key, payload);
+              return payload;
+            }
+          }
+        } catch (eBundle) {}
+        throw errApi;
+      }
+    }
+
+    function prefetchAdjacentChapters(bid, currentNo, nextNo, prevNo) {
+      const targets = [];
+      if (nextNo) targets.push(nextNo);
+      if (nextNo) targets.push(nextNo + 1);
+      if (nextNo) targets.push(nextNo + 2);
+      if (prevNo) targets.push(prevNo);
+
+      targets.forEach(no => {
+        if (!no || no <= 0) return;
+        const key = `${bid}_${no}`;
+        if (!chapterCache.has(key) && !prefetchQueue.has(key)) {
+          prefetchQueue.add(key);
+          setTimeout(async () => {
+            try {
+              const res = await apiFetch(`/api/books/${bid}/chapters/${no}`);
+              if (res && res.success) {
+                chapterCache.set(key, res);
+              }
+            } catch (e) {
+              // Ignore prefetch errors
+            } finally {
+              prefetchQueue.delete(key);
+            }
+          }, 150);
+        }
+      });
+    }
+
+    // Application State
+    let cachedBooks = [];
+    let currentBookDetail = null;
+    let currentReaderBid = null;
+    let currentReaderChNo = null;
+    let currentSpotlightIndex = 0;
+    let spotlightInterval = null;
+
+    // Filter States
+    let filterChannel = "all";  // all, Nam Sinh, Nữ Sinh
+    let filterGenre = "all";    // all, Tiên Hiệp, Huyền Huyễn, Đô Thị, Khoa Huyễn, Xuyên Không, Ngôn Tình, Du Hí - Thể Thao, Lịch Sử - Quân Sự, Đồng Nhân
+    let filterStatus = "all";   // all, completed, translating
+    let filterLength = "all";   // all, gt1000, 500to1000, 100to500, lt100
+    let filterSort = "chaps_desc"; // chaps_desc, chaps_asc, title_asc
+    let currentSearchQuery = "";
+
+    const GENRES_CONFIG = [
+      { id: "Tiên Hiệp", icon: "⚔️" },
+      { id: "Huyền Huyễn", icon: "🐉" },
+      { id: "Đô Thị", icon: "🏙️" },
+      { id: "Khoa Huyễn", icon: "🚀" },
+      { id: "Xuyên Không", icon: "⏳" },
+      { id: "Ngôn Tình", icon: "🌸" },
+      { id: "Du Hí - Thể Thao", icon: "🎮" },
+      { id: "Lịch Sử - Quân Sự", icon: "📜" },
+      { id: "Đồng Nhân", icon: "⚡" }
+    ];
+
+    // Reader Customization Storage
+    let readerTheme = localStorage.getItem("timo_theme") || "dark";
+    let readerFontSize = parseInt(localStorage.getItem("timo_font_size")) || 20;
+    let readerIsSerif = localStorage.getItem("timo_font_serif") !== "false";
+    let readerLineHeight = localStorage.getItem("timo_line_height") || "1.9";
+    let readerWidth = localStorage.getItem("timo_reader_width") || "72ch";
+    let readerJustify = localStorage.getItem("timo_justify") !== "false";
+
+    // Cultivation Realms
+    const REALMS = [
+      { name: "Phàm Nhân", min: 0, next: 5 },
+      { name: "Luyện Khí Kỳ", min: 5, next: 20 },
+      { name: "Trúc Cơ Kỳ", min: 20, next: 50 },
+      { name: "Kim Đan Kỳ", min: 50, next: 100 },
+      { name: "Nguyên Anh Kỳ", min: 100, next: 300 },
+      { name: "Hóa Thần Kỳ", min: 300, next: 1000 },
+      { name: "Độ Kiếp Tiên Tôn", min: 1000, next: Infinity }
+    ];
+
+    // Safe Data Fetcher with Multi-Layered High Availability Fallback & Auto-Retry
+    async function apiFetch(endpoint) {
+      const url = endpoint.startsWith("http") ? endpoint : `${API_BASE}${endpoint}`;
+      
+      // Attempt 1 & 2: Primary route with instant auto-retry
+      for (let attempt = 1; attempt <= 2; attempt++) {
+        try {
+          const res = await fetch(url, { cache: "no-store" });
+          const ct = (res.headers.get("content-type") || "").toLowerCase();
+          if (res.ok && !ct.includes("text/html")) {
+            const data = await res.json();
+            if (data && (data.success || data.chapters || Array.isArray(data))) return data;
+          }
+        } catch (ePrimary) {}
+        if (attempt < 2) await new Promise(r => setTimeout(r, 400));
+      }
+
+      // Fallback 1: Direct Cloudflare Tunnel (HTTPS)
+      try {
+        const fb1 = "https://distributor-warranty-statutes-hidden.trycloudflare.com" + (endpoint.startsWith("/") ? endpoint : `/${endpoint}`);
+        const res1 = await fetch(fb1, { cache: "no-store" });
+        const ct1 = (res1.headers.get("content-type") || "").toLowerCase();
+        if (res1.ok && !ct1.includes("text/html")) {
+          const data1 = await res1.json();
+          if (data1 && (data1.success || data1.chapters || Array.isArray(data1))) return data1;
+        }
+      } catch (eFb1) {}
+
+      throw new Error("Máy chủ đang đồng bộ, vui lòng bấm Thử Lại sau giây lát");
+    }
+
+    // Dynamic, Non-Duplicating Cover Error Handler
+    window.handleCoverError = function(img) {
+      if (!img) return;
+      const bid = img.dataset.bid || "";
+      const title = img.getAttribute("alt") || img.dataset.title || "Timo";
+      if (!img.dataset.retried && bid) {
+        img.dataset.retried = "1";
+        setTimeout(() => {
+          img.src = `${COVER_BASE}/api/books/${bid}/cover?v=34&retry=1`;
+        }, 1200);
+        return;
+      }
+      const safeTitle = String(title || 'Timo').trim();
+      const initial = safeTitle.charAt(0).toUpperCase() || 'T';
+      const palettes = [
+        ['#4f46e5', '#7c3aed'], ['#059669', '#10b981'], ['#d97706', '#f59e0b'],
+        ['#dc2626', '#ef4444'], ['#7c2d12', '#b45309'], ['#0f766e', '#14b8a6'],
+        ['#4338ca', '#6366f1'], ['#be185d', '#ec4899'], ['#0284c7', '#38bdf8']
+      ];
+      let hash = 0;
+      for (let i = 0; i < safeTitle.length; i++) hash = (hash * 31 + safeTitle.charCodeAt(i)) & 0xffffff;
+      const [c1, c2] = palettes[Math.abs(hash) % palettes.length];
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="100%" height="100%">
+        <defs>
+          <linearGradient id="g_${bid}" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="${c1}" />
+            <stop offset="100%" stop-color="${c2}" />
+          </linearGradient>
+        </defs>
+        <rect width="400" height="600" fill="url(#g_${bid})" />
+        <circle cx="200" cy="240" r="90" fill="rgba(255,255,255,0.18)" />
+        <text x="200" y="275" font-family="'Playfair Display', serif" font-size="95" font-weight="bold" fill="#fff" text-anchor="middle">${initial}</text>
+        <text x="200" y="440" font-family="'Be Vietnam Pro', sans-serif" font-size="22" font-weight="bold" fill="#fff" text-anchor="middle" opacity="0.95">${safeTitle.slice(0, 16)}</text>
+      </svg>`;
+      img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    };
+
+    // High-Legibility Vietnamese Sanitizer (Guaranteed 0% Chinese)
+    function sanitizeVN(text) {
+      if (!text) return "";
+      let s = String(text);
+      s = s.replace(/，/g, ", ").replace(/、/g, ", ").replace(/：/g, ": ").replace(/；/g, "; ");
+      s = s.replace(/！/g, "! ").replace(/？/g, "? ").replace(/（/g, " (").replace(/）/g, ") ");
+      s = s.replace(/【/g, " [").replace(/】/g, "] ").replace(/《/g, ' "').replace(/》/g, '" ');
+      s = s.replace(/“/g, '"').replace(/”/g, '"').replace(/‘/g, "'").replace(/’/g, "'");
+      s = s.replace(/～/g, "~").replace(/＋/g, " + ").replace(/｜/g, " | ");
+      s = s.replace(/［/g, "[").replace(/］/g, "]").replace(/｛/g, "{").replace(/｝/g, "}");
+      s = s.replace(/🗐/g, " - ").replace(/□/g, " ").replace(/■/g, " ");
+      s = s.replace(/\s*的\s*/g, " Của ").replace(/\s*了\s*/g, " ");
+      // Triệt để loại bỏ 100% CJK dải Unicode
+      s = s.replace(/[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]/g, "");
+      s = s.replace(/:\s*:/g, ":").replace(/,\s*,/g, ",");
+      s = s.replace(/\s*:\s*/g, ": ").replace(/\s*,\s*/g, ", ");
+      s = s.replace(/"([a-zA-ZÀ-ỹ0-9])/g, '" $1');
+      s = s.replace(/([a-zA-ZÀ-ỹ0-9])"/g, '$1 "');
+      s = s.replace(/[ \t]+/g, " ");
+      return s.trim();
+    }
+
+    // Router Listener
+    window.addEventListener("hashchange", handleRoute);
+    window.addEventListener("load", () => {
+      applyThemeToBody(readerTheme);
+      updateCultivationBadge();
+      updateFavoritesNavCount();
+      handleRoute();
+      setupKeyboardShortcuts();
+    });
+
+    async function handleRoute() {
+      const hash = location.hash || "#/";
+      window.scrollTo({ top: 0, behavior: "instant" });
+
+      const readMatch = hash.match(/^#\/read\/([^\/]+)\/(\d+)$/);
+      if (readMatch) {
+        const bid = readMatch[1];
+        const chapterNo = parseInt(readMatch[2]);
+        document.getElementById("global-header").classList.add("hidden");
+        renderReaderView(bid, chapterNo);
+        return;
+      }
+
+      document.getElementById("global-header").classList.remove("hidden");
+
+      const bookMatch = hash.match(/^#\/book\/([^\/]+)$/);
+      if (bookMatch) {
+        const bid = bookMatch[1];
+        renderBookDetailView(bid);
+        return;
+      }
+
+      renderLibraryView();
+    }
+
+    // =========================================================================
+    // VIEW 1: MASTER TÀNG KINH CÁC (HOMEPAGE & TIMO FILTER)
+    // =========================================================================
+    async function renderLibraryView() {
+      document.title = "Timo Ngọc Béo • Tàng Kinh Các Tiên Hiệp Hoàng Gia";
+      const container = document.getElementById("main-content");
+
+      // Check last read book for quick resume
+      const lastRead = getLastReadHistory();
+
+      container.innerHTML = `
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+          <!-- 1. SPOTLIGHT BILLBOARD (KIM BẢNG ĐỀ DANH CAROUSEL) -->
+          <div id="spotlight-carousel" class="relative rounded-3xl overflow-hidden border shadow-2xl transition-all" style="background: var(--bg-card); border-color: var(--border-highlight);">
+            <div id="spotlight-content" class="p-6 sm:p-10 relative z-10">
+              <div class="shimmer-mask h-64 rounded-2xl bg-white/5"></div>
+            </div>
+            <!-- Indicator Dots -->
+            <div id="spotlight-dots" class="absolute bottom-4 right-6 sm:right-10 flex items-center gap-2 z-20"></div>
+          </div>
+
+          <!-- 2. QUICK RESUME READING CARD (NẾU CÓ LỊCH SỬ ĐỌC) -->
+          ${lastRead ? `
+            <div class="p-4 sm:p-5 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 transition-all hover:border-amber-500/50 shadow-lg" style="background: linear-gradient(135deg, rgba(212,175,55,0.08) 0%, rgba(225,29,72,0.05) 100%), var(--bg-card); border-color: var(--border-base);">
+              <div class="flex items-center gap-4 w-full sm:w-auto">
+                <div class="w-12 h-16 rounded-lg overflow-hidden shrink-0 shadow-md bg-stone-800">
+                  <img src="${COVER_BASE}/api/books/${lastRead.bid}/cover?v=34" alt="${sanitizeVN(lastRead.title)}" data-bid="${lastRead.bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+                </div>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400">Dấu Chân Tu Chân</span>
+                  </div>
+                  <h4 class="font-royal font-bold text-sm sm:text-base text-[var(--text-main)] truncate max-w-xs sm:max-w-md">
+                    ${sanitizeVN(lastRead.title)}
+                  </h4>
+                  <div class="text-xs opacity-60">Đang đọc dở: <strong>Hồi ${lastRead.chapterNo}</strong> • ${lastRead.timeAgo || 'Gần đây'}</div>
+                </div>
+              </div>
+              <a href="#/read/${lastRead.bid}/${lastRead.chapterNo}" class="w-full sm:w-auto px-6 py-2.5 rounded-xl font-semibold text-xs text-black bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 transition-all shadow-md active:scale-95 flex items-center justify-center gap-2">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Đọc Tiếp Hồi ${lastRead.chapterNo}</span>
+              </a>
+            </div>
+          ` : ''}
+
+          <!-- 3. BỘ LỌC ĐA TẦNG TIMO HOÀNG GIA (5 HÀNG TIÊU CHUẨN CAO) -->
+          <div class="p-6 rounded-3xl border shadow-xl space-y-4" style="background: var(--bg-card); border-color: var(--border-base);">
+            
+            <!-- HÀNG 1: KÊNH ĐỘC GIẢ -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 text-xs">
+              <span class="w-28 font-royal font-bold text-amber-400 shrink-0 uppercase tracking-widest text-[11px]">Kênh Độc Giả:</span>
+              <div class="flex flex-wrap items-center gap-2 flex-1">
+                <button onclick="setFilterChannel('all')" id="flt-ch-all" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all filter-pill-active" style="border-color: var(--border-base);">
+                  Tất cả
+                </button>
+                <button onclick="setFilterChannel('Nam Sinh')" id="flt-ch-nam" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all hover:bg-white/5 flex items-center gap-1.5" style="border-color: var(--border-base);">
+                  <span>🐉 Nam Sinh</span>
+                </button>
+                <button onclick="setFilterChannel('Nữ Sinh')" id="flt-ch-nu" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all hover:bg-white/5 flex items-center gap-1.5" style="border-color: var(--border-base);">
+                  <span>🌸 Nữ Sinh</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- HÀNG 2: THỂ LOẠI -->
+            <div class="flex flex-col sm:flex-row sm:items-start gap-2.5 text-xs pt-3 border-t" style="border-color: var(--border-base);">
+              <span class="w-28 font-royal font-bold text-amber-400 shrink-0 uppercase tracking-widest text-[11px] pt-1.5">Thể Loại:</span>
+              <div class="flex flex-wrap items-center gap-2 flex-1">
+                <button onclick="setFilterGenre('all')" id="flt-g-all" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all filter-pill-active" style="border-color: var(--border-base);">
+                  Tất cả
+                </button>
+                ${GENRES_CONFIG.map(g => `
+                  <button onclick="setFilterGenre('${g.id}')" id="flt-g-${encodeURIComponent(g.id)}" class="cursor-pointer px-3 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5 flex items-center gap-1" style="border-color: var(--border-base);">
+                    <span>${g.icon}</span>
+                    <span>${g.id}</span>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- HÀNG 3: TRẠNG THÁI -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 text-xs pt-3 border-t" style="border-color: var(--border-base);">
+              <span class="w-28 font-royal font-bold text-amber-400 shrink-0 uppercase tracking-widest text-[11px]">Trạng Thái:</span>
+              <div class="flex flex-wrap items-center gap-2 flex-1">
+                <button onclick="setFilterStatus('all')" id="flt-st-all" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all filter-pill-active" style="border-color: var(--border-base);">
+                  Tất cả
+                </button>
+                <button onclick="setFilterStatus('completed')" id="flt-st-completed" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  ✨ Đã Hoàn Thành
+                </button>
+                <button onclick="setFilterStatus('translating')" id="flt-st-translating" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  🔄 Đang Cập Nhật
+                </button>
+              </div>
+            </div>
+
+            <!-- HÀNG 4: DUNG LƯỢNG CHƯƠNG -->
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2.5 text-xs pt-3 border-t" style="border-color: var(--border-base);">
+              <span class="w-28 font-royal font-bold text-amber-400 shrink-0 uppercase tracking-widest text-[11px]">Dung Lượng:</span>
+              <div class="flex flex-wrap items-center gap-2 flex-1">
+                <button onclick="setFilterLength('all')" id="flt-len-all" class="cursor-pointer px-3.5 py-1.5 rounded-xl border text-xs font-semibold transition-all filter-pill-active" style="border-color: var(--border-base);">
+                  Tất cả
+                </button>
+                <button onclick="setFilterLength('gt1000')" id="flt-len-gt1000" class="cursor-pointer px-3 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  Đại Trường Thiên (> 1.000 ch.)
+                </button>
+                <button onclick="setFilterLength('500to1000')" id="flt-len-500to1000" class="cursor-pointer px-3 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  Trường Thiên (500 - 1.000 ch.)
+                </button>
+                <button onclick="setFilterLength('100to500')" id="flt-len-100to500" class="cursor-pointer px-3 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  Trung Thiên (100 - 500 ch.)
+                </button>
+                <button onclick="setFilterLength('lt100')" id="flt-len-lt100" class="cursor-pointer px-3 py-1.5 rounded-xl border text-xs font-medium transition-all hover:bg-white/5" style="border-color: var(--border-base);">
+                  Đoản Văn (< 100 ch.)
+                </button>
+              </div>
+            </div>
+
+            <!-- HÀNG 5: SẮP XẾP & CÔNG CỤ -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t" style="border-color: var(--border-base);">
+              <div class="flex items-center gap-2 text-xs">
+                <span class="font-royal font-bold text-amber-400 uppercase tracking-widest text-[11px]">Sắp Xếp:</span>
+                <button onclick="setFilterSort('chaps_desc')" id="flt-sort-desc" class="cursor-pointer px-3 py-1 rounded-lg border text-xs font-semibold filter-pill-active" style="border-color: var(--border-base);">
+                  Nhiều chương nhất ↓
+                </button>
+                <button onclick="setFilterSort('chaps_asc')" id="flt-sort-asc" class="cursor-pointer px-3 py-1 rounded-lg border text-xs font-medium hover:bg-white/5" style="border-color: var(--border-base);">
+                  Ít chương nhất ↑
+                </button>
+                <button onclick="setFilterSort('title_asc')" id="flt-sort-title" class="cursor-pointer px-3 py-1 rounded-lg border text-xs font-medium hover:bg-white/5" style="border-color: var(--border-base);">
+                  Tên A - Z
+                </button>
+              </div>
+
+              <div class="flex items-center gap-4 text-xs">
+                <div class="opacity-60">
+                  Hiển thị: <strong id="filter-result-count" class="text-amber-400">0</strong> bộ linh quyển
+                </div>
+                <button onclick="resetAllFilters()" class="cursor-pointer text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/5 hover:bg-white/10 transition-colors">
+                  <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                  <span>Đặt lại bộ lọc</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. LƯỚI TRUYỆN 3D TUYỆT TÁC (LUXURY BOOK GRID) -->
+          <div id="books-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            <!-- Shimmer skeletons while loading -->
+            ${Array(10).fill(0).map(() => `
+              <div class="flex flex-col gap-2">
+                <div class="w-full aspect-[2/3] rounded-2xl bg-white/5 shimmer-mask"></div>
+                <div class="h-4 w-3/4 rounded bg-white/5 mt-2"></div>
+                <div class="h-3 w-1/2 rounded bg-white/5"></div>
+              </div>
+            `).join('')}
+          </div>
+
+        </div>
+      `;
+
+      await loadBooksData();
+    }
+
+    async function loadBooksData() {
+      if (!cachedBooks.length) {
+        try {
+          let res = null;
+          try {
+            const staticResp = await fetch("/catalog.json");
+            if (staticResp.ok) res = await staticResp.json();
+          } catch (eStatic) {}
+          if (!res || !res.books) {
+            res = await apiFetch(`/api/books?limit=1000`);
+          }
+          if (res.success && res.books) { cachedBooks = res.books; const countEl = document.getElementById("header-books-count"); if (countEl) countEl.innerText = cachedBooks.length; }
+        } catch (e) {
+          console.error("Lỗi nạp danh sách truyện:", e);
+        }
+      }
+
+      setupSpotlightCarousel();
+      applyFilters();
+    }
+
+    // Spotlight Carousel Setup (Kim Bảng)
+    function setupSpotlightCarousel() {
+      if (!cachedBooks.length) return;
+      const topBooks = cachedBooks.slice(0, 5);
+      renderSpotlightSlide(currentSpotlightIndex);
+
+      const dotsContainer = document.getElementById("spotlight-dots");
+      if (dotsContainer) {
+        dotsContainer.innerHTML = topBooks.map((_, i) => `
+          <button onclick="setSpotlightSlide(${i})" class="w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${i === currentSpotlightIndex ? 'w-8 bg-amber-400' : 'bg-white/30 hover:bg-white/60'}"></button>
+        `).join('');
+      }
+
+      if (spotlightInterval) clearInterval(spotlightInterval);
+      spotlightInterval = setInterval(() => {
+        currentSpotlightIndex = (currentSpotlightIndex + 1) % topBooks.length;
+        renderSpotlightSlide(currentSpotlightIndex);
+      }, 7000);
+    }
+
+    window.setSpotlightSlide = (idx) => {
+      currentSpotlightIndex = idx;
+      renderSpotlightSlide(idx);
+    };
+
+    function renderSpotlightSlide(idx) {
+      const topBooks = cachedBooks.slice(0, 5);
+      const b = topBooks[idx];
+      if (!b) return;
+
+      const content = document.getElementById("spotlight-content");
+      const dotsContainer = document.getElementById("spotlight-dots");
+      if (!content) return;
+
+      const coverUrl = `${COVER_BASE}/api/books/${b.bid}/cover?v=34`;
+      const titleVN = sanitizeVN(b.display_title || b.hv_title);
+      const authorVN = sanitizeVN(b.display_author || b.hv_author || "Vô Danh");
+      const descVN = sanitizeVN(b.display_desc || b.description);
+      const genre = b.genre || "Tiên Hiệp";
+      const channel = b.channel || "Nam Sinh";
+
+      content.innerHTML = `
+        <div class="flex flex-col md:flex-row items-center gap-8 relative z-10 animate-fadeIn">
+          <!-- 3D Book Cover -->
+          <div class="w-44 sm:w-56 aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl shrink-0 book-card-inner relative border border-amber-500/30 group">
+            <img src="${coverUrl}" alt="${titleVN}" data-bid="${b.bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+            <div class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded text-[10px] font-bold tracking-widest uppercase bg-amber-500 text-black shadow-md">
+              TOP ${idx + 1} THỊNH HÀNH
+            </div>
+            <div class="absolute bottom-2.5 left-2.5 right-2.5 flex justify-between text-[11px] text-white/90">
+              <span class="font-bold">📜 ${b.translated_chapters} Hồi</span>
+              <span class="px-1.5 py-0.5 rounded bg-black/60 backdrop-blur-xs text-[10px]">EPUB</span>
+            </div>
+          </div>
+
+          <!-- Info & Actions -->
+          <div class="flex-1 space-y-4 text-center md:text-left">
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-2">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                ✨ Kim Bảng Đề Danh
+              </span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-white/80">
+                ${genre}
+              </span>
+              <span class="px-2.5 py-1 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-white/80">
+                ${channel}
+              </span>
+            </div>
+
+            <h2 class="font-royal text-2xl sm:text-4xl font-bold tracking-wide leading-tight text-white group-hover:text-amber-300 transition-colors">
+              ${titleVN}
+            </h2>
+
+            <div class="text-xs text-amber-200/70 font-medium">
+              Tác giả: <strong class="text-white">${authorVN}</strong> • Dung lượng: <strong class="text-amber-300">${b.translated_chapters}</strong> chương hoàn thiện
+            </div>
+
+            <p class="text-sm opacity-80 leading-relaxed font-sans line-clamp-3 max-w-2xl">
+              ${descVN}
+            </p>
+
+            <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3">
+              <a href="#/read/${b.bid}/1" class="px-6 py-3 rounded-2xl font-bold text-xs sm:text-sm text-black bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 hover:from-amber-300 hover:to-yellow-200 shadow-xl transition-all active:scale-95 flex items-center gap-2">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Đọc Ngay (Hồi 1)</span>
+              </a>
+
+              <a href="#/book/${b.bid}" class="px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm border border-white/20 hover:border-amber-400/50 hover:bg-white/5 transition-all text-white flex items-center gap-2">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                <span>Xem Mục Lục</span>
+              </a>
+
+              <a href="${API_BASE}/api/books/${b.bid}/epub" target="_blank" class="px-4 py-3 rounded-2xl font-semibold text-xs border border-white/10 hover:border-amber-400/40 hover:bg-white/5 opacity-80 hover:opacity-100 transition-all text-amber-200 flex items-center gap-1.5" title="Tải EPUB">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span class="hidden sm:inline">EPUB</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      `;
+
+      if (dotsContainer) {
+        const dots = dotsContainer.querySelectorAll("button");
+        dots.forEach((d, i) => {
+          if (i === idx) {
+            d.className = "w-8 h-2.5 rounded-full bg-amber-400 transition-all cursor-pointer";
+          } else {
+            d.className = "w-2.5 h-2.5 rounded-full bg-white/30 hover:bg-white/60 transition-all cursor-pointer";
+          }
+        });
+      }
+    }
+
+    // Filter Handlers
+    window.setFilterChannel = (ch) => {
+      filterChannel = ch;
+      ['all', 'Nam Sinh', 'Nữ Sinh'].forEach(val => {
+        const id = val === 'all' ? 'flt-ch-all' : (val === 'Nam Sinh' ? 'flt-ch-nam' : 'flt-ch-nu');
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (val === ch) el.classList.add('filter-pill-active');
+        else el.classList.remove('filter-pill-active');
+      });
+      applyFilters();
+    };
+
+    window.setFilterGenre = (g) => {
+      filterGenre = g;
+      ['all', ...GENRES_CONFIG.map(x => x.id)].forEach(val => {
+        const id = val === 'all' ? 'flt-g-all' : `flt-g-${encodeURIComponent(val)}`;
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (val === g) el.classList.add('filter-pill-active');
+        else el.classList.remove('filter-pill-active');
+      });
+      applyFilters();
+    };
+
+    window.setFilterStatus = (st) => {
+      filterStatus = st;
+      ['all', 'completed', 'translating'].forEach(val => {
+        const el = document.getElementById(`flt-st-${val}`);
+        if (!el) return;
+        if (val === st) el.classList.add('filter-pill-active');
+        else el.classList.remove('filter-pill-active');
+      });
+      applyFilters();
+    };
+
+    window.setFilterLength = (len) => {
+      filterLength = len;
+      ['all', 'gt1000', '500to1000', '100to500', 'lt100'].forEach(val => {
+        const el = document.getElementById(`flt-len-${val}`);
+        if (!el) return;
+        if (val === len) el.classList.add('filter-pill-active');
+        else el.classList.remove('filter-pill-active');
+      });
+      applyFilters();
+    };
+
+    window.setFilterSort = (sort) => {
+      filterSort = sort;
+      ['chaps_desc', 'chaps_asc', 'title_asc'].forEach(val => {
+        const id = val === 'chaps_desc' ? 'flt-sort-desc' : (val === 'chaps_asc' ? 'flt-sort-asc' : 'flt-sort-title');
+        const el = document.getElementById(id);
+        if (!el) return;
+        if (val === sort) el.classList.add('filter-pill-active');
+        else el.classList.remove('filter-pill-active');
+      });
+      applyFilters();
+    };
+
+    window.resetAllFilters = () => {
+      filterChannel = "all";
+      filterGenre = "all";
+      filterStatus = "all";
+      filterLength = "all";
+      filterSort = "chaps_desc";
+      currentSearchQuery = "";
+
+      setFilterChannel("all");
+      setFilterGenre("all");
+      setFilterStatus("all");
+      setFilterLength("all");
+      setFilterSort("chaps_desc");
+    };
+
+    function applyFilters() {
+      if (!cachedBooks.length) return;
+      let list = [...cachedBooks];
+
+      // Channel
+      if (filterChannel !== "all") {
+        list = list.filter(b => b.channel === filterChannel);
+      }
+
+      // Genre
+      if (filterGenre !== "all") {
+        list = list.filter(b => b.genre === filterGenre);
+      }
+
+      // Status
+      if (filterStatus === "completed") {
+        list = list.filter(b => b.is_finished);
+      } else if (filterStatus === "translating") {
+        list = list.filter(b => !b.is_finished);
+      }
+
+      // Chapter length
+      if (filterLength === "gt1000") {
+        list = list.filter(b => (b.translated_chapters || 0) >= 1000);
+      } else if (filterLength === "500to1000") {
+        list = list.filter(b => (b.translated_chapters || 0) >= 500 && (b.translated_chapters || 0) < 1000);
+      } else if (filterLength === "100to500") {
+        list = list.filter(b => (b.translated_chapters || 0) >= 100 && (b.translated_chapters || 0) < 500);
+      } else if (filterLength === "lt100") {
+        list = list.filter(b => (b.translated_chapters || 0) < 100);
+      }
+
+      // Search Query
+      if (currentSearchQuery) {
+        list = list.filter(b => {
+          const t = sanitizeVN(b.display_title || b.hv_title || "").toLowerCase();
+          const a = sanitizeVN(b.display_author || b.hv_author || "").toLowerCase();
+          const d = sanitizeVN(b.display_desc || "").toLowerCase();
+          return t.includes(currentSearchQuery) || a.includes(currentSearchQuery) || d.includes(currentSearchQuery);
+        });
+      }
+
+      // Sort
+      if (filterSort === "chaps_desc") {
+        list.sort((x, y) => (y.translated_chapters || 0) - (x.translated_chapters || 0));
+      } else if (filterSort === "chaps_asc") {
+        list.sort((x, y) => (x.translated_chapters || 0) - (y.translated_chapters || 0));
+      } else if (filterSort === "title_asc") {
+        list.sort((x, y) => (x.display_title || "").localeCompare(y.display_title || "", "vi"));
+      }
+
+      // Update counter
+      const counter = document.getElementById("filter-result-count");
+      if (counter) counter.innerText = list.length;
+
+      renderBookGrid(list);
+    }
+
+    function renderBookGrid(books) {
+      const grid = document.getElementById("books-grid");
+      if (!grid) return;
+
+      if (!books.length) {
+        grid.innerHTML = `
+          <div class="col-span-full py-20 text-center space-y-4">
+            <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center bg-white/5 border border-white/10 opacity-40">
+              <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </div>
+            <div class="text-sm opacity-60">Không tìm thấy bộ linh quyển nào khớp với bộ lọc hiện tại.</div>
+            <button onclick="resetAllFilters()" class="cursor-pointer text-xs font-semibold px-4 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 hover:bg-amber-500/20 transition-all">
+              Đặt lại tất cả bộ lọc
+            </button>
+          </div>
+        `;
+        return;
+      }
+
+      const favs = getFavoritesList();
+
+      grid.innerHTML = books.map(b => {
+        const coverUrl = `${COVER_BASE}/api/books/${b.bid}/cover?v=34`;
+        const titleVN = sanitizeVN(b.display_title || b.hv_title);
+        const authorVN = sanitizeVN(b.display_author || b.hv_author || "Vô Danh");
+        const genre = b.genre || "Tiên Hiệp";
+        const channel = b.channel || "Nam Sinh";
+        const isBoy = channel === "Nam Sinh";
+        const isFav = favs.includes(b.bid);
+
+        let statusBadge = '';
+        if (b.progress_status === 'completed') {
+          statusBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-bold uppercase tracking-wider">FULL</span>';
+        } else if (b.progress_status === 'hiatus') {
+          statusBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-rose-500/20 border border-rose-500/40 text-rose-400 font-bold uppercase tracking-wider" title="Hơn 60 ngày tác giả chưa ra chương mới">TẠM DỪNG</span>';
+        } else {
+          statusBadge = '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/20 border border-amber-500/40 text-amber-400 font-bold uppercase tracking-wider flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>ĐANG RA</span>';
+        }
+
+        return `
+          <div class="book-card-3d flex flex-col group relative">
+            <!-- Book Cover Wrapper -->
+            <a href="#/book/${b.bid}" class="relative w-full aspect-[2/3] rounded-2xl overflow-hidden book-card-inner bg-stone-800 border border-white/10 block cursor-pointer">
+              <img src="${coverUrl}" alt="${titleVN}" data-bid="${b.bid}" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" onerror="handleCoverError(this)">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/15 to-black/30 pointer-events-none"></div>
+
+              <!-- Top Ribbons: Channel & Genre -->
+              <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px]">
+                <span class="px-2 py-0.5 rounded-md font-bold tracking-wide text-white backdrop-blur-md ${isBoy ? 'bg-blue-600/80' : 'bg-pink-600/80'} shadow-sm">
+                  ${channel}
+                </span>
+                <span class="px-2 py-0.5 rounded-md font-semibold bg-black/60 text-amber-300 backdrop-blur-md border border-white/15">
+                  ${genre}
+                </span>
+              </div>
+
+              ${b.is_polished ? `
+                <div class="absolute top-9 left-2.5 z-10 px-2 py-0.5 rounded-md font-bold text-[9px] text-amber-200 bg-purple-900/90 border border-purple-400/40 backdrop-blur-md shadow-sm flex items-center gap-1">
+                  <span>✨</span> Đã Chuốt (${(b.polished_engine || 'Kimi').toUpperCase()})
+                </div>
+              ` : ''}
+
+              <!-- Bottom Ribbons: Chapter Count & EPUB -->
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-white">
+                <span class="px-2 py-0.5 rounded-md bg-black/60 backdrop-blur-md font-bold flex items-center gap-1">
+                  <span>📜</span>
+                  <span>${b.translated_chapters} Hồi</span>
+                </span>
+                ${b.has_epub ? `
+                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded bg-amber-500 text-black uppercase tracking-wider">
+                    EPUB
+                  </span>
+                ` : ''}
+              </div>
+            </a>
+
+            <!-- Quick Favorite Button on Corner -->
+            <button onclick="toggleFavorite('${b.bid}', event)" class="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center text-white/80 hover:text-rose-500 hover:scale-110 transition-all cursor-pointer" title="Thêm vào yêu thích">
+              <svg class="w-3.5 h-3.5 ${isFav ? 'fill-rose-500 text-rose-500' : ''}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </button>
+
+            <!-- Book Info -->
+            <div class="mt-3 flex flex-col flex-1">
+              <a href="#/book/${b.bid}" class="font-royal font-bold text-sm leading-snug line-clamp-2 text-[var(--text-main)] group-hover:text-amber-400 transition-colors" title="${titleVN}">
+                ${titleVN}
+              </a>
+              <div class="mt-1.5 flex items-center justify-between text-xs opacity-60">
+                <span class="truncate max-w-[130px]" title="Tác giả: ${authorVN}">✍️ ${authorVN}</span>
+                ${statusBadge}
+              </div>
+              ${b.latest_chapter_name ? `
+                <div class="mt-1 text-[11px] opacity-75 truncate text-amber-300/90 flex items-center gap-1" title="${sanitizeVN(b.latest_chapter_name)}">
+                  <span>⚡</span>
+                  <span class="truncate">${sanitizeVN(b.latest_chapter_name)}</span>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // VIEW 2: CHI TIẾT TÁC PHẨM (BOOK DETAIL PAGE)
+    // =========================================================================
+    async function renderBookDetailView(bid) {
+      const container = document.getElementById("main-content");
+
+      // Skeleton Loader
+      container.innerHTML = `
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8 animate-pulse">
+          <div class="h-6 w-32 bg-white/5 rounded-xl"></div>
+          <div class="flex flex-col sm:flex-row gap-8">
+            <div class="w-48 aspect-[2/3] bg-white/5 rounded-3xl"></div>
+            <div class="flex-1 space-y-4">
+              <div class="h-8 bg-white/5 rounded w-3/4"></div>
+              <div class="h-4 bg-white/5 rounded w-1/3"></div>
+              <div class="h-28 bg-white/5 rounded-2xl"></div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      try {
+        const res = await apiFetch(`/api/books/${bid}`);
+        if (!res.success || !res.book) throw new Error("Không tìm thấy linh quyển");
+
+        const b = res.book;
+        currentBookDetail = b;
+        const titleVN = sanitizeVN(b.display_title || b.hv_title);
+        const authorVN = sanitizeVN(b.display_author || b.hv_author || "Vô Danh");
+        const descVN = sanitizeVN(b.display_desc || b.description || "Tiểu thuyết tu chân huyền huyễn đặc sắc.");
+        const genre = b.genre || "Tiên Hiệp";
+        const channel = b.channel || "Nam Sinh";
+        const coverUrl = `${COVER_BASE}/api/books/${bid}/cover?v=34`;
+        const isFav = getFavoritesList().includes(bid);
+        const lastRead = getBookLastRead(bid);
+
+        // Pre-warm first chapter into cache for 0ms instant reading!
+        const targetPrewarmCh = lastRead ? lastRead.chapterNo : 1;
+        setTimeout(() => {
+          fetchChapterWithCache(bid, targetPrewarmCh).then(res => {
+            if (res && res.next_no) prefetchAdjacentChapters(bid, targetPrewarmCh, res.next_no, res.prev_no);
+          }).catch(() => {});
+        }, 100);
+
+        document.title = `${titleVN} • Timo Ngọc Béo`;
+
+        container.innerHTML = `
+          <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8 space-y-10">
+
+            <!-- Back button & Breadcrumb -->
+            <div class="flex items-center justify-between">
+              <a href="#/" class="inline-flex items-center gap-2 text-xs font-semibold text-amber-400 hover:text-amber-300 transition-colors cursor-pointer px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10">
+                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                <span>Trở về Thư Khố</span>
+              </a>
+
+              <div class="flex items-center gap-2 text-xs opacity-60">
+                <span>Tàng Kinh Các</span>
+                <span>/</span>
+                <span class="text-amber-400">${genre}</span>
+              </div>
+            </div>
+
+            <!-- Hero Book Presentation Section -->
+            <div class="relative p-6 sm:p-10 rounded-3xl border shadow-2xl overflow-hidden" style="background: var(--bg-card); border-color: var(--border-highlight);">
+              
+              <!-- Subtle Background Cover Blur Aura -->
+              <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-15 filter blur-3xl pointer-events-none" style="background: radial-gradient(circle, #D4AF37 0%, transparent 70%);"></div>
+
+              <div class="flex flex-col sm:flex-row gap-8 sm:gap-10 items-center sm:items-start relative z-10">
+                
+                <!-- 3D Luxury Cover -->
+                <div class="w-48 sm:w-60 aspect-[2/3] rounded-3xl overflow-hidden shadow-2xl shrink-0 border-2 border-amber-500/30 relative group">
+                  <img src="${coverUrl}" alt="${titleVN}" data-bid="${bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none"></div>
+                  <div class="absolute top-3 left-3 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-black">
+                    100% Hoàn Thiện
+                  </div>
+                </div>
+
+                <!-- Info & CTA -->
+                <div class="flex-1 space-y-5 text-center sm:text-left">
+                  <div class="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                      ${genre}
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/5 border border-white/10 text-white/80">
+                      ${channel}
+                    </span>
+                    <span class="px-3 py-1 rounded-full text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30">
+                      ⚡ Bản Dịch AI Tu Chân Thuần Việt
+                    </span>
+                    ${b.is_polished ? `
+                      <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/40 flex items-center gap-1.5 shadow-sm">
+                        ✨ Đã Chuốt (${(b.polished_engine || 'Kimi').toUpperCase()})
+                      </span>
+                    ` : ''}
+                  </div>
+
+                  <h1 class="font-royal font-bold text-2xl sm:text-4xl text-[var(--text-main)] leading-tight tracking-wide">
+                    ${titleVN}
+                  </h1>
+
+                  <div class="flex flex-wrap items-center justify-center sm:justify-start gap-4 text-xs opacity-75">
+                    <div>Tác giả: <strong class="text-white">${authorVN}</strong></div>
+                    <div>•</div>
+                    <div>Số chương: <strong class="text-amber-400">${b.total_chapters_db} Hồi</strong></div>
+                    <div>•</div>
+                    <div>Định dạng: <strong class="text-white">EPUB & Trực Tuyến</strong></div>
+                  </div>
+
+                  <!-- Live Progress & Latest Chapter Status Bar -->
+                  <div class="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                    <div class="flex items-center gap-2 min-w-0">
+                      <span class="w-2 h-2 rounded-full ${b.progress_status === 'completed' ? 'bg-emerald-400' : (b.progress_status === 'hiatus' ? 'bg-rose-400' : 'bg-emerald-400 animate-pulse')} shrink-0"></span>
+                      <span class="font-bold text-amber-300">Tiến độ:</span>
+                      <span class="font-semibold text-white uppercase">${b.progress_status === 'completed' ? 'Trọn Bộ (Hoàn Thành)' : (b.progress_status === 'hiatus' ? 'Tạm Dừng (Nghi vấn Drop)' : 'Đang Ra Liên Tục')}</span>
+                      ${b.latest_chapter_name ? `<span class="opacity-40">•</span> <span class="truncate text-amber-200">Hồi mới: ${sanitizeVN(b.latest_chapter_name)}</span>` : ''}
+                    </div>
+                    ${b.latest_chapter_time ? `<span class="opacity-60 text-[11px] shrink-0">📅 Cập nhật: ${b.latest_chapter_time}</span>` : ''}
+                  </div>
+
+                  <!-- CTAs: Đọc tiếp, Đọc từ đầu, Tải EPUB, Yêu thích -->
+                  <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3">
+                    ${lastRead ? `
+                      <a href="#/read/${bid}/${lastRead.chapterNo}" class="px-6 py-3.5 rounded-2xl font-bold text-sm text-black bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 shadow-xl transition-all active:scale-95 flex items-center gap-2">
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        <span>Đọc Tiếp Hồi ${lastRead.chapterNo}</span>
+                      </a>
+                    ` : ''}
+
+                    <a href="#/read/${bid}/1" class="px-6 py-3.5 rounded-2xl font-bold text-sm ${lastRead ? 'bg-white/10 text-white hover:bg-white/20' : 'text-black bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 shadow-xl'} transition-all active:scale-95 flex items-center gap-2">
+                      <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                      <span>${lastRead ? 'Đọc Lại Từ Hồi 1' : 'Bắt Đầu Đọc (Hồi 1)'}</span>
+                    </a>
+
+                    <a href="${API_BASE}/api/books/${bid}/epub" target="_blank" class="px-5 py-3.5 rounded-2xl font-semibold text-xs sm:text-sm border border-white/15 hover:border-amber-400/50 hover:bg-white/5 transition-all flex items-center gap-2" title="Tải file EPUB">
+                      <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                      <span>Tải EPUB Trọn Bộ</span>
+                    </a>
+
+                    <button onclick="toggleFavorite('${bid}', event)" id="detail-fav-btn" class="px-4 py-3.5 rounded-2xl font-semibold text-xs sm:text-sm border border-white/15 hover:border-rose-500/50 hover:bg-white/5 transition-all flex items-center gap-2 cursor-pointer ${isFav ? 'text-rose-400 border-rose-500/40 bg-rose-500/10' : ''}">
+                      <svg class="w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                      <span>${isFav ? 'Đã Yêu Thích' : 'Yêu Thích'}</span>
+                    </button>
+                  </div>
+
+                  <!-- Priority Polish Actions -->
+                  <div class="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3" id="polish-container-${bid}">
+                    ${b.is_polished ? `
+                      <div class="px-4 py-2.5 rounded-2xl bg-purple-900/30 border border-purple-500/40 text-purple-200 text-xs font-bold flex items-center gap-2 shadow-inner">
+                        <span>✨ Đã Chuốt Mượt Mà (${(b.polished_engine || 'Kimi').toUpperCase()})</span>
+                        <span class="text-white/40 text-[10px]">(${b.polished_at || 'Đã hoàn tất'})</span>
+                      </div>
+                    ` : `
+                      <button onclick="requestPolish('${bid}', 'kimi')" id="btn-polish-kimi-${bid}" class="px-4 py-3 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-xl transition-all active:scale-95 flex items-center gap-2 cursor-pointer border border-purple-400/30" title="Toàn bộ 12 luồng Kimi sẽ ưu tiên chuốt bộ truyện này trước">
+                        <span>✨ Chuốt Bằng Kimi (12L)</span>
+                      </button>
+                      <button onclick="requestPolish('${bid}', 'flash')" id="btn-polish-flash-${bid}" class="px-4 py-3 rounded-2xl font-bold text-xs sm:text-sm text-white bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-xl transition-all active:scale-95 flex items-center gap-2 cursor-pointer border border-amber-400/30" title="Toàn bộ 8 luồng Gemini 3.8 Flash sẽ ưu tiên chuốt bộ truyện này trước">
+                        <span>⚡ Chuốt Bằng Flash 3.8</span>
+                      </button>
+                    `}
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Tabs: 1. Văn Án & Tóm Tắt | 2. Mục Lục Toàn Thư | 3. Bình Luận -->
+            <div class="space-y-6">
+              <div class="flex items-center gap-2 border-b pb-2 text-sm font-semibold" style="border-color: var(--border-base);">
+                <button onclick="switchDetailTab('intro')" id="tab-btn-intro" class="px-4 py-2.5 rounded-xl border-b-2 border-amber-500 text-amber-400 cursor-pointer">
+                  📖 Văn Án Tác Phẩm
+                </button>
+                <button onclick="switchDetailTab('toc')" id="tab-btn-toc" class="px-4 py-2.5 rounded-xl border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer">
+                  📜 Mục Lục Chương (${b.chapters.length})
+                </button>
+                <button onclick="switchDetailTab('reviews')" id="tab-btn-reviews" class="px-4 py-2.5 rounded-xl border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer">
+                  💬 Đạo Hữu Luận Bàn
+                </button>
+              </div>
+
+              <!-- Tab Content 1: Văn Án -->
+              <div id="tab-content-intro" class="space-y-6">
+                <div class="p-6 rounded-3xl border leading-relaxed space-y-4 font-sans text-sm sm:text-base opacity-90 shadow-md" style="background: var(--bg-card); border-color: var(--border-base);">
+                  <div class="font-royal font-bold text-xs uppercase tracking-widest text-amber-400">
+                    Trích Yếu Tác Phẩm
+                  </div>
+                  <div class="whitespace-pre-line leading-[1.8] text-justify">
+                    ${descVN}
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                  <div class="p-4 rounded-2xl border flex items-center gap-3" style="background: var(--bg-card); border-color: var(--border-base);">
+                    <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400 shrink-0">⚡</div>
+                    <div>
+                      <div class="font-bold text-white">Mô hình AI Tu Chân</div>
+                      <div class="opacity-60">Dịch chuẩn văn phong tiên hiệp cổ phong</div>
+                    </div>
+                  </div>
+                  <div class="p-4 rounded-2xl border flex items-center gap-3" style="background: var(--bg-card); border-color: var(--border-base);">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">✨</div>
+                    <div>
+                      <div class="font-bold text-white">0% Chữ Hán Tồn Đọng</div>
+                      <div class="opacity-60">100% Thuần Việt trau chuốt, tự nhiên</div>
+                    </div>
+                  </div>
+                  <div class="p-4 rounded-2xl border flex items-center gap-3" style="background: var(--bg-card); border-color: var(--border-base);">
+                    <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 shrink-0">📱</div>
+                    <div>
+                      <div class="font-bold text-white">Tương Thích Mọi Thiết Bị</div>
+                      <div class="opacity-60">Hỗ trợ đọc Web, Kindle, Kobo qua EPUB</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tab Content 2: Mục Lục Chương -->
+              <div id="tab-content-toc" class="hidden space-y-4">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-3 p-3 rounded-2xl border" style="background: var(--bg-card); border-color: var(--border-base);">
+                  <div class="relative w-full sm:w-80">
+                    <input id="detail-toc-search" oninput="filterDetailChapters(this.value)" type="text" placeholder="Tìm số hồi hoặc từ khóa chương..." class="w-full px-3.5 py-2 rounded-xl border text-xs outline-none focus:ring-2 focus:ring-amber-500/40" style="background: rgba(0,0,0,0.2); border-color: var(--border-base);">
+                  </div>
+                  <div class="flex items-center gap-2 self-end sm:self-auto text-xs">
+                    <button onclick="toggleChaptersSort()" id="btn-toc-sort" class="px-3 py-1.5 rounded-xl border hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-1" style="border-color: var(--border-base);">
+                      <span>Đảo chiều: Cũ nhất trước ↓</span>
+                    </button>
+                  </div>
+                </div>
+
+                <div id="detail-chapters-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[600px] overflow-y-auto p-1">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+              <!-- Tab Content 3: Đạo Hữu Luận Bàn -->
+              <div id="tab-content-reviews" class="hidden space-y-6">
+                <!-- Comment form -->
+                <div class="p-5 rounded-3xl border space-y-3" style="background: var(--bg-card); border-color: var(--border-base);">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-royal font-bold text-amber-400">Gửi Linh Thư Luận Bàn</span>
+                    <span class="opacity-60">Cảnh giới: Nguyên Anh Kỳ</span>
+                  </div>
+                  <textarea id="detail-comment-input" rows="3" placeholder="Đạo hữu có cảm nghĩ gì về bộ linh quyển này? Hãy để lại bút tích..." class="w-full p-3 rounded-2xl border bg-black/20 text-sm outline-none resize-none placeholder:opacity-40" style="border-color: var(--border-base);"></textarea>
+                  <div class="flex justify-end">
+                    <button onclick="submitDetailComment('${bid}')" class="px-5 py-2 rounded-xl text-xs font-bold text-black bg-amber-400 hover:bg-amber-300 transition-transform active:scale-95 cursor-pointer shadow-md">
+                      Phát Đi Linh Thư
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Comments list -->
+                <div id="detail-comments-list" class="space-y-3">
+                  <!-- Rendered dynamically -->
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+
+        renderDetailChaptersList(b.chapters);
+        renderDetailComments(bid);
+
+      } catch (err) {
+        container.innerHTML = `
+          <div class="max-w-xl mx-auto py-20 text-center space-y-4">
+            <div class="text-red-400 text-sm font-semibold">Không thể nạp thông tin linh quyển: ${err.message}</div>
+            <a href="#/" class="inline-block px-4 py-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/30 text-xs font-semibold">Trở về Thư Khố</a>
+          </div>
+        `;
+      }
+    }
+
+    let detailChaptersReversed = false;
+    window.toggleChaptersSort = () => {
+      detailChaptersReversed = !detailChaptersReversed;
+      const btn = document.getElementById("btn-toc-sort");
+      if (btn) btn.innerText = detailChaptersReversed ? "Đảo chiều: Mới nhất trước ↑" : "Đảo chiều: Cũ nhất trước ↓";
+      if (currentBookDetail && currentBookDetail.chapters) {
+        renderDetailChaptersList(currentBookDetail.chapters);
+      }
+    };
+
+    function renderDetailChaptersList(chapters, filterText = "") {
+      const grid = document.getElementById("detail-chapters-grid");
+      if (!grid) return;
+
+      let list = [...(chapters || [])];
+      if (detailChaptersReversed) list.reverse();
+
+      if (filterText) {
+        const ft = filterText.toLowerCase();
+        list = list.filter(c => 
+          c.chapter_no.toString().includes(ft) || 
+          (c.title_vi && c.title_vi.toLowerCase().includes(ft))
+        );
+      }
+
+      if (!list.length) {
+        grid.innerHTML = `<div class="col-span-full py-8 text-center text-xs opacity-50">Không tìm thấy hồi nào khớp với từ khóa.</div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map(c => `
+        <a href="#/read/${currentBookDetail.bid}/${c.chapter_no}" class="p-3 rounded-2xl border text-xs font-medium truncate hover:border-amber-400/50 hover:bg-white/5 transition-all flex items-center justify-between cursor-pointer group" style="background: var(--bg-card); border-color: var(--border-base);">
+          <span class="truncate pr-2 group-hover:text-amber-400 transition-colors">${sanitizeVN(c.title_vi) || ('Hồi ' + c.chapter_no)}</span>
+          <span class="text-[10px] opacity-40 shrink-0 font-mono">#${c.chapter_no}</span>
+        </a>
+      `).join('');
+    }
+
+    window.filterDetailChapters = (val) => {
+      if (currentBookDetail && currentBookDetail.chapters) {
+        renderDetailChaptersList(currentBookDetail.chapters, val);
+      }
+    };
+
+    window.switchDetailTab = (tab) => {
+      ['intro', 'toc', 'reviews'].forEach(t => {
+        const btn = document.getElementById(`tab-btn-${t}`);
+        const content = document.getElementById(`tab-content-${t}`);
+        if (btn && content) {
+          if (t === tab) {
+            btn.className = "px-4 py-2.5 rounded-xl border-b-2 border-amber-500 text-amber-400 cursor-pointer font-bold";
+            content.classList.remove("hidden");
+          } else {
+            btn.className = "px-4 py-2.5 rounded-xl border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer";
+            content.classList.add("hidden");
+          }
+        }
+      });
+    };
+
+    // =========================================================================
+    // VIEW 3: ZEN MASTER CHAPTER READER (ĐẠT CHUẨN THƯ PHÒNG HOÀNG GIA)
+    // =========================================================================
+    async function renderReaderView(bid, chapterNo) {
+      currentReaderBid = bid;
+      currentReaderChNo = chapterNo;
+      const container = document.getElementById("main-content");
+      const isAlreadyInReader = document.getElementById("reader-wrapper") && document.getElementById("reader-body");
+
+      // Save reading progress to history
+      saveReadingHistory(bid, chapterNo);
+
+      // Function to render chapter data into the active DOM
+      function applyChapterData(res) {
+        const bookTitle = sanitizeVN(res.book_title || (currentBookDetail && currentBookDetail.display_title) || "Tiểu Thuyết Tu Chân");
+        const chTitle = sanitizeVN(res.title) || `Chương ${chapterNo}`;
+
+        document.title = `${chTitle} • ${bookTitle} • Timo Ngọc Béo`;
+        const bookNameEl = document.getElementById("reader-book-name");
+        const chTitleEl = document.getElementById("reader-ch-title");
+        const badgeEl = document.getElementById("reader-ch-badge");
+        if (bookNameEl) bookNameEl.innerText = bookTitle;
+        if (chTitleEl) chTitleEl.innerText = chTitle;
+        if (badgeEl) badgeEl.innerText = `Hồi Thứ ${chapterNo}`;
+
+        // Parse paragraphs and apply Drop Cap
+        const rawContent = res.content || "";
+        let paragraphs = rawContent.split(/\n+/).map(p => p.trim()).filter(p => p.length > 0);
+        
+        // Loại bỏ tiêu đề chương bị lặp lại ở dòng đầu tiên của nội dung để không bị trùng lặp với thẻ tiêu đề H1
+        if (paragraphs.length > 1) {
+          const p0 = paragraphs[0].trim();
+          if (
+            /^chương\s+\d+/i.test(p0) ||
+            /^hồi\s+\d+/i.test(p0) ||
+            p0.toLowerCase() === (chTitle || "").toLowerCase().trim() ||
+            p0.toLowerCase() === (res.title || "").toLowerCase().trim()
+          ) {
+            paragraphs.shift();
+          }
+        }
+
+        const article = document.getElementById("reader-body");
+
+        if (paragraphs.length) {
+          article.innerHTML = paragraphs.map((p, idx) => {
+            const cleanP = sanitizeVN(p);
+            // Chỉ áp dụng Drop-Cap cho đoạn đầu tiên nếu bắt đầu bằng chữ cái (tránh vỡ định dạng khi bắt đầu bằng dấu ngoặc kép)
+            const isFirst = idx === 0 && /^[A-Za-zÀ-ỹ]/.test(cleanP.trim());
+            return `
+              <p class="mb-7 leading-[${readerLineHeight}] ${isFirst ? 'chapter-dropcap' : 'indent-8'} selection:bg-amber-400 selection:text-black">
+                ${cleanP}
+              </p>
+            `;
+          }).join('');
+
+          // Estimate reading time (~250 words per minute)
+          const totalWords = rawContent.split(/\s+/).length;
+          const estMinutes = Math.max(1, Math.round(totalWords / 250));
+          const timeEst = document.getElementById("reader-time-estimate");
+          if (timeEst) timeEst.innerText = `Ước tính: ~${estMinutes} phút đọc`;
+
+        } else {
+          article.innerHTML = `<div class="py-16 text-center opacity-60">Nội dung chương đang được cập nhật...</div>`;
+        }
+
+        // Navigation Bindings
+        const prevNo = res.prev_no;
+        const nextNo = res.next_no;
+
+        const btnPrev = document.getElementById("btn-reader-prev");
+        const btnNext = document.getElementById("btn-reader-next");
+        const pillPrev = document.getElementById("pill-prev");
+        const pillNext = document.getElementById("pill-next");
+
+        if (prevNo) {
+          const goPrev = () => location.hash = `#/read/${bid}/${prevNo}`;
+          if (btnPrev) { btnPrev.onclick = goPrev; btnPrev.disabled = false; }
+          if (pillPrev) { pillPrev.onclick = goPrev; pillPrev.disabled = false; }
+        } else {
+          if (btnPrev) btnPrev.disabled = true;
+          if (pillPrev) pillPrev.disabled = true;
+        }
+
+        if (nextNo) {
+          const goNext = () => location.hash = `#/read/${bid}/${nextNo}`;
+          if (btnNext) { 
+            btnNext.onclick = goNext; 
+            btnNext.disabled = false; 
+            btnNext.innerHTML = `<span>Chương Kế Tiếp (→)</span><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>`;
+          }
+          if (pillNext) { pillNext.onclick = goNext; pillNext.disabled = false; }
+        } else {
+          if (btnNext) { btnNext.disabled = true; btnNext.innerText = "Hết Truyện (Đã Cập Nhật Hết)"; }
+          if (pillNext) pillNext.disabled = true;
+        }
+
+        // Smooth scroll to top instantly
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        // Trigger prefetching of adjacent chapters in background!
+        prefetchAdjacentChapters(bid, chapterNo, nextNo, prevNo);
+
+        renderReaderComments(bid, chapterNo);
+        ensureBookChaptersLoaded(bid);
+      }
+
+      // Check if data is already cached in memory for 0ms INSTANT load!
+      const cacheKey = `${bid}_${chapterNo}`;
+      const cachedData = chapterCache.get(cacheKey);
+
+      if (isAlreadyInReader) {
+        // FAST PATH: Seamless DOM update without destroying page shell!
+        if (cachedData) {
+          applyChapterData(cachedData);
+          return;
+        }
+        // If not in cache, show sleek quick loading state
+        const article = document.getElementById("reader-body");
+        if (article) {
+          article.innerHTML = `
+            <div class="py-24 text-center opacity-40 animate-pulse space-y-3">
+              <div class="h-4 w-3/4 mx-auto bg-white/5 rounded"></div>
+              <div class="h-4 w-full mx-auto bg-white/5 rounded"></div>
+              <div class="h-4 w-5/6 mx-auto bg-white/5 rounded"></div>
+            </div>
+          `;
+        }
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      } else {
+        // FULL PATH: Mount reader shell when entering from outside
+        container.innerHTML = `
+          <div id="reader-wrapper" class="min-h-screen transition-colors duration-300 pb-36">
+            
+            <!-- Smart Reading Progress Bar -->
+            <div class="fixed top-0 left-0 w-full h-[3px] z-50 bg-white/10">
+              <div id="reader-progress-bar" class="h-full transition-all duration-150 bg-gradient-to-r from-amber-500 to-yellow-300" style="width: 0%;"></div>
+            </div>
+
+            <!-- Sticky Minimalist Header -->
+            <header id="reader-header" class="sticky top-0 z-30 glass-acrylic px-4 sm:px-6 h-14 flex items-center justify-between transition-transform duration-300">
+              <div class="flex items-center gap-3">
+                <a href="#/book/${bid}" class="cursor-pointer p-2 rounded-xl hover:bg-white/10 flex items-center gap-1.5 text-xs font-semibold" title="Trở về trang truyện">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  <span class="hidden sm:inline">Về Truyện</span>
+                </a>
+                <span class="text-xs opacity-30">|</span>
+                <button onclick="openChapterDrawer()" class="cursor-pointer p-2 rounded-xl hover:bg-white/10 flex items-center gap-1.5 text-xs font-semibold" title="Mục lục trượt (M)">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  <span class="hidden sm:inline">Mục Lục</span>
+                </button>
+                <span class="text-xs opacity-30">|</span>
+                <span id="reader-book-name" class="font-royal text-xs font-bold tracking-wider text-amber-300 truncate max-w-[150px] sm:max-w-xs">
+                  Đang nạp linh quyển...
+                </span>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <!-- Reading Time Estimate -->
+                <span id="reader-time-estimate" class="hidden sm:inline text-[11px] opacity-60">Ước tính: ~3 phút</span>
+
+                <!-- Settings Button -->
+                <button onclick="openReaderSettingsModal()" class="p-2 rounded-xl hover:bg-white/10 cursor-pointer text-amber-400" title="Cài đặt thư phòng (S)">
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </header>
+
+            <!-- Main Reading Canvas -->
+            <main class="mx-auto px-5 sm:px-8 pt-10 sm:pt-14 transition-all" id="reader-container" style="max-width: ${readerWidth};">
+              
+              <!-- Chapter Title Heading -->
+              <div id="reader-heading-box" class="mb-12 text-center pb-8 border-b" style="border-color: var(--border-base);">
+                <div id="reader-ch-badge" class="inline-flex items-center gap-1.5 text-xs font-bold tracking-widest uppercase mb-3 px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                  Hồi Thứ ${chapterNo}
+                </div>
+                <h1 id="reader-ch-title" class="font-royal text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight mb-4 leading-snug">
+                  Đang thỉnh nạp linh văn...
+                </h1>
+                <div class="text-xs opacity-50">Tàng Kinh Các Timo • Máy Chủ Siêu Tốc 24/7 • 0% Chữ Hán</div>
+              </div>
+
+              <!-- Chapter Body Content -->
+              <article id="reader-body" class="${readerIsSerif ? 'font-serif' : 'font-sans'} transition-all" style="font-size: ${readerFontSize}px; line-height: ${readerLineHeight}; text-align: ${readerJustify ? 'justify' : 'left'};">
+                <div class="py-24 text-center opacity-40 animate-pulse space-y-3">
+                  <div class="h-4 w-3/4 mx-auto bg-white/5 rounded"></div>
+                  <div class="h-4 w-full mx-auto bg-white/5 rounded"></div>
+                  <div class="h-4 w-5/6 mx-auto bg-white/5 rounded"></div>
+                </div>
+              </article>
+
+              <!-- Bottom Navigation Bar (Chương Trước / Chương Sau) -->
+              <div class="mt-16 pt-10 border-t flex flex-col sm:flex-row items-center justify-between gap-4" style="border-color: var(--border-base);">
+                <button id="btn-reader-prev" class="w-full sm:w-auto px-6 py-3 rounded-2xl border text-sm font-semibold cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2 hover:bg-white/5" style="border-color: var(--border-base);">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                  <span>Chương Trước (←)</span>
+                </button>
+
+                <button onclick="openChapterDrawer()" class="cursor-pointer px-4 py-2.5 rounded-xl text-xs font-semibold border hover:bg-white/5 transition-colors" style="border-color: var(--border-base);">
+                  📜 Mục Lục Hồi
+                </button>
+
+                <button id="btn-reader-next" class="w-full sm:w-auto px-7 py-3 rounded-2xl font-bold text-sm text-black bg-gradient-to-r from-amber-400 to-yellow-300 hover:from-amber-300 hover:to-yellow-200 cursor-pointer disabled:opacity-20 disabled:cursor-not-allowed shadow-xl transition-all flex items-center justify-center gap-2">
+                  <span>Chương Kế Tiếp (→)</span>
+                  <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+
+              <!-- Chapter Comments Section -->
+              <section class="mt-20 pt-10 border-t" style="border-color: var(--border-base);">
+                <div class="flex items-center justify-between mb-6">
+                  <div class="flex items-center gap-2">
+                    <div class="w-2.5 h-2.5 rounded-full bg-amber-400"></div>
+                    <h3 class="font-royal font-bold text-lg text-amber-300">Đạo Hữu Luận Bàn</h3>
+                  </div>
+                  <div class="text-xs opacity-60">Khu vực trao đổi tâm đắc tu vi</div>
+                </div>
+
+                <!-- Comment form -->
+                <div class="p-5 rounded-3xl border mb-6 space-y-3" style="background: var(--bg-card); border-color: var(--border-base);">
+                  <textarea id="reader-comment-input" rows="3" placeholder="Đạo hữu có cảm ngộ gì về hồi này? Hãy lưu lại linh văn luận bàn..." class="w-full bg-black/20 p-3.5 rounded-2xl border text-sm outline-none resize-none placeholder:opacity-40" style="border-color: var(--border-base);"></textarea>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-xs opacity-50">Cảnh giới: Nguyên Anh Kỳ</span>
+                    <button onclick="submitReaderComment()" class="px-5 py-2 rounded-xl text-xs font-bold text-black bg-amber-400 hover:bg-amber-300 transition-transform active:scale-95 shadow-md cursor-pointer">
+                      Gửi Luận Bàn
+                    </button>
+                  </div>
+                </div>
+
+                <div id="reader-comments-list" class="space-y-3"></div>
+              </section>
+
+            </main>
+
+            <!-- Floating Reader Bottom Controls (Zen Pill) -->
+            <div id="reader-floating-pill" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 transition-all duration-300">
+              <div class="px-4 py-2.5 rounded-full border shadow-2xl backdrop-blur-2xl flex items-center gap-3" style="background: var(--header-bg); border-color: var(--border-highlight);">
+                
+                <button id="pill-prev" class="cursor-pointer p-2 rounded-full hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed" title="Hồi trước (←)">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+
+                <div class="h-4 w-px bg-white/20"></div>
+
+                <button onclick="openChapterDrawer()" class="cursor-pointer p-2 rounded-full hover:bg-white/10 text-xs font-semibold flex items-center gap-1.5" title="Mục lục (M)">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                  <span class="hidden sm:inline">Mục Lục</span>
+                </button>
+
+                <div class="h-4 w-px bg-white/20"></div>
+
+                <button onclick="openReaderSettingsModal()" class="cursor-pointer p-2 rounded-full hover:bg-white/10 text-xs font-semibold flex items-center gap-1.5" title="Cài đặt (S)">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                  <span class="hidden sm:inline">Cỡ Chữ: ${readerFontSize}</span>
+                </button>
+
+                <div class="h-4 w-px bg-white/20"></div>
+
+                <button id="pill-next" class="cursor-pointer p-2 rounded-full hover:bg-white/10 disabled:opacity-20 disabled:cursor-not-allowed" title="Hồi sau (→)">
+                  <svg class="w-4 h-4 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        `;
+
+        // Scroll Progress Handler
+        let lastScrollY = window.scrollY;
+        window.onscroll = () => {
+          const cur = window.scrollY;
+          const total = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = total > 0 ? (cur / total) * 100 : 0;
+          
+          const pb = document.getElementById("reader-progress-bar");
+          if (pb) pb.style.width = progress + "%";
+
+          // Auto hide/reveal header & floating pill on scroll
+          const header = document.getElementById("reader-header");
+          const pill = document.getElementById("reader-floating-pill");
+          if (cur > 150 && cur > lastScrollY) {
+            if (header) header.style.transform = "translateY(-100%)";
+            if (pill) pill.style.transform = "translate(-50%, 150%)";
+          } else {
+            if (header) header.style.transform = "translateY(0)";
+            if (pill) pill.style.transform = "translate(-50%, 0)";
+          }
+          lastScrollY = cur;
+        };
+      }
+
+      try {
+        const res = await fetchChapterWithCache(bid, chapterNo);
+        if (!res.success) throw new Error("Chương chưa có nội dung");
+        applyChapterData(res);
+      } catch (err) {
+        document.getElementById("reader-body").innerHTML = `
+          <div class="py-20 text-center space-y-4">
+            <div class="text-rose-400 text-sm font-semibold">Không thể tải nội dung hồi ${chapterNo}: ${err.message}</div>
+            <div class="flex items-center justify-center gap-3">
+              <button onclick="loadReaderChapter('${bid}', ${chapterNo})" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 text-black font-semibold text-xs hover:bg-amber-400 transition-all cursor-pointer shadow-lg shadow-amber-500/20">
+                <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+                <span>Thử Lại Ngay</span>
+              </button>
+              <a href="#/book/${bid}" class="inline-block px-4 py-2 rounded-xl bg-white/5 text-amber-300 border border-amber-500/30 text-xs font-semibold hover:bg-white/10 transition-all">Trở về Mục Lục</a>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    // =========================================================================
+    // MODAL: READING ROOM SETTINGS (CÀI ĐẶT THƯ PHÒNG)
+    // =========================================================================
+    function openReaderSettingsModal() {
+      let modal = document.getElementById("reader-settings-modal");
+      if (!modal) {
+        modal = document.createElement("div");
+        modal.id = "reader-settings-modal";
+        modal.className = "fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-opacity duration-200";
+        document.body.appendChild(modal);
+      }
+
+      modal.innerHTML = `
+        <div class="relative w-full max-w-md rounded-3xl border shadow-2xl p-6 space-y-6" style="background: var(--bg-card); border-color: var(--border-highlight);">
+          <div class="flex items-center justify-between border-b pb-3" style="border-color: var(--border-base);">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-amber-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+              <h3 class="font-royal font-bold text-base text-amber-300">Cài Đặt Thư Phòng</h3>
+            </div>
+            <button onclick="closeReaderSettingsModal()" class="p-1 rounded-lg hover:bg-white/10 cursor-pointer opacity-70">
+              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          <!-- 4 Themes Selector -->
+          <div class="space-y-2 text-xs">
+            <span class="font-bold opacity-75">Theme Màu Thư Phòng:</span>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="setGlobalTheme('dark')" class="p-3 rounded-2xl border text-left flex items-center gap-2 cursor-pointer transition-all ${readerTheme === 'dark' ? 'border-amber-400 ring-2 ring-amber-400/30' : 'border-white/10'}" style="background: #0B0F17; color: #F1F5F9;">
+                <span class="w-4 h-4 rounded-full bg-amber-400"></span>
+                <span>Huyền Mặc (Tối)</span>
+              </button>
+              <button onclick="setGlobalTheme('parchment')" class="p-3 rounded-2xl border text-left flex items-center gap-2 cursor-pointer transition-all ${readerTheme === 'parchment' ? 'border-amber-700 ring-2 ring-amber-700/30' : 'border-stone-300'}" style="background: #F7F4EB; color: #24201A;">
+                <span class="w-4 h-4 rounded-full bg-[#8C2D19]"></span>
+                <span>Giấy Cổ (Sáng)</span>
+              </button>
+              <button onclick="setGlobalTheme('emerald')" class="p-3 rounded-2xl border text-left flex items-center gap-2 cursor-pointer transition-all ${readerTheme === 'emerald' ? 'border-emerald-600 ring-2 ring-emerald-600/30' : 'border-emerald-200'}" style="background: #EDF3EB; color: #18261E;">
+                <span class="w-4 h-4 rounded-full bg-emerald-600"></span>
+                <span>Thanh Trà (Xanh)</span>
+              </button>
+              <button onclick="setGlobalTheme('sepia')" class="p-3 rounded-2xl border text-left flex items-center gap-2 cursor-pointer transition-all ${readerTheme === 'sepia' ? 'border-amber-800 ring-2 ring-amber-800/30' : 'border-amber-200'}" style="background: #F4ECE1; color: #2F241C;">
+                <span class="w-4 h-4 rounded-full bg-amber-800"></span>
+                <span>Bình Minh (Sepia)</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Font Size Slider -->
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between font-bold opacity-75">
+              <span>Cỡ Chữ:</span>
+              <span id="settings-fontsize-label" class="text-amber-400">${readerFontSize}px</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-xs">A-</span>
+              <input type="range" min="16" max="32" step="1" value="${readerFontSize}" oninput="setReaderFontSize(this.value)" class="w-full accent-amber-400 cursor-pointer">
+              <span class="text-base font-bold">A+</span>
+            </div>
+          </div>
+
+          <!-- Font Family & Justify -->
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div class="space-y-1.5">
+              <span class="font-bold opacity-75">Kiểu Chữ:</span>
+              <div class="flex rounded-xl border p-1" style="border-color: var(--border-base);">
+                <button onclick="setReaderFont(true)" class="flex-1 py-1.5 rounded-lg text-center font-serif ${readerIsSerif ? 'bg-amber-500 text-black font-bold' : 'opacity-60'}">Serif (Lora)</button>
+                <button onclick="setReaderFont(false)" class="flex-1 py-1.5 rounded-lg text-center font-sans ${!readerIsSerif ? 'bg-amber-500 text-black font-bold' : 'opacity-60'}">Sans (Hiện đại)</button>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <span class="font-bold opacity-75">Căn Lề:</span>
+              <div class="flex rounded-xl border p-1" style="border-color: var(--border-base);">
+                <button onclick="setReaderJustify(true)" class="flex-1 py-1.5 rounded-lg text-center ${readerJustify ? 'bg-amber-500 text-black font-bold' : 'opacity-60'}">Đều 2 bên</button>
+                <button onclick="setReaderJustify(false)" class="flex-1 py-1.5 rounded-lg text-center ${!readerJustify ? 'bg-amber-500 text-black font-bold' : 'opacity-60'}">Căn trái</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reader Width -->
+          <div class="space-y-1.5 text-xs">
+            <span class="font-bold opacity-75">Độ Rộng Khung Đọc:</span>
+            <div class="grid grid-cols-3 gap-2">
+              <button onclick="setReaderWidth('60ch')" class="py-2 rounded-xl border text-center ${readerWidth === '60ch' ? 'border-amber-400 bg-amber-500/10 text-amber-400 font-bold' : 'border-white/10 hover:bg-white/5'}">Hẹp (60ch)</button>
+              <button onclick="setReaderWidth('72ch')" class="py-2 rounded-xl border text-center ${readerWidth === '72ch' ? 'border-amber-400 bg-amber-500/10 text-amber-400 font-bold' : 'border-white/10 hover:bg-white/5'}">Chuẩn (72ch)</button>
+              <button onclick="setReaderWidth('85ch')" class="py-2 rounded-xl border text-center ${readerWidth === '85ch' ? 'border-amber-400 bg-amber-500/10 text-amber-400 font-bold' : 'border-white/10 hover:bg-white/5'}">Rộng (85ch)</button>
+            </div>
+          </div>
+
+          <button onclick="closeReaderSettingsModal()" class="w-full py-2.5 rounded-xl text-xs font-bold bg-amber-400 text-black hover:bg-amber-300 transition-transform active:scale-95 cursor-pointer">
+            Hoàn Tất Cài Đặt
+          </button>
+        </div>
+      `;
+
+      modal.classList.remove("hidden");
+    }
+
+    function closeReaderSettingsModal() {
+      const modal = document.getElementById("reader-settings-modal");
+      if (modal) modal.classList.add("hidden");
+    }
+
+    window.setReaderFontSize = (val) => {
+      readerFontSize = parseInt(val);
+      localStorage.setItem("timo_font_size", readerFontSize);
+      const body = document.getElementById("reader-body");
+      if (body) body.style.fontSize = readerFontSize + "px";
+      const lbl = document.getElementById("settings-fontsize-label");
+      if (lbl) lbl.innerText = readerFontSize + "px";
+    };
+
+    window.setReaderFont = (isSerif) => {
+      readerIsSerif = isSerif;
+      localStorage.setItem("timo_font_serif", readerIsSerif);
+      const body = document.getElementById("reader-body");
+      if (body) {
+        body.className = `${readerIsSerif ? 'font-serif' : 'font-sans'} transition-all`;
+      }
+      openReaderSettingsModal();
+    };
+
+    window.setReaderJustify = (just) => {
+      readerJustify = just;
+      localStorage.setItem("timo_justify", readerJustify);
+      const body = document.getElementById("reader-body");
+      if (body) body.style.textAlign = readerJustify ? "justify" : "left";
+      openReaderSettingsModal();
+    };
+
+    window.setReaderWidth = (w) => {
+      readerWidth = w;
+      localStorage.setItem("timo_reader_width", w);
+      const container = document.getElementById("reader-container");
+      if (container) container.style.maxWidth = w;
+      openReaderSettingsModal();
+    };
+
+    // =========================================================================
+    // DRAWER: CHAPTERS SELECTOR (DRAWER MỤC LỤC TRƯỢT)
+    // =========================================================================
+    async function ensureBookChaptersLoaded(bid, forceRefresh = false) {
+      if (!currentBookDetail || currentBookDetail.bid !== bid || !currentBookDetail.chapters || forceRefresh || (currentReaderChNo && currentReaderChNo > currentBookDetail.chapters.length)) {
+        try {
+          const res = await apiFetch(`/api/books/${bid}`);
+          if (res.success && res.book) {
+            currentBookDetail = res.book;
+          }
+        } catch (e) {}
+      }
+      if (currentBookDetail) {
+        const titleEl = document.getElementById("drawer-book-title");
+        const subEl = document.getElementById("drawer-book-subtitle");
+        if (titleEl) titleEl.innerText = sanitizeVN(currentBookDetail.display_title || "Mục Lục");
+        if (subEl) subEl.innerText = `Tổng cộng ${currentBookDetail.chapters.length} hồi đầy đủ`;
+        renderDrawerChaptersList(currentBookDetail.chapters);
+      }
+    }
+
+    function renderDrawerChaptersList(chapters, filterText = "") {
+      const listEl = document.getElementById("drawer-chapters-list");
+      if (!listEl) return;
+      let filtered = chapters || [];
+      if (filterText) {
+        const ft = filterText.toLowerCase();
+        filtered = filtered.filter(c => 
+          c.chapter_no.toString().includes(ft) || 
+          (c.title_vi && c.title_vi.toLowerCase().includes(ft))
+        );
+      }
+
+      listEl.innerHTML = filtered.map(c => {
+        const isCurrent = c.chapter_no === currentReaderChNo;
+        return `
+          <a href="#/read/${currentReaderBid}/${c.chapter_no}" onclick="closeChapterDrawer()" class="px-3.5 py-2.5 rounded-xl text-xs flex items-center justify-between cursor-pointer transition-all ${isCurrent ? 'bg-amber-400 text-black font-bold shadow-md' : 'hover:bg-white/5 opacity-80 hover:opacity-100'}">
+            <span class="truncate pr-2">${sanitizeVN(c.title_vi) || ('Hồi ' + c.chapter_no)}</span>
+            <span class="text-[10px] shrink-0 font-mono ${isCurrent ? 'text-black/70' : 'opacity-40'}">#${c.chapter_no}</span>
+          </a>
+        `;
+      }).join('');
+    }
+
+    window.filterDrawerChapters = (val) => {
+      if (currentBookDetail && currentBookDetail.chapters) {
+        renderDrawerChaptersList(currentBookDetail.chapters, val);
+      }
+    };
+
+    window.openChapterDrawer = () => {
+      if (currentReaderBid) {
+        ensureBookChaptersLoaded(currentReaderBid, true);
+      }
+      const drawer = document.getElementById("chapter-drawer");
+      const panel = document.getElementById("drawer-panel");
+      drawer.classList.remove("hidden");
+      setTimeout(() => {
+        drawer.classList.remove("opacity-0", "pointer-events-none");
+        panel.classList.remove("-translate-x-full");
+      }, 10);
+    };
+
+    window.closeChapterDrawer = () => {
+      const drawer = document.getElementById("chapter-drawer");
+      const panel = document.getElementById("drawer-panel");
+      panel.classList.add("-translate-x-full");
+      drawer.classList.add("opacity-0", "pointer-events-none");
+      setTimeout(() => {
+        drawer.classList.add("hidden");
+      }, 300);
+    };
+
+    // =========================================================================
+    // SPOTLIGHT SEARCH MODAL (COMMAND PALETTE: Ctrl + K)
+    // =========================================================================
+    window.openSearchModal = () => {
+      const modal = document.getElementById("search-modal");
+      const box = document.getElementById("search-modal-box");
+      const input = document.getElementById("modal-search-input");
+      modal.classList.remove("hidden");
+      setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        box.classList.remove("scale-95");
+        if (input) {
+          input.focus();
+          input.oninput = handleModalSearch;
+        }
+      }, 10);
+    };
+
+    window.closeSearchModal = () => {
+      const modal = document.getElementById("search-modal");
+      const box = document.getElementById("search-modal-box");
+      box.classList.add("scale-95");
+      modal.classList.add("opacity-0");
+      setTimeout(() => {
+        modal.classList.add("hidden");
+      }, 200);
+    };
+
+    window.applySearchTag = (tag) => {
+      const input = document.getElementById("modal-search-input");
+      if (input) {
+        input.value = tag;
+        handleModalSearch();
+      }
+    };
+
+    function handleModalSearch() {
+      const input = document.getElementById("modal-search-input");
+      const val = input.value.trim().toLowerCase();
+      const resultsContainer = document.getElementById("modal-search-results");
+      if (!resultsContainer) return;
+
+      if (!val) {
+        resultsContainer.innerHTML = `<div class="py-12 text-center text-sm opacity-50">Nhập từ khóa để bắt đầu tra cứu thư tịch...</div>`;
+        return;
+      }
+
+      const matched = cachedBooks.filter(b => {
+        const t = sanitizeVN(b.display_title || b.hv_title || "").toLowerCase();
+        const a = sanitizeVN(b.display_author || b.hv_author || "").toLowerCase();
+        const g = (b.genre || "").toLowerCase();
+        return t.includes(val) || a.includes(val) || g.includes(val);
+      }).slice(0, 15);
+
+      if (!matched.length) {
+        resultsContainer.innerHTML = `<div class="py-12 text-center text-sm opacity-50">Không tìm thấy linh quyển nào khớp với "${val}".</div>`;
+        return;
+      }
+
+      resultsContainer.innerHTML = matched.map(b => `
+        <a href="#/book/${b.bid}" onclick="closeSearchModal()" class="flex items-center gap-3.5 p-3 rounded-2xl hover:bg-white/10 transition-colors cursor-pointer border border-transparent hover:border-amber-500/30">
+          <div class="w-10 h-14 rounded-lg overflow-hidden shrink-0 shadow-sm bg-stone-800">
+            <img src="${COVER_BASE}/api/books/${b.bid}/cover?v=34" alt="${sanitizeVN(b.display_title || b.hv_title)}" data-bid="${b.bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="font-royal font-bold text-sm text-[var(--text-main)] truncate">${sanitizeVN(b.display_title || b.hv_title)}</div>
+            <div class="text-xs opacity-60 mt-0.5 flex items-center gap-2">
+              <span>✍️ ${sanitizeVN(b.display_author || b.hv_author || 'Vô Danh')}</span>
+              <span>•</span>
+              <span class="text-amber-400 font-semibold">${b.genre || 'Tiên Hiệp'}</span>
+              <span>•</span>
+              <span>${b.translated_chapters} Hồi</span>
+            </div>
+          </div>
+          <span class="text-xs px-2 py-1 rounded bg-white/5 opacity-50 text-[10px]">Xem</span>
+        </a>
+      `).join('');
+    }
+
+    // =========================================================================
+    // TỦ SÁCH CÁ NHÂN (LỊCH SỬ & YÊU THÍCH)
+    // =========================================================================
+    let currentLibraryTab = "history";
+
+    window.openLibraryDrawer = () => {
+      const drawer = document.getElementById("library-drawer");
+      const panel = document.getElementById("library-panel");
+      drawer.classList.remove("hidden");
+      setTimeout(() => {
+        drawer.classList.remove("opacity-0", "pointer-events-none");
+        panel.classList.remove("translate-x-full");
+      }, 10);
+      renderLibraryDrawerContent();
+    };
+
+    window.closeLibraryDrawer = () => {
+      const drawer = document.getElementById("library-drawer");
+      const panel = document.getElementById("library-panel");
+      panel.classList.add("translate-x-full");
+      drawer.classList.add("opacity-0", "pointer-events-none");
+      setTimeout(() => {
+        drawer.classList.add("hidden");
+      }, 300);
+    };
+
+    window.setLibraryTab = (tab) => {
+      currentLibraryTab = tab;
+      const btnHist = document.getElementById("lib-tab-history");
+      const btnFav = document.getElementById("lib-tab-favorites");
+      if (tab === "history") {
+        btnHist.className = "flex-1 py-3 text-center border-b-2 border-amber-500 text-amber-400 font-bold cursor-pointer";
+        btnFav.className = "flex-1 py-3 text-center border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer";
+      } else {
+        btnFav.className = "flex-1 py-3 text-center border-b-2 border-amber-500 text-amber-400 font-bold cursor-pointer";
+        btnHist.className = "flex-1 py-3 text-center border-b-2 border-transparent opacity-60 hover:opacity-100 cursor-pointer";
+      }
+      renderLibraryDrawerContent();
+    };
+
+    function renderLibraryDrawerContent() {
+      const container = document.getElementById("library-drawer-content");
+      if (!container) return;
+
+      if (currentLibraryTab === "history") {
+        const history = getReadingHistoryList();
+        const countEl = document.getElementById("lib-history-count");
+        if (countEl) countEl.innerText = history.length;
+
+        if (!history.length) {
+          container.innerHTML = `<div class="py-16 text-center text-xs opacity-50">Đạo hữu chưa đọc bộ linh quyển nào gần đây.</div>`;
+          return;
+        }
+
+        container.innerHTML = history.map(item => `
+          <div class="p-3.5 rounded-2xl border flex items-center justify-between gap-3" style="background: var(--bg-card); border-color: var(--border-base);">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-10 h-14 rounded-lg overflow-hidden shrink-0 shadow-sm bg-stone-800">
+                <img src="${COVER_BASE}/api/books/${item.bid}/cover?v=34" alt="${sanitizeVN(item.title)}" data-bid="${item.bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+              </div>
+              <div class="min-w-0">
+                <a href="#/book/${item.bid}" onclick="closeLibraryDrawer()" class="font-royal font-bold text-xs text-[var(--text-main)] truncate block hover:text-amber-400">${sanitizeVN(item.title)}</a>
+                <div class="text-[11px] opacity-60 mt-0.5">Đã đọc đến: <strong>Hồi ${item.chapterNo}</strong></div>
+              </div>
+            </div>
+            <a href="#/read/${item.bid}/${item.chapterNo}" onclick="closeLibraryDrawer()" class="px-3 py-1.5 rounded-xl text-xs font-bold text-black bg-amber-400 hover:bg-amber-300 shrink-0 shadow-xs">
+              Đọc Tiếp
+            </a>
+          </div>
+        `).join('');
+
+      } else {
+        const favBids = getFavoritesList();
+        const countEl = document.getElementById("lib-fav-count");
+        if (countEl) countEl.innerText = favBids.length;
+
+        if (!favBids.length) {
+          container.innerHTML = `<div class="py-16 text-center text-xs opacity-50">Tủ sách yêu thích đang trống. Hãy bấm biểu tượng trái tim để lưu lại!</div>`;
+          return;
+        }
+
+        const favBooks = cachedBooks.filter(b => favBids.includes(b.bid));
+        container.innerHTML = favBooks.map(b => `
+          <div class="p-3.5 rounded-2xl border flex items-center justify-between gap-3" style="background: var(--bg-card); border-color: var(--border-base);">
+            <div class="flex items-center gap-3 min-w-0">
+              <div class="w-10 h-14 rounded-lg overflow-hidden shrink-0 shadow-sm bg-stone-800">
+                <img src="${COVER_BASE}/api/books/${b.bid}/cover?v=34" alt="${sanitizeVN(b.display_title || b.hv_title)}" data-bid="${b.bid}" class="w-full h-full object-cover" onerror="handleCoverError(this)">
+              </div>
+              <div class="min-w-0">
+                <a href="#/book/${b.bid}" onclick="closeLibraryDrawer()" class="font-royal font-bold text-xs text-[var(--text-main)] truncate block hover:text-amber-400">${sanitizeVN(b.display_title || b.hv_title)}</a>
+                <div class="text-[11px] opacity-60 mt-0.5">${b.genre || 'Tiên Hiệp'} • ${b.translated_chapters} Hồi</div>
+              </div>
+            </div>
+            <button onclick="removeFavorite('${b.bid}')" class="p-2 rounded-lg hover:bg-white/10 text-rose-500 opacity-80 hover:opacity-100 cursor-pointer" title="Xóa khỏi yêu thích">
+              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+            </button>
+          </div>
+        `).join('');
+      }
+    }
+
+    // LocalStorage Helper: Favorites
+    function getFavoritesList() {
+      try {
+        const stored = localStorage.getItem("timo_fav_books");
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) { return []; }
+    }
+
+    window.toggleFavorite = (bid, event) => {
+      if (event) event.stopPropagation();
+      let list = getFavoritesList();
+      const idx = list.indexOf(bid);
+      if (idx > -1) {
+        list.splice(idx, 1);
+        showToast("Đã xóa khỏi Tủ Sách Yêu Thích");
+      } else {
+        list.push(bid);
+        showToast("Đã thêm vào Tủ Sách Yêu Thích ❤️");
+      }
+      localStorage.setItem("timo_fav_books", JSON.stringify(list));
+      updateFavoritesNavCount();
+
+      // Rerender view if necessary
+      if (location.hash.startsWith("#/book/")) {
+        const btn = document.getElementById("detail-fav-btn");
+        if (btn) {
+          const isFav = list.includes(bid);
+          btn.className = `px-4 py-3.5 rounded-2xl font-semibold text-xs sm:text-sm border transition-all flex items-center gap-2 cursor-pointer ${isFav ? 'text-rose-400 border-rose-500/40 bg-rose-500/10' : 'border-white/15'}`;
+          btn.innerHTML = `
+            <svg class="w-4 h-4 ${isFav ? 'fill-rose-500 text-rose-500' : ''}" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span>${isFav ? 'Đã Yêu Thích' : 'Yêu Thích'}</span>
+          `;
+        }
+      } else if (location.hash === "#/" || location.hash === "") {
+        applyFilters();
+      }
+    };
+
+    window.removeFavorite = (bid) => {
+      let list = getFavoritesList();
+      list = list.filter(id => id !== bid);
+      localStorage.setItem("timo_fav_books", JSON.stringify(list));
+      updateFavoritesNavCount();
+      renderLibraryDrawerContent();
+    };
+
+    window.requestPolish = async (bid, engine) => {
+      const engineName = engine === 'kimi' ? 'Kimi Fast (12 luồng)' : 'Gemini 3.8 Flash (8 luồng)';
+      if (!confirm(`Xác nhận yêu cầu chuốt lại toàn bộ văn phong bộ truyện này bằng ${engineName}?\n\nToàn bộ luồng dịch sẽ chuyển sang ưu tiên chuốt bộ truyện này trước trên hàng đợi!`)) {
+        return;
+      }
+      showToast(`Đang gửi yêu cầu chuốt bằng ${engineName}...`);
+      try {
+        const res = await fetch(`${API_BASE}/api/books/${bid}/polish`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ engine: engine })
+        });
+        const data = await res.json();
+        if (data.already_polished) {
+          alert(data.message || "Bộ truyện này đã được chuốt rồi, lần sau đỡ phải chuốt nữa nhé!");
+          const container = document.getElementById(`polish-container-${bid}`);
+          if (container) {
+            container.innerHTML = `
+              <div class="px-4 py-2.5 rounded-2xl bg-purple-900/30 border border-purple-500/40 text-purple-200 text-xs font-bold flex items-center gap-2 shadow-inner">
+                <span>✨ Đã Chuốt Mượt Mà (${engine.toUpperCase()})</span>
+                <span class="text-white/40 text-[10px]">(Không cần chuốt lại)</span>
+              </div>
+            `;
+          }
+          return;
+        }
+        if (data.success) {
+          showToast(data.message || `Đã đưa truyện vào hàng đợi chuốt ưu tiên bằng ${engineName}!`);
+          const container = document.getElementById(`polish-container-${bid}`);
+          if (container) {
+            container.innerHTML = `
+              <span class="px-4 py-2.5 rounded-xl bg-purple-500/20 text-purple-300 border border-purple-500/40 text-xs font-bold flex items-center gap-1.5 animate-pulse">
+                ⏳ Đang trong hàng đợi chuốt (${engine.toUpperCase()})...
+              </span>
+            `;
+          }
+        } else {
+          alert("Lỗi: " + (data.error?.message || data.message || "Không thể yêu cầu chuốt"));
+        }
+      } catch (err) {
+        alert("Lỗi kết nối khi gửi yêu cầu chuốt: " + err.message);
+      }
+    };
+
+    function updateFavoritesNavCount() {
+      const countEl = document.getElementById("nav-fav-count");
+      if (countEl) countEl.innerText = getFavoritesList().length;
+    }
+
+    // LocalStorage Helper: Reading History
+    function getReadingHistoryList() {
+      try {
+        const stored = localStorage.getItem("timo_read_history");
+        return stored ? JSON.parse(stored) : [];
+      } catch (e) { return []; }
+    }
+
+    function saveReadingHistory(bid, chapterNo) {
+      let history = getReadingHistoryList();
+      const bookObj = cachedBooks.find(b => b.bid === bid) || currentBookDetail;
+      const title = bookObj ? (bookObj.display_title || bookObj.hv_title) : `Linh Quyển #${bid}`;
+      
+      history = history.filter(item => item.bid !== bid);
+      history.unshift({
+        bid: bid,
+        title: title,
+        chapterNo: chapterNo,
+        timestamp: Date.now()
+      });
+      if (history.length > 30) history.pop();
+      localStorage.setItem("timo_read_history", JSON.stringify(history));
+
+      // Increment Cultivation Points
+      incrementCultivationProgress();
+    }
+
+    function getLastReadHistory() {
+      const history = getReadingHistoryList();
+      return history.length ? history[0] : null;
+    }
+
+    function getBookLastRead(bid) {
+      const history = getReadingHistoryList();
+      return history.find(item => item.bid === bid) || null;
+    }
+
+    // Cultivation Progress System
+    function getCultivationReadCount() {
+      return parseInt(localStorage.getItem("timo_cultivation_chaps")) || 0;
+    }
+
+    function incrementCultivationProgress() {
+      let count = getCultivationReadCount() + 1;
+      localStorage.setItem("timo_cultivation_chaps", count);
+      updateCultivationBadge();
+    }
+
+    function getCultivationRealm(count) {
+      for (let i = REALMS.length - 1; i >= 0; i--) {
+        if (count >= REALMS[i].min) {
+          return { ...REALMS[i], level: i + 1 };
+        }
+      }
+      return REALMS[0];
+    }
+
+    function updateCultivationBadge() {
+      const count = getCultivationReadCount();
+      const realm = getCultivationRealm(count);
+      const badge = document.getElementById("user-realm-name");
+      if (badge) badge.innerText = realm.name;
+    }
+
+    window.showCultivationModal = () => {
+      const modal = document.getElementById("cultivation-modal");
+      const count = getCultivationReadCount();
+      const realm = getCultivationRealm(count);
+
+      document.getElementById("modal-realm-text").innerText = realm.name;
+      document.getElementById("modal-read-count").innerText = count;
+      
+      const nextNeeded = realm.next === Infinity ? "Đã Đạt Cực Hạn" : `Cần thêm ${realm.next - count} chương để thăng cấp`;
+      document.getElementById("modal-next-realm").innerText = nextNeeded;
+      
+      const pct = realm.next === Infinity ? 100 : Math.min(100, Math.round(((count - realm.min) / (realm.next - realm.min)) * 100));
+      document.getElementById("modal-realm-progress").style.width = pct + "%";
+
+      modal.classList.remove("hidden");
+      setTimeout(() => modal.classList.remove("opacity-0"), 10);
+    };
+
+    window.closeCultivationModal = () => {
+      const modal = document.getElementById("cultivation-modal");
+      modal.classList.add("opacity-0");
+      setTimeout(() => modal.classList.add("hidden"), 200);
+    };
+
+    // Global Theme Application
+    window.toggleThemeMenu = () => {
+      const dd = document.getElementById("theme-dropdown");
+      if (dd.classList.contains("hidden")) {
+        dd.classList.remove("hidden", "opacity-0", "pointer-events-none");
+      } else {
+        dd.classList.add("opacity-0", "pointer-events-none");
+        setTimeout(() => dd.classList.add("hidden"), 150);
+      }
+    };
+
+    window.setGlobalTheme = (themeKey) => {
+      readerTheme = themeKey;
+      localStorage.setItem("timo_theme", themeKey);
+      applyThemeToBody(themeKey);
+      const dd = document.getElementById("theme-dropdown");
+      if (dd) {
+        dd.classList.add("opacity-0", "pointer-events-none");
+        setTimeout(() => dd.classList.add("hidden"), 150);
+      }
+      showToast(`Đã chuyển sang giao diện: ${getThemeName(themeKey)}`);
+    };
+
+    function getThemeName(key) {
+      if (key === 'parchment') return 'Giấy Cổ (Sáng)';
+      if (key === 'emerald') return 'Thanh Trà (Xanh)';
+      if (key === 'sepia') return 'Bình Minh (Sepia)';
+      return 'Huyền Mặc (Tối)';
+    }
+
+    function applyThemeToBody(themeKey) {
+      const body = document.getElementById("app-body");
+      body.classList.remove("theme-parchment", "theme-emerald", "theme-sepia");
+      if (themeKey !== "dark") {
+        body.classList.add(`theme-${themeKey}`);
+      }
+    }
+
+    // Toast Notifications
+    function showToast(msg) {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      toast.className = "px-4 py-2.5 rounded-2xl border text-xs font-semibold text-white shadow-2xl backdrop-blur-xl transition-all duration-300 transform translate-y-4 opacity-0 flex items-center gap-2 pointer-events-auto";
+      toast.style.background = "rgba(18, 24, 36, 0.95)";
+      toast.style.borderColor = "rgba(212, 175, 55, 0.35)";
+      toast.innerHTML = `<span>✨</span><span>${msg}</span>`;
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.classList.remove("translate-y-4", "opacity-0");
+      }, 10);
+      setTimeout(() => {
+        toast.classList.add("translate-y-4", "opacity-0");
+        setTimeout(() => toast.remove(), 300);
+      }, 2500);
+    }
+
+    // Keyboard Shortcuts
+    function setupKeyboardShortcuts() {
+      window.addEventListener("keydown", (e) => {
+        // Ctrl + K -> Open Search Modal
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          openSearchModal();
+          return;
+        }
+
+        // ESC -> Close modals
+        if (e.key === "Escape") {
+          closeSearchModal();
+          closeChapterDrawer();
+          closeLibraryDrawer();
+          closeCultivationModal();
+          closeReaderSettingsModal();
+          return;
+        }
+
+        // Reader Shortcuts
+        if (location.hash.startsWith("#/read/")) {
+          if (e.key === "ArrowLeft") {
+            const btn = document.getElementById("btn-reader-prev");
+            if (btn && !btn.disabled) btn.click();
+          } else if (e.key === "ArrowRight") {
+            const btn = document.getElementById("btn-reader-next");
+            if (btn && !btn.disabled) btn.click();
+          } else if (e.key === "m" || e.key === "M") {
+            openChapterDrawer();
+          } else if (e.key === "s" || e.key === "S") {
+            openReaderSettingsModal();
+          }
+        }
+      });
+    }
+
+    // Reader Comments Logic
+    function getStoredComments(bid, chapterNo) {
+      const key = `timo_cmt_${bid}_${chapterNo}`;
+      const defaultCmts = [
+        { name: "Tiêu Dao Lão Tổ", realm: "Hóa Thần Sơ Kỳ", text: "Bản dịch AI mượt mà phi thường, chương này nhân vật chính mưu sâu kế hiểm, đọc cực kỳ cuốn hút!", time: "Vừa xong" },
+        { name: "Hắc Bào Đạo Nhân", realm: "Nguyên Anh Đỉnh Phong", text: "Chương sau khi nào ra đây đạo hữu? Hóng quá tu vi sắp tẩu hỏa nhập ma rồi!", time: "1 giờ trước" },
+        { name: "Thanh Phong Tán Tu", realm: "Kim Đan Viên Mãn", text: "Theme Giấy Cổ đọc ban ngày rất êm mắt, font chữ Serif chuẩn phong vị cổ phong.", time: "3 giờ trước" }
+      ];
+      try {
+        const stored = localStorage.getItem(key);
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+      return defaultCmts;
+    }
+
+    function renderReaderComments(bid, chapterNo) {
+      const list = getStoredComments(bid, chapterNo);
+      const container = document.getElementById("reader-comments-list");
+      if (!container) return;
+
+      container.innerHTML = list.map(c => `
+        <div class="p-4 rounded-2xl border text-xs" style="background: var(--bg-card); border-color: var(--border-base);">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2">
+              <span class="font-royal font-bold text-sm text-[var(--text-main)]">${c.name}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-400 bg-amber-500/10 font-bold">
+                ${c.realm}
+              </span>
+            </div>
+            <span class="text-[10px] opacity-40">${c.time}</span>
+          </div>
+          <div class="opacity-85 leading-relaxed font-sans">${c.text}</div>
+        </div>
+      `).join('');
+    }
+
+    window.submitReaderComment = () => {
+      const input = document.getElementById("reader-comment-input");
+      const text = input ? input.value.trim() : "";
+      if (!text) return;
+
+      const key = `timo_cmt_${currentReaderBid}_${currentReaderChNo}`;
+      const list = getStoredComments(currentReaderBid, currentReaderChNo);
+      list.unshift({
+        name: "Nguyên Anh Tán Tu",
+        realm: "Nguyên Anh Kỳ",
+        text: text,
+        time: "Vừa xong"
+      });
+      localStorage.setItem(key, JSON.stringify(list));
+      input.value = "";
+      renderReaderComments(currentReaderBid, currentReaderChNo);
+      showToast("Đã lưu linh văn luận bàn thành công!");
+    };
+
+    function renderDetailComments(bid) {
+      const container = document.getElementById("detail-comments-list");
+      if (!container) return;
+      const list = getStoredComments(bid, 1);
+      container.innerHTML = list.map(c => `
+        <div class="p-4 rounded-2xl border text-xs" style="background: var(--bg-card); border-color: var(--border-base);">
+          <div class="flex items-center justify-between mb-1.5">
+            <div class="flex items-center gap-2">
+              <span class="font-royal font-bold text-sm text-[var(--text-main)]">${c.name}</span>
+              <span class="text-[10px] px-2 py-0.5 rounded-full border border-amber-500/30 text-amber-400 font-bold">
+                ${c.realm}
+              </span>
+            </div>
+            <span class="text-[10px] opacity-40">${c.time}</span>
+          </div>
+          <div class="opacity-85 leading-relaxed font-sans">${c.text}</div>
+        </div>
+      `).join('');
+    }
+
+    window.submitDetailComment = (bid) => {
+      const input = document.getElementById("detail-comment-input");
+      const text = input ? input.value.trim() : "";
+      if (!text) return;
+
+      const key = `timo_cmt_${bid}_1`;
+      const list = getStoredComments(bid, 1);
+      list.unshift({
+        name: "Nguyên Anh Tán Tu",
+        realm: "Nguyên Anh Kỳ",
+        text: text,
+        time: "Vừa xong"
+      });
+      localStorage.setItem(key, JSON.stringify(list));
+      input.value = "";
+      renderDetailComments(bid);
+      showToast("Đã lưu linh văn luận bàn thành công!");
+    };
+
+  </script>
+</body>
+</html>
+
