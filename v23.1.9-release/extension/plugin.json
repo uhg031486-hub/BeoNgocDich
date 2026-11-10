@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Ngọc Béo Translate V23.1.9",
     "author": "Antigravity & Ngọc Béo",
-    "version": 44,
+    "version": 45,
     "source": "https://timo-ngocbeo.pages.dev/plugin.json",
-    "description": "V23.1.9 (v44): Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s). Khi dính kiểm duyệt hoặc lỗi, tự động chuyển ngay sang chuỗi cứu hộ độc lập: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi (đã loại bỏ toàn bộ Gemini khỏi fallback để tránh lặp lại kiểm duyệt). Đã thêm Kilo Code Free vào danh mục chọn.",
+    "description": "V23.1.9 (v45): Kết nối trực tiếp VPS ARM mới (304 kết nối) phản hồi siêu tốc 3s, trị dứt điểm 504 Gateway Timeout. Mặc định Gemini Flash 3.8. Tự động dự phòng thông minh: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",
     "type": "translate",
     "locale": "vi_VN"
   },
@@ -23,7 +23,7 @@
       "title": "Endpoint 9Router (có thể đổi)",
       "mode": "input",
       "format": "text",
-      "default": "https://r4pqkqr.abc-tunnel.us/v1"
+      "default": "https://rszazn8.abc-tunnel.us/v1"
     },
     "api_key": {
       "title": "9Router API key",

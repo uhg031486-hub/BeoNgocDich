@@ -37,7 +37,7 @@ var V231_CONTEXT=null;
  * Ngọc Béo Translate V23.1.9: Tối ưu đọc online không gián đoạn, chia nhỏ 1.800 ký tự chống timeout 504.
  * Tự động chuyển fallback khi AI bận. Mặc định Gemini Flash 3.8 Low / Gemini 3.5 Flash Lite siêu tốc.
  */
-var DEFAULT_ENDPOINT = "https://r4pqkqr.abc-tunnel.us/v1";
+var DEFAULT_ENDPOINT = "https://rszazn8.abc-tunnel.us/v1";
 var DEFAULT_MODEL = "ag/gemini-3.8-flash";
 var DEFAULT_REASONING = "minimal";
 var DEFAULT_TEMPERATURE = 0.2;
