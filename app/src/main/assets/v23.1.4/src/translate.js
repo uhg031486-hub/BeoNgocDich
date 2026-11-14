@@ -63,9 +63,9 @@ var V231_CONTEXT=null;
  * Ngọc Béo Translate V23.1.9: Tối ưu đọc online không gián đoạn, chia nhỏ 1.800 ký tự chống timeout 504.
  * Tự động chuyển fallback khi AI bận. Mặc định Gemini Flash 3.8 siêu tốc không suy nghĩ, timeout 120s.
  */
-var DEFAULT_ENDPOINT = "https://r2vfzdf.abc-tunnel.us/v1";
+var DEFAULT_ENDPOINT = "https://smart-tts.tail4cee0d.ts.net/v1";
 var DEFAULT_MODEL = "ag/gemini-3.8-flash";
-var DEFAULT_REASONING = "none";
+var DEFAULT_REASONING = "low";
 var DEFAULT_TEMPERATURE = 0.2;
 var DEFAULT_PAGE_CHARS = 1800;
 var DEFAULT_INITIAL_CHARS = 1800;
@@ -153,7 +153,7 @@ function getApiKey() {
 
 function endpointUrl() {
     var raw = firstNonEmpty([valueOf("endpoint_url", ""), valueOf("endpoint", ""), valueOf("base_url", ""), valueOf("baseUrl", ""), DEFAULT_ENDPOINT]);
-    if (!raw || raw.indexOf("tree-spread") >= 0 || raw.indexOf("spanking-sara") >= 0 || raw.indexOf("rszazn8") >= 0 || raw.indexOf("r4pqkqr") >= 0) {
+    if (!raw || /tree-spread|spanking-sara|rszazn8|r4pqkqr|r2vfzdf|abc-tunnel\.us|trycloudflare\.com|100\.119\.66\.9|100\.92\.145\.57/i.test(raw)) {
         raw = DEFAULT_ENDPOINT;
     }
     raw = raw.replace(/\/+$/, "");
@@ -608,15 +608,22 @@ function request(original, qtDraft, model, reasoning, temperature, from, to, key
         ],
         temperature: temperature,
         max_tokens: Math.max(2048, Math.min(64000, String(original).length * 4 + 2048)),
-        stream: true,
-        stream_options: { include_usage: true }
+        stream: false
     };
     if (reasoning && reasoning !== "none" && reasoning !== "default") {
         body.reasoning_effort = reasoning;
     }
-    if (model === "ag/gemini-3.8-flash" || model === LIGHTNING_MODEL || String(model).indexOf("lightning") >= 0) {
+    if (String(model || "").indexOf("ag/gemini-3.8-flash") === 0) {
+        delete body.reasoning;
+        body.reasoning_effort = "low";
+    } else if (model === "gemini/gemini-3.6-flash") {
+        delete body.reasoning;
+        body.reasoning_effort = "none";
+    } else if (model === LIGHTNING_MODEL || String(model).indexOf("lightning") >= 0) {
         delete body.reasoning_effort;
         body.reasoning = { enabled: false };
+    } else if (String(model || "").indexOf("cx/") === 0 || String(model || "").indexOf("kc/") === 0 || String(model || "").indexOf("oc/") === 0 || String(model || "").indexOf("openrouter/") === 0) {
+        delete body.reasoning;
     }
     if(v231MuseModel(model))body.messages[0].content=v231MuseTranslationPrompt(genre,styleNotes,repairMode);
     v231ModelOptions(body,model);
@@ -631,7 +638,7 @@ function request(original, qtDraft, model, reasoning, temperature, from, to, key
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 vBook/1.0"
         },
         body: JSON.stringify(body),
-        timeout: 120000
+        timeout: 45000
     });
 }
 
@@ -962,17 +969,22 @@ function translateApiChunkOnce(chunk, qtDraft, inputMode, model, reasoning, temp
 
 function translateApiChunk(chunk, qtDraft, inputMode, model, reasoning, temperature, from, to, key, genre, customGlossary, styleNotes, preserveNames) {
     var preferred = model || "ag/gemini-3.8-flash";
+    var preferred = model || "ag/gemini-3.8-flash";
+    if (preferred === "Kimi/kimi" || preferred === "glm/glm-4.5-flash" || preferred === "Kilo_Code_Free" || preferred === "cx/gpt-6-luna") {
+        preferred = "ag/gemini-3.8-flash";
+    }
     var actualModel = LUNA_MODEL_FALLBACK[preferred] || preferred;
     var result = translateApiChunkOnce(chunk, qtDraft, inputMode, actualModel, modelReasoning(actualModel), temperature, from, to, key, genre, customGlossary, styleNotes, preserveNames);
     if (result) return result;
 
-    // Chuỗi cứu hộ độc lập chống kiểm duyệt và tóm tắt theo đúng chỉ đạo:
-    // Kimi -> GLM-4.5 -> Luna 6 -> Kilo Code Free
+    // Chuỗi cứu hộ độc lập đã kiểm chứng live trên smart-tts.tail4cee0d.ts.net/v1:
     var fallbackChain = [
-        "Kimi/kimi",
-        "glm/glm-4.5-flash",
-        "cx/gpt-6-luna",
-        "Kilo_Code_Free"
+        "ag/gemini-3.8-flash",
+        "gemini/gemini-3.5-flash-lite",
+        "kc/baidu/ernie-5.5-flash-preview:free",
+        "openrouter/cohere/north-mini-code:free",
+        "oc/deepseek-v4.1-flash-free",
+        "ag/gemini-3.8-flash-low"
     ];
 
     for (var i = 0; i < fallbackChain.length; i++) {
@@ -1437,7 +1449,7 @@ function v231ArchiveRead(item){
     return '';
 }
 function v231Queue(item){
-    if(!item)return;
+    if(!item||!v231ServerKey()||!v231Routes().length)return;
     var list=v231JSON(storageGet('v231-outbox'),[]);storageSet('v231-pending:'+item.key,JSON.stringify(item));
     if(list.indexOf(item.key)<0)list.push(item.key);storageSet('v231-outbox',JSON.stringify(list));
 }
@@ -1521,17 +1533,17 @@ execute=function(text,from,to,source,model,style){
     var targetLang=normalizeTargetLanguage(to);
     if(targetLang&&!/^(?:vi|vp|vie|vietnamese)/i.test(targetLang))return V231_BASE_EXECUTE(text,from,to,source);
     if(!getApiKey())return V231_BASE_EXECUTE(text,from,to,source);
-    var book=v231Book(),scope=v231Scope(book),memory=scope?v231ReadMemory(scope):{entries:[],relations:[],dirty:false},item=null;
+    var book=v231Book(),scope=v231Scope(book),memory=scope?v231ReadMemory(scope):{entries:[],relations:[],dirty:false},item=null,hasSyncServer=!!(v231ServerKey()&&v231Routes().length>0);
     try{
         v231RememberStory(book);
-        if(scope)memory=v231SyncMemory(book,memory);v231Flush();
+        if(hasSyncServer){if(scope)memory=v231SyncMemory(book,memory);v231Flush();}
         var cfg=getActiveChapterConfig(original);
         item=v231ArchiveItem(book,original,from,to,source,cfg);var cached=v231ArchiveRead(item);if(cached)return safeSuccess(cached);
-        if(item&&boolValue(valueOf('archive_translations',true),true)){
+        if(hasSyncServer&&item&&boolValue(valueOf('archive_translations',true),true)){
             var raw={key:'v231-source:'+textContentHash(JSON.stringify([book.book_id,book.source,item.content_hash])),kind:'source',book_id:book.book_id,source:book.source,text:original,translated_text:''};
             if(!v231Upload(raw))v231Queue(raw);
         }
-        if(scope){memory=v231PrepareMemory(book,original,memory,cfg.model);memory=v231SyncMemory(book,memory);}
+        if(scope&&boolValue(valueOf('auto_extract_memory',false),false)){memory=v231PrepareMemory(book,original,memory,cfg.model);if(hasSyncServer)memory=v231SyncMemory(book,memory);}
         var custom=String(valueOf('custom_glossary','')||''),style=String(valueOf('style_notes','')||'');
         var naturalTerms=v231NaturalTerms(original);if(naturalTerms)custom+=(custom?'\n':'')+naturalTerms;
         var storyTerms=v231StoryTermOverride(book);if(storyTerms)custom+=(custom?'\n':'')+storyTerms;
@@ -1702,7 +1714,8 @@ function v231LiteralFallback(chunk,model,reasoning,temperature,from,to,key,genre
 var MUSE_MODEL='Muse/muse-spark';
 function v231MuseModel(model){return String(model||'').toLowerCase()==='muse/muse-spark';}
 function v231ModelOptions(body,model){
-    if(v231MuseModel(model)){delete body.reasoning_effort;delete body.reasoning;} if(model==="ag/gemini-3.8-flash"){delete body.reasoning_effort;body.reasoning={enabled:false};}
+    if(v231MuseModel(model)){delete body.reasoning_effort;delete body.reasoning;}
+    if(String(model||'').indexOf('ag/gemini-3.8-flash')===0){delete body.reasoning;body.reasoning_effort='low';}
     return body;
 }
 function v231NaturalStyle(){
@@ -1767,6 +1780,9 @@ function v231MuseMemoryData(text){
 var V231_BEFORE_MUSE_CONFIG=getActiveChapterConfig;
 getActiveChapterConfig=function(text){
     var cfg=V231_BEFORE_MUSE_CONFIG(text);
+    if(cfg&&(cfg.model==='Kimi/kimi'||cfg.model==='glm/glm-4.5-flash'||cfg.model==='Kilo_Code_Free'||cfg.model==='cx/gpt-6-luna')){
+        cfg.model='ag/gemini-3.8-flash';
+    }
     if(!v231MuseModel(cfg.model))return cfg;
     var result={};for(var key in cfg)if(Object.prototype.hasOwnProperty.call(cfg,key))result[key]=cfg[key];
     result.limit=Math.min(Number(cfg.limit)||1200,1200);

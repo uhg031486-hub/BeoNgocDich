@@ -22,13 +22,13 @@
       "title": "Endpoint 9Router (có thể đổi)",
       "mode": "input",
       "format": "text",
-      "default": "https://r4pqkqr.abc-tunnel.us/v1"
+      "default": "https://smart-tts.tail4cee0d.ts.net/v1"
     },
     "api_key": {
       "title": "9Router API key",
       "mode": "input",
       "format": "text",
-      "default": ""
+      "default": "sk-03e57ebc0d35b288-sld2yo-498df0af"
     },
     "reading_mode": {
       "title": "Chế độ phân bổ Model (Đọc & Tải ngoại tuyến)",
@@ -55,39 +55,42 @@
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "next_chapter_model": {
       "title": "Model các chương tiếp theo",
-      "subtitle": "Mặc định Flash 3.8 minimal cho các chương tiếp.",
+      "subtitle": "Mặc định Gemini Flash 3.8 (Low Think). Tự động cứu hộ bằng Flash Lite / ERNIE 5.5 / Cohere / DeepSeek.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "offline_model": {
       "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
-      "subtitle": "Mặc định Flash 3.8 minimal; dịch tuần tự, tối đa 7.000 ký tự mỗi lần.",
+      "subtitle": "Mặc định Gemini Flash 3.8 (Low Think); dịch tuần tự, tối đa 7.000 ký tự mỗi lần.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "initial_chapter_chars": {
@@ -110,11 +113,12 @@
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (minimal)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "api_page_chars": {
@@ -126,13 +130,19 @@
     },
     "reasoning_effort": {
       "title": "Mức suy luận (Reasoning)",
-      "subtitle": "Tự dùng minimal. Riêng Lightning luôn tắt suy luận.",
+      "subtitle": "Dùng low để tắt thinking tokens thừa trên Gemini 3.8 Flash.",
       "mode": "select",
       "format": "single",
-      "default": "minimal",
+      "default": "low",
       "values": [
-        "minimal"
+        "low"
       ]
+    },
+    "auto_extract_memory": {
+      "title": "Tự động phân tích tên & quan hệ trước khi dịch",
+      "subtitle": "Bật sẽ gọi thêm 1 lượt AI mỗi chương (~10s). Tắt để dịch nhanh x2 và ổn định hơn.",
+      "mode": "toggle",
+      "default": false
     },
     "temperature": {
       "title": "Temperature",

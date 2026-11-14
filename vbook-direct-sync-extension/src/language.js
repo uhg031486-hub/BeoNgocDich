@@ -210,6 +210,11 @@ function parseResponse(response){
 }
 // Menu rendering must never wait for a server. Chapter execution drains the durable outbox.
 execute=function(){return Response.success([
-    {id:"converted",name:"Truyện đã converted (VP)",type:"from"},
-    {id:"vi",name:"Việt (VP)",type:"to"}
+    {id:"auto",name:"Tự động phát hiện"},
+    {id:"zh",name:"Tiếng Trung (Raw / Hán)"},
+    {id:"zh-CN",name:"Tiếng Trung (Giản thể)"},
+    {id:"zh-TW",name:"Tiếng Trung (Phồn thể)"},
+    {id:"converted",name:"Truyện đã converted (VP)"},
+    {id:"en",name:"Tiếng Anh"},
+    {id:"vi",name:"Tiếng Việt"}
 ]);}

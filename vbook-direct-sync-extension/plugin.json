@@ -2,9 +2,9 @@
   "metadata": {
     "name": "Ngọc Béo Translate V23.2.3",
     "author": "Antigravity & Ngọc Béo",
-    "version": 55,
+    "version": 56,
     "source": "https://timo-ngocbeo.pages.dev/plugin.json",
-    "description": "Dịch truyện trực tuyến siêu tốc bằng VPS r2vfzdf & Gemini Flash 3.8 thuần không suy nghĩ (v55). Dừng r4pqkqr theo yêu cầu. Cứu hộ độc lập Luna 6, Kimi & GLM 4.5.",
+    "description": "v56: Chuyển sang Tailscale Funnel ổn định (smart-tts.tail4cee0d.ts.net/v1), sửa lỗi ngốn suy luận & timeout ở Gemini 3.8 Flash, loại bỏ Kimi/GLM/Kilo Free lỗi, cứu hộ độc lập Gemini Lite / ERNIE 5.5 / Cohere / DeepSeek.",
     "type": "translate",
     "locale": "vi_VN"
   },
@@ -20,10 +20,10 @@
     "required_api_key": false,
     "support_url": "https://timo-ngocbeo.pages.dev",
     "endpoint_url": {
-      "title": "Endpoint 9Router (có thể đổi)",
+      "title": "Endpoint 9Router Tailscale Funnel",
       "mode": "input",
       "format": "text",
-      "default": "https://r2vfzdf.abc-tunnel.us/v1"
+      "default": "https://smart-tts.tail4cee0d.ts.net/v1"
     },
     "api_key": {
       "title": "9Router API key",
@@ -51,47 +51,47 @@
     },
     "initial_chapter_model": {
       "title": "Model chương đầu khi mở truyện",
-      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
+      "subtitle": "Mặc định Gemini Flash 3.8 (Low Think, 0 sót Hán). Tự động cứu hộ bằng Flash Lite / ERNIE 5.5 / Cohere / DeepSeek.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
-        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
-        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
-        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "next_chapter_model": {
       "title": "Model các chương tiếp theo",
-      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
+      "subtitle": "Mặc định Gemini Flash 3.8 (Low Think). Tự động cứu hộ bằng Flash Lite / ERNIE 5.5 / Cohere / DeepSeek.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
-        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
-        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
-        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "offline_model": {
       "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
-      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
+      "subtitle": "Mặc định Gemini Flash 3.8 (Low Think). Tự động cứu hộ bằng Flash Lite / ERNIE 5.5 / Cohere / DeepSeek.",
       "mode": "select",
       "format": "single",
       "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
-        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
-        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
-        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
-        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Nhanh & Chuẩn - Khuyên dùng)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Siêu tốc 3-5s)",
+        "ag/gemini-3.8-flash-low=Gemini 3.8 Flash Low (Ổn định & 0 suy nghĩ thừa)",
+        "kc/baidu/ernie-5.5-flash-preview:free=ERNIE 5.5 Flash (Cứu hộ kiểm duyệt - 21 Keys)",
+        "openrouter/cohere/north-mini-code:free=Cohere North Free (Dự phòng độc lập)",
+        "oc/deepseek-v4.1-flash-free=DeepSeek V4.1 Flash Free (Cứu hộ sâu)"
       ]
     },
     "initial_chapter_chars": {
@@ -176,6 +176,12 @@
       "subtitle": "Lưu bản dịch trên máy để đọc lại không tốn kết nối mạng",
       "mode": "toggle",
       "default": true
+    },
+    "auto_extract_memory": {
+      "title": "Tự động phân tích tên & quan hệ trước khi dịch",
+      "subtitle": "Bật sẽ gọi thêm 1 lượt AI mỗi chương (~10s). Tắt để dịch nhanh x2 và ổn định hơn.",
+      "mode": "toggle",
+      "default": false
     }
   }
 }
