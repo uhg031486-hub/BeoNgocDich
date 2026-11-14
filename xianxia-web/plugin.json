@@ -1,20 +1,75 @@
 {
   "metadata": {
     "author": "Ngọc Béo & Antigravity",
-    "description": "V23.1.9 (v46): Trị dứt điểm 504 Gateway Timeout! Kênh chuyên dụng r4pqkqr siêu tốc 3s, timeout 120s, Gemini 3.8 Flash thuần. Tự động dự phòng: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi.",
-    "version": 46
+    "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dự phòng Luna 6 -> Kimi -> GLM-4.5.",
+    "version": 55
   },
   "data": [
     {
-      "name": "Ngọc Béo Translate V23.1.9",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 46,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.1.9 (v44): Mặc định Gemini Flash 3.8 Chuẩn siêu tốc (3-4s). Khi dính kiểm duyệt hoặc lỗi, tự động chuyển ngay sang chuỗi cứu hộ độc lập: GPT-6 Luna -> Kilo Code Free -> GLM-4.5 -> Kimi (đã loại bỏ toàn bộ Gemini khỏi fallback để tránh lặp lại kiểm duyệt). Đã thêm Kilo Code Free vào danh mục chọn.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dự phòng Luna 6 -> Kimi -> GLM-4.5.",
       "type": "translate",
-      "locale": "vi_VN"
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 53,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.2.2"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 53,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.2.1"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 53,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.2.0"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 53,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.1.9"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 53,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.1.4"
     },
     {
       "name": "ixdzs.tw",
@@ -31,10 +86,10 @@
       "name": "Timo Ngọc Béo (Kho Dịch VIP)",
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/timo-khodich.zip",
-      "version": 12,
+      "version": 13,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "Kho truyện dịch thuần Việt Timo Ngọc Béo (Trỏ trực tiếp vào máy chủ dịch riêng SSD VPS, hơn 1400+ bộ truyện hoàn thiện 100% Thuần Việt, tối ưu tải ảnh bìa siêu tốc).",
+      "description": "Kho truyện dịch thuần Việt Timo Ngọc Béo (Trỏ trực tiếp vào máy chủ dịch riêng SSD VPS qua Tailscale Funnel, hơn 1400+ bộ truyện hoàn thiện 100% Thuần Việt).",
       "type": "novel",
       "locale": "vi_VN"
     }

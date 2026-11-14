@@ -1,35 +1,35 @@
 {
   "metadata": {
-    "name": "Ngọc Béo Translate V23.1.4",
+    "name": "Ngọc Béo Translate V23.2.3",
     "author": "Antigravity & Ngọc Béo",
-    "version": 35,
-    "source": "https://vbookapp.gitbook.io/huong-dan-su-dung/nguon-mo-rong/danh-sach-nguon",
-    "description": "V23.1.4 (v35): Cập nhật mặc định Gemini Flash 3.8 Low hoạt động ổn định trên 9Router. Tự động cứu hộ tức thì bằng GPT-6 Luna / GLM / Kimi.",
+    "version": 55,
+    "source": "https://timo-ngocbeo.pages.dev/plugin.json",
+    "description": "Dịch truyện trực tuyến siêu tốc bằng VPS r2vfzdf & Gemini Flash 3.8 thuần không suy nghĩ (v55). Dừng r4pqkqr theo yêu cầu. Cứu hộ độc lập Luna 6, Kimi & GLM 4.5.",
     "type": "translate",
     "locale": "vi_VN"
   },
   "script": {
     "translate": "translate.js",
     "language": "language.js",
-    "action": "action.js"
+    "model": "model.js"
   },
   "config": {
     "support_auto_detect": true,
     "max_length": 12000,
     "max_line": 4000,
-    "required_api_key": true,
-    "support_url": "https://vbookapp.gitbook.io/huong-dan-su-dung/nguon-mo-rong/danh-sach-nguon",
+    "required_api_key": false,
+    "support_url": "https://timo-ngocbeo.pages.dev",
     "endpoint_url": {
       "title": "Endpoint 9Router (có thể đổi)",
       "mode": "input",
       "format": "text",
-      "default": "https://r4pqkqr.abc-tunnel.us/v1"
+      "default": "https://r2vfzdf.abc-tunnel.us/v1"
     },
     "api_key": {
       "title": "9Router API key",
       "mode": "input",
       "format": "text",
-      "default": ""
+      "default": "sk-03e57ebc0d35b288-sld2yo-498df0af"
     },
     "reading_mode": {
       "title": "Chế độ phân bổ Model (Đọc & Tải ngoại tuyến)",
@@ -38,9 +38,9 @@
       "format": "single",
       "default": "all_flash",
       "values": [
-        "smart_speed_quality=Chương đầu/chương tiếp dùng các model đã chọn",
-        "all_flash=Mọi chương dùng model chương đầu",
-        "all_hq=Mọi chương dùng model các chương tiếp"
+        "all_flash=Dùng Model Flash siêu tốc cho mọi chương (Khuyên dùng)",
+        "smart_speed_quality=Chương đầu dùng Flash, các chương sau dùng Model tiếp theo",
+        "all_hq=Mọi chương dùng Model chất lượng cao"
       ]
     },
     "smart_chapter_switch": {
@@ -51,204 +51,131 @@
     },
     "initial_chapter_model": {
       "title": "Model chương đầu khi mở truyện",
-      "subtitle": "Mặc định Gemini Flash 3.8 minimal. Nếu Ling/Nemotron/Lightning không trả bản dịch hợp lệ, tự thử Gemini minimal; không dùng QT trong chương.",
+      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash-low",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
+        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
+        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
       ]
     },
     "next_chapter_model": {
       "title": "Model các chương tiếp theo",
-      "subtitle": "Mặc định Flash 3.8 minimal cho các chương tiếp.",
+      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash-low",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
+        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
+        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
       ]
     },
     "offline_model": {
       "title": "Model Dịch Ngoại Tuyến (Tải chương về máy)",
-      "subtitle": "Mặc định Flash 3.8 minimal; dịch tuần tự, tối đa 7.000 ký tự mỗi lần.",
+      "subtitle": "Mặc định Gemini Flash 3.8 thuần (2-3s). Tự động cứu hộ bằng Kimi / GLM / Luna nếu dính kiểm duyệt.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash-low",
+      "default": "ag/gemini-3.8-flash",
       "values": [
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Mặc định Siêu Tốc 2-3s - Khuyên dùng)",
+        "Kimi/kimi=Kimi (Moonshot AI - Cứu hộ kiểm duyệt hàng đầu)",
+        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI - Cứu hộ)",
+        "cx/gpt-6-luna=Luna 6 (Văn phong mượt mà - Cứu hộ)",
+        "Kilo_Code_Free=Kilo Code Free (Dự phòng miễn phí)",
+        "gemini/gemini-3.5-flash-lite=Gemini 3.5 Flash Lite (Dự phòng)"
       ]
     },
     "initial_chapter_chars": {
       "title": "Ký tự mỗi yêu cầu ở chương đầu",
-      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương.",
+      "subtitle": "Mặc định 1.800 ký tự/lượt để phản hồi siêu tốc dưới 8 giây, chống timeout.",
       "mode": "input",
       "format": "number",
-      "default": 3000
+      "default": 1800
     },
     "next_chapter_chars": {
       "title": "Ký tự mỗi yêu cầu ở các chương tiếp",
-      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương.",
+      "subtitle": "Mặc định 1.800 ký tự/lượt để chuyển trang mượt mà.",
       "mode": "input",
       "format": "number",
-      "default": 3000
+      "default": 1800
     },
-    "model": {
-      "title": "Model cố định (khi tắt chuyển model thông minh)",
+    "session_timeout_minutes": {
+      "title": "Thời gian tính phiên đọc mới (phút)",
+      "subtitle": "Khoảng nghỉ giữa 2 lần đọc để tính lại chương đầu.",
+      "mode": "input",
+      "format": "number",
+      "default": 10
+    },
+    "input_mode": {
+      "title": "Chế độ xử lý đầu vào",
+      "subtitle": "Tự động nhận diện văn bản gốc hoặc convert.",
       "mode": "select",
       "format": "single",
-      "default": "ag/gemini-3.8-flash-low",
+      "default": "auto",
       "values": [
-        "ag/gemini-3.8-flash-low=Gemini Flash 3.8 Low (Khuyên dùng - Đang hoạt động)",
-        "cx/gpt-6-luna=Luna 6 (minimal)",
-        "glm/glm-4.5-flash=GLM-4.5-Flash (Zhipu AI)",
-        "ag/gemini-3.8-flash=Gemini Flash 3.8 (Tiêu chuẩn - Upstream chậm)",
-        "kc/inclusionai/ling-3.0-flash-sante:free=Ling 3.0 Flash Sante (minimal)",
-        "kc/nvidia/nemotron-3-super-120b-a12b:free=Nemotron Super 120B (minimal)",
-        "kc/nvidia/nemotron-3.5-lightning:free=Lightning (tắt suy luận)"
+        "auto=Tự động nhận diện",
+        "original=Nguyên bản tiếng Trung",
+        "converted=Convert tiếng Việt"
       ]
     },
-    "api_page_chars": {
-      "title": "Giới hạn ký tự (khi tắt chuyển model thông minh)",
-      "mode": "input",
-      "format": "number",
-      "default": 3000,
-      "subtitle": "Đọc thường: tối đa 3.000 ký tự/lượt. Giữ nguyên toàn bộ nội dung chương."
-    },
-    "reasoning_effort": {
-      "title": "Mức suy luận (Reasoning)",
-      "subtitle": "Tự dùng minimal. Riêng Lightning luôn tắt suy luận.",
+    "genre": {
+      "title": "Thể loại tiểu thuyết",
+      "subtitle": "Định hướng văn phong phù hợp với thể loại truyện",
       "mode": "select",
       "format": "single",
-      "default": "minimal",
+      "default": "tiên hiệp",
       "values": [
-        "minimal"
+        "tiên hiệp=Tiên hiệp / Tu chân",
+        "huyền huyễn=Huyền huyễn / Dị giới",
+        "đô thị=Đô thị / Hiện đại",
+        "khoa học viễn tưởng=Khoa học viễn tưởng / Mạt thế",
+        "võ hiệp=Võ hiệp cổ điển",
+        "lịch sử=Lịch sử / Quân sự",
+        "game=Võng du / Đồng nhân",
+        "kinh dị=Kinh dị / Linh dị",
+        "ngôn tình=Ngôn tình / Nữ tần"
       ]
     },
-    "temperature": {
-      "title": "Temperature",
+    "custom_glossary": {
+      "title": "Bảng thuật ngữ tùy chỉnh ($Nguồn=Đích)",
+      "subtitle": "Mỗi dòng một cặp: $Tiêu Viêm=Tiêu Viêm hoặc Tiêu Viêm->Tiêu Viêm",
       "mode": "input",
-      "format": "number",
-      "default": 0.2
+      "format": "multiline",
+      "default": ""
+    },
+    "style_notes": {
+      "title": "Ghi chú văn phong riêng",
+      "subtitle": "Yêu cầu hành văn đặc biệt gửi cho AI",
+      "mode": "input",
+      "format": "multiline",
+      "default": ""
+    },
+    "preserve_names": {
+      "title": "Bảo vệ tên riêng nhân vật",
+      "subtitle": "Khóa tên riêng tránh AI dịch nhầm nghĩa",
+      "mode": "toggle",
+      "default": true
     },
     "cache_pages": {
-      "title": "Nhớ bản dịch trang trong phiên đọc",
+      "title": "Bộ nhớ tạm trang (RAM)",
+      "subtitle": "Lưu các trang vừa dịch trong phiên để mở lại tức thì",
       "mode": "toggle",
       "default": true
     },
     "persistent_cache": {
-      "title": "Lưu bản dịch lâu dài, không gọi lại API",
+      "title": "Lưu bản dịch vào máy vĩnh viễn",
+      "subtitle": "Lưu bản dịch trên máy để đọc lại không tốn kết nối mạng",
       "mode": "toggle",
       "default": true
-    },
-    "preserve_names": {
-      "title": "Giữ nguyên tên Latin/Nhật/Hàn và mã hiệu",
-      "mode": "toggle",
-      "default": true
-    },
-    "genre": {
-      "title": "Thể loại và phong cách truyện",
-      "subtitle": "Chọn một thể loại để AI giữ đúng văn phong",
-      "default": "tiên hiệp",
-      "values": [
-        "tiên hiệp",
-        "huyền huyễn/fantasy",
-        "võ hiệp",
-        "đô thị/hiện đại",
-        "ngôn tình",
-        "cổ trang/lịch sử",
-        "cung đấu",
-        "quân sự",
-        "kinh dị/linh dị",
-        "trinh thám",
-        "khoa học viễn tưởng",
-        "game/võng du",
-        "anime/manga",
-        "đồng nhân/fanfic",
-        "đam mỹ/bách hợp"
-      ],
-      "mode": "select",
-      "format": "single"
-    },
-    "custom_glossary": {
-      "title": "Từ điển khóa tên riêng (mỗi dòng: gốc = tên muốn giữ)",
-      "mode": "input",
-      "format": "text",
-      "default": ""
-    },
-    "style_notes": {
-      "title": "Ghi chú văn phong riêng của truyện (tuỳ chọn)",
-      "mode": "input",
-      "format": "text",
-      "default": ""
-    },
-    "server_tailscale_url": {
-      "title": "Server qua Tailscale",
-      "mode": "input",
-      "default": "http://smart-tts.tail4cee0d.ts.net"
-    },
-    "server_tunnel_url": {
-      "title": "Tunnel server dự phòng (không cần Tailscale)",
-      "mode": "input",
-      "default": "https://smart-tts.tail4cee0d.ts.net"
-    },
-    "translation_server_key": {
-      "title": "Khóa server (bản public tự điền)",
-      "mode": "input",
-      "default": ""
-    },
-    "sync_story_memory": {
-      "title": "Đồng bộ bảng tên và quan hệ với server",
-      "mode": "toggle",
-      "default": true
-    },
-    "archive_translations": {
-      "title": "Lưu bản gốc và bản dịch lên server",
-      "mode": "toggle",
-      "default": true
-    },
-    "translation_task": {
-      "title": "Kích thước lượt dịch",
-      "subtitle": "VBook không báo cho extension đang đọc hay dịch hàng loạt. Chọn Hàng loạt trước khi chạy job; chọn lại Đọc thường khi đọc. Dịch tuần tự một luồng.",
-      "mode": "select",
-      "format": "single",
-      "default": "reading",
-      "values": [
-        "reading=Đọc thường — tối đa 3.000 ký tự",
-        "batch=Dịch hàng loạt — tối đa 7.000 ký tự"
-      ]
-    },
-    "sync_downloaded_start": {
-      "title": "Chương bắt đầu đồng bộ đã tải",
-      "subtitle": "Đếm từ 1 theo mục lục VBook. Chỉ chương đã tải/cached mới được xử lý.",
-      "mode": "input",
-      "format": "number",
-      "default": 1
-    },
-    "sync_downloaded_end": {
-      "title": "Chương kết thúc đồng bộ đã tải",
-      "subtitle": "0 nghĩa là đến chương cuối trong mục lục; các chương chưa tải sẽ được bỏ qua.",
-      "mode": "input",
-      "format": "number",
-      "default": 0
     }
   }
 }

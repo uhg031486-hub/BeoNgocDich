@@ -1,4 +1,30 @@
 
+function v231IsCensoredOrTruncated(originalChunk, translated) {
+    if (!translated) return "Bản dịch trống";
+    var text = String(translated).trim();
+
+    // 1. Kiểm duyệt từ chối (Refusal / Safety / Policy violation)
+    var refusalPattern = /(?:tôi không thể (?:dịch|hỗ trợ|tiếp tục|xử lý)|không thể hỗ trợ yêu cầu|chính sách (?:nội dung|an toàn|tiêu chuẩn)|tiêu chuẩn cộng đồng|vi phạm chính sách|yêu cầu không phù hợp|mô hình ngôn ngữ.*không thể|nhạy cảm hoặc bạo lực|I cannot (?:translate|assist|fulfill)|unable to translate|against.*(?:policy|safety)|as an AI|safety guidelines|content policy)/i;
+    if (refusalPattern.test(text)) {
+        return "Phát hiện kiểm duyệt/từ chối của AI: " + text.slice(0, 80);
+    }
+
+    // 2. Tự ý tóm tắt thay vì dịch đầy đủ (Summarization)
+    var summaryPattern = /^(?:tóm tắt|nội dung tóm tắt|đoạn trích tóm tắt|tổng quan|tóm lược|sơ lược)\s*[:：]|(?:đoạn văn trên|đoạn trích này|chương này)\s+(?:kể về|nói về|miêu tả cảnh|tóm lược)/i;
+    if (summaryPattern.test(text)) {
+        return "Phát hiện AI tự ý tóm tắt thay vì dịch chi tiết";
+    }
+
+    // 3. Cắt ngắn quá mức (Truncation): chữ Hán dài nhưng bản dịch quá ngắn
+    var originalHan = (String(originalChunk).match(/[\u3400-\u9fff]/g) || []).length;
+    if (originalHan >= 50) {
+        if (text.length < originalHan * 0.75 || text.split(/\s+/).length < originalHan * 0.4) {
+            return "Bản dịch bị cắt cụt/tóm tắt (" + text.length + " ký tự vs " + originalHan + " chữ Hán gốc)";
+        }
+    }
+    return "";
+}
+
 function normalizeTargetLanguage(to) {
     var str = String(to || "").trim().toLowerCase();
     if (!str || str === "auto" || str === "default" || str === "null" || str === "undefined") {
@@ -37,7 +63,7 @@ var V231_CONTEXT=null;
  * Ngọc Béo Translate V23.1.9: Tối ưu đọc online không gián đoạn, chia nhỏ 1.800 ký tự chống timeout 504.
  * Tự động chuyển fallback khi AI bận. Mặc định Gemini Flash 3.8 siêu tốc không suy nghĩ, timeout 120s.
  */
-var DEFAULT_ENDPOINT = "https://r4pqkqr.abc-tunnel.us/v1";
+var DEFAULT_ENDPOINT = "https://r2vfzdf.abc-tunnel.us/v1";
 var DEFAULT_MODEL = "ag/gemini-3.8-flash";
 var DEFAULT_REASONING = "none";
 var DEFAULT_TEMPERATURE = 0.2;
@@ -127,8 +153,8 @@ function getApiKey() {
 
 function endpointUrl() {
     var raw = firstNonEmpty([valueOf("endpoint_url", ""), valueOf("endpoint", ""), valueOf("base_url", ""), valueOf("baseUrl", ""), DEFAULT_ENDPOINT]);
-    if (raw && (raw.indexOf("rszazn8.abc-tunnel.us") >= 0 || raw.indexOf("spanking-sara") >= 0)) {
-        raw = "https://r4pqkqr.abc-tunnel.us/v1";
+    if (!raw || raw.indexOf("tree-spread") >= 0 || raw.indexOf("spanking-sara") >= 0 || raw.indexOf("rszazn8") >= 0 || raw.indexOf("r4pqkqr") >= 0) {
+        raw = DEFAULT_ENDPOINT;
     }
     raw = raw.replace(/\/+$/, "");
     if (!raw) return DEFAULT_ENDPOINT + "/chat/completions";
@@ -600,6 +626,8 @@ function request(original, qtDraft, model, reasoning, temperature, from, to, key
             "Content-Type": "application/json",
             "Accept": "text/event-stream, application/json",
             "Authorization": "Bearer " + key,
+            "X-Priority": (inputMode === "batch" || (typeof V231_IS_BATCH !== "undefined" && V231_IS_BATCH)) ? "low" : "high",
+            "X-Direct-Translate": (inputMode === "batch" || (typeof V231_IS_BATCH !== "undefined" && V231_IS_BATCH)) ? "false" : "true",
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 vBook/1.0"
         },
         body: JSON.stringify(body),
@@ -893,8 +921,13 @@ function translateApiChunkOnce(chunk, qtDraft, inputMode, model, reasoning, temp
             return "";
         }
         var finish = payload && payload.choices && payload.choices.length ? payload.choices[0].finish_reason : LUNA_LAST_STREAM_FINISH_REASON;
-        if (finish === "length" || finish === "content_filter") {
-            LUNA_LAST_API_ERROR = "9Router trả bản dịch chưa đầy đủ (" + finish + ").";
+        if (finish === "length" || finish === "content_filter" || finish === "refusal") {
+            LUNA_LAST_API_ERROR = "AI từ chối hoặc trả bản dịch chưa đầy đủ (" + finish + ").";
+            return "";
+        }
+        var checkCensorOrTrunc = v231IsCensoredOrTruncated(chunk, translated);
+        if (checkCensorOrTrunc) {
+            LUNA_LAST_API_ERROR = checkCensorOrTrunc;
             return "";
         }
         if (inputMode !== "converted") {
@@ -933,11 +966,13 @@ function translateApiChunk(chunk, qtDraft, inputMode, model, reasoning, temperat
     var result = translateApiChunkOnce(chunk, qtDraft, inputMode, actualModel, modelReasoning(actualModel), temperature, from, to, key, genre, customGlossary, styleNotes, preserveNames);
     if (result) return result;
 
-        var fallbackChain = [
-        "cx/gpt-6-luna",
-        "Kilo_Code_Free",
+    // Chuỗi cứu hộ độc lập chống kiểm duyệt và tóm tắt theo đúng chỉ đạo:
+    // Kimi -> GLM-4.5 -> Luna 6 -> Kilo Code Free
+    var fallbackChain = [
+        "Kimi/kimi",
         "glm/glm-4.5-flash",
-        "Kimi/kimi"
+        "cx/gpt-6-luna",
+        "Kilo_Code_Free"
     ];
 
     for (var i = 0; i < fallbackChain.length; i++) {
@@ -946,8 +981,7 @@ function translateApiChunk(chunk, qtDraft, inputMode, model, reasoning, temperat
         var fbResult = translateApiChunkOnce(chunk, qtDraft, inputMode, fb, modelReasoning(fb), temperature, from, to, key, genre, customGlossary, styleNotes, preserveNames);
         if (fbResult) {
             LUNA_LAST_API_ERROR = "";
-            LUNA_MODEL_FALLBACK[preferred] = fb;
-            storageSet("luna_last_model_fallback_v24", JSON.stringify({ selected: preferred, used: fb, at: Date.now() }));
+            // Cứu hộ thành công chương bị kiểm duyệt mà không khóa vĩnh viễn fallback, để các chương sau vẫn ưu tiên Flash 3.8 Low
             return fbResult;
         }
     }
