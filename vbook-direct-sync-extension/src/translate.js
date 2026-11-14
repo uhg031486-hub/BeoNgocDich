@@ -1379,7 +1379,7 @@ function v231PrepareMemory(book,text,memory,model){
     ]};
     v231ModelOptions(body,actualModel);
     try{
-        var response=fetch(endpointUrl(),{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key,'User-Agent':'Mozilla/5.0 vBook/1.0'},body:JSON.stringify(body),timeout: 120000});
+        var response=fetch(endpointUrl(),{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+key,'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 vBook/1.0'},body:JSON.stringify(body),timeout: 120000});
         if(!response||!response.ok)return memory;var payload=parseResponse(response);
         if(!payload||payload._providerError)return memory;
         if(payload.choices&&payload.choices[0]&&/^(length|content_filter)$/.test(payload.choices[0].finish_reason||''))return memory;
@@ -1699,7 +1699,7 @@ function v231LiteralFallback(chunk,model,reasoning,temperature,from,to,key,genre
 var MUSE_MODEL='Muse/muse-spark';
 function v231MuseModel(model){return String(model||'').toLowerCase()==='muse/muse-spark';}
 function v231ModelOptions(body,model){
-    if(v231MuseModel(model)){delete body.reasoning_effort;delete body.reasoning;}
+    if(v231MuseModel(model)){delete body.reasoning_effort;delete body.reasoning;} if(model==="ag/gemini-3.8-flash"){delete body.reasoning_effort;body.reasoning={enabled:false};}
     return body;
 }
 function v231NaturalStyle(){

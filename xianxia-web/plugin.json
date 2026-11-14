@@ -1,7 +1,7 @@
 {
   "metadata": {
     "author": "Ngọc Béo & Antigravity",
-    "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dự phòng Luna 6 -> Kimi -> GLM-4.5.",
+    "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
     "version": 55
   },
   "data": [
@@ -11,7 +11,7 @@
       "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dự phòng Luna 6 -> Kimi -> GLM-4.5.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate"
@@ -19,10 +19,21 @@
     {
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 53,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
+      "type": "translate",
+      "locale": "vi_VN",
+      "name": "Ngọc Béo Translate V23.2.3"
+    },
+    {
+      "author": "Ngọc Béo & Antigravity",
+      "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
+      "version": 55,
+      "source": "https://timo-ngocbeo.pages.dev",
+      "icon": "https://timo-ngocbeo.pages.dev/icon.png",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate V23.2.2"
@@ -30,10 +41,10 @@
     {
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 53,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate V23.2.1"
@@ -41,10 +52,10 @@
     {
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 53,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate V23.2.0"
@@ -52,10 +63,10 @@
     {
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 53,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate V23.1.9"
@@ -63,10 +74,10 @@
     {
       "author": "Ngọc Béo & Antigravity",
       "path": "https://timo-ngocbeo.pages.dev/ngoc-beo-translate.zip",
-      "version": 53,
+      "version": 55,
       "source": "https://timo-ngocbeo.pages.dev",
       "icon": "https://timo-ngocbeo.pages.dev/icon.png",
-      "description": "V23.2.3 (v53): Dịch trực tuyến siêu tốc qua 9Router Cloudflare Tunnel & Gemini Flash 3.8 Low không timeout 504. Chuỗi cứu hộ độc lập: Luna 6 -> Kilo Free -> GLM 4.5 -> Gemini Flash.",
+      "description": "Dịch trực tuyến VPS r2vfzdf siêu tốc 2-3s (v55), timeout 120s, Gemini 3.8 Flash thuần. Dừng r4pqkqr. Cứu hộ Kimi -> GLM-4.5 -> Luna 6.",
       "type": "translate",
       "locale": "vi_VN",
       "name": "Ngọc Béo Translate V23.1.4"
